@@ -1,5 +1,13 @@
 {
     "aut-module": {
         
+    },
+    "404-page": {
+        "sorry": "X Perdón",
+        "page-not-found": "X Página no encontrada"
+    },
+    "language-component": {
+        "spanish": "Spanish",
+        "english": "English"
     }
 }

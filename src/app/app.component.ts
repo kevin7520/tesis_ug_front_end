@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tesis_front_end';
+  constructor(private translateService: TranslateService) {
+    this.translateService.setDefaultLang('local-es');
+    const browserLang = `local-${this.translateService.getBrowserLang()}`;
+    const langToUse = browserLang ? browserLang.match(/local-en|local-es/) ? browserLang : 'local-es' : 'local-es';
+    this.translateService.use(langToUse);
+  }
+
 }
