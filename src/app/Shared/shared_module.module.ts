@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { UiKaasButtonComponent } from './Common/ui-kaas-button/ui-kaas-button.component';
 
 
 @NgModule({
@@ -20,12 +21,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
   declarations: [
     Page404Component,
     Change_of_anguageComponent,
+    UiKaasButtonComponent
   ],
   exports: [
     Page404Component,
     Change_of_anguageComponent,
     MatButtonModule, 
-    MatMenuModule 
+    MatMenuModule,
+    UiKaasButtonComponent
   ]
 })
 export class Shared_moduleModule { }

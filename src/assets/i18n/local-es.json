@@ -1,13 +1,20 @@
 {
+    "title":"SERIOUS GAME",
     "aut-module": {
-        
+        "titulo": "Explora y descubre tus requerimientos no funcionales a través de una experiencia de juego única",
+        "iniciar-sesion": "Iniciar sesión",
+        "crear-cuenta": "Crear cuenta"
     },
     "404-page": {
-        "sorry": "Perdón",
-        "page-not-found": "Página no encontrada"
+        "sorry": "¡No te preocupes, estamos aquí para ayudarte! Simplemente presiona el botón de abajo para volver a la página de inicio y continuar tu viaje sin contratiempos.",
+        "page-not-found": "¡Oops!<br>Te has desviado del camino digital"
     },
     "language-component": {
         "spanish": "Español",
         "english": "Ingles"
+    },
+    "general":{
+        "boton-continuar": "Continuar",
+        "boton-regresar": "Regresar"
     }
 }

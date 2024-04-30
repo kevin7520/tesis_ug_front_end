@@ -1,13 +1,20 @@
 {
+    "title":"SERIOUS GAME",
     "aut-module": {
-        
+        "titulo": "Explore and discover your non-functional requirements through a unique gaming experience",
+        "iniciar-sesion": "Sign In",
+        "crear-cuenta": "Sign Up"
     },
     "404-page": {
-        "sorry": "X Perdón",
-        "page-not-found": "X Página no encontrada"
+        "sorry": "Apologies for the inconvenience. Don't worry, we're here to help! Simply press the button below to return to the homepage and continue your journey seamlessly",
+        "page-not-found": "Oh no!<br>You've strayed from the digital path"
     },
     "language-component": {
         "spanish": "Spanish",
         "english": "English"
+    },
+    "general":{
+        "boton-continuar": "Continue",
+        "boton-regresar": "Return"
     }
 }
