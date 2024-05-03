@@ -3,7 +3,20 @@
     "aut-module": {
         "titulo": "Explora y descubre tus requerimientos no funcionales a través de una experiencia de juego única",
         "iniciar-sesion": "Iniciar sesión",
-        "crear-cuenta": "Crear cuenta"
+        "crear-cuenta": "Crear cuenta",
+        "input": {
+            "usuario": "Usuario",
+            "usuario-placeholder": "Ingresa tu nombre de usuario",
+            "password": "Contraseña",
+            "password-placeholder": "Ingresa tu contraseña",
+            "password-conf": "Confirma tu contraseña",
+            "password-conf-placeholder": "Repite tu contraseña",
+            "correo": "Correo Electrónico",
+            "correo-placeholder": "Ingresa tu correo electrónico",
+            "olvidaste-password": "¿Has olvidado tu contraseña?",
+            "login-exitoso": "¡Inicio de sesión exitoso!",
+            "login-fallido": "Inicio de sesión fallido. Intenta de nuevo"
+        }
     },
     "404-page": {
         "sorry": "¡No te preocupes, estamos aquí para ayudarte! Simplemente presiona el botón de abajo para volver a la página de inicio y continuar tu viaje sin contratiempos.",

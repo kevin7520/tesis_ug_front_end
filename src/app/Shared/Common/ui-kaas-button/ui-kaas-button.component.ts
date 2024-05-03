@@ -30,6 +30,7 @@ export class UiKaasButtonComponent implements OnInit {
   @Input() buttonSize : "small" | "medium" | "large" = "medium";
   @Input() buttonText : boolean = false;
   @Input() disabled : boolean = false;
+  @Input() butonFull : boolean = false;
 
   custom_background_color_class : string = "";
   custom_text_color_class : string = "";
@@ -60,6 +61,9 @@ export class UiKaasButtonComponent implements OnInit {
       colors_finally = colors_finally + ' ui-kaas-style-button';
   
     }
+
+    if(this.butonFull)
+      colors_finally = colors_finally + ' w-full'
     return colors_finally
   }
 

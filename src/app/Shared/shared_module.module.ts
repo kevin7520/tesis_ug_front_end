@@ -4,10 +4,16 @@ import { Page404Component } from './Common/page-404/page-404.component';
 import { Change_of_anguageComponent } from './Common/change_of_anguage/change_of_anguage.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule} from '@ngx-translate/core';
 import { UiKaasButtonComponent } from './Common/ui-kaas-button/ui-kaas-button.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -16,7 +22,12 @@ import { UiKaasButtonComponent } from './Common/ui-kaas-button/ui-kaas-button.co
     HttpClientModule,
     MatButtonModule, 
     MatMenuModule,
-    TranslateModule
+    TranslateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatSnackBarModule
   ],
   declarations: [
     Page404Component,
@@ -28,7 +39,13 @@ import { UiKaasButtonComponent } from './Common/ui-kaas-button/ui-kaas-button.co
     Change_of_anguageComponent,
     MatButtonModule, 
     MatMenuModule,
-    UiKaasButtonComponent
-  ]
+    UiKaasButtonComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatSnackBarModule
+  ],
+  providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
 })
 export class Shared_moduleModule { }

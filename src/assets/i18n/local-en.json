@@ -3,7 +3,20 @@
     "aut-module": {
         "titulo": "Explore and discover your non-functional requirements through a unique gaming experience",
         "iniciar-sesion": "Sign In",
-        "crear-cuenta": "Sign Up"
+        "crear-cuenta": "Sign Up",
+        "input": {
+            "usuario": "User",
+            "usuario-placeholder": "Enter your username",
+            "password": "Password",
+            "password-placeholder": "Enter your password",
+            "password-conf": "Confirm your password",
+            "password-conf-placeholder": "Repeat your password",
+            "correo": "Email",
+            "correo-placeholder": "Enter your email address",
+            "olvidaste-password": "Forgot your password?",
+            "login-exitoso": "Successful login!",
+            "login-fallido": "Login failed. Try again"
+        }
     },
     "404-page": {
         "sorry": "Apologies for the inconvenience. Don't worry, we're here to help! Simply press the button below to return to the homepage and continue your journey seamlessly",
