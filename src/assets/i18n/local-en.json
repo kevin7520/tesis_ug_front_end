@@ -18,6 +18,17 @@
             "login-fallido": "Login failed. Try again"
         }
     },
+    "user-hub-module": {
+        "home": {
+            "bienvenida": "Welcome:",
+            "ultima-conexion": "Last connection:",
+            "menu": {
+                "inicio": "Home",
+                "perfil": "Profile",
+                "salir": "Log out"
+            }
+        }
+    },
     "404-page": {
         "sorry": "Apologies for the inconvenience. Don't worry, we're here to help! Simply press the button below to return to the homepage and continue your journey seamlessly",
         "page-not-found": "Oh no!<br>You've strayed from the digital path"

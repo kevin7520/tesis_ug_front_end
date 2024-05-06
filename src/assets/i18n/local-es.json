@@ -18,6 +18,17 @@
             "login-fallido": "Inicio de sesión fallido. Intenta de nuevo"
         }
     },
+    "user-hub-module": {
+        "home": {
+            "bienvenida": "Bienvenido(a):",
+            "ultima-conexion": "Última conexión:",
+            "menu": {
+                "inicio": "Inicio",
+                "perfil": "Perfil",
+                "salir": "Cerrar sesión"
+            }
+        }
+    },
     "404-page": {
         "sorry": "¡No te preocupes, estamos aquí para ayudarte! Simplemente presiona el botón de abajo para volver a la página de inicio y continuar tu viaje sin contratiempos.",
         "page-not-found": "¡Oops!<br>Te has desviado del camino digital"

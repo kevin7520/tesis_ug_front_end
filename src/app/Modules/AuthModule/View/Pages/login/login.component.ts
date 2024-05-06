@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import * as CryptoJS from 'crypto-js';
+import { SecretKey } from 'src/app/Utils/const';
+import { AuthService } from '../../../Service/auth.service';
+import * as bcrypt from 'bcryptjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +16,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _snackBar: MatSnackBar, private _translateService: TranslateService) { }
+  constructor(private _snackBar: MatSnackBar, private _translateService: TranslateService, private _serviceAuth : AuthService, private _roter: Router) { }
 
   iniciarSesion : boolean = true;
   ocultarPaaswordCrearCuenta : boolean = true;
   ocultarPaaswordLogin : boolean = true;
+  secretKey = SecretKey.secret;
 
   loginFormGroup = new FormGroup({
     usuario: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
@@ -34,15 +40,37 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    const criteria = {
-      usuario: this.loginFormGroup.value.usuario,
-      password: this.loginFormGroup.value.password
-    }
+    
+  //   const passworEcripty : string = String(this.loginFormGroup.value.password);
+  //   //const encryptedPassword =  CryptoJS.AES.encrypt(passworEcripty, 'seriousGame').toString();
+  //   //const base64EncodedPassword = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encryptedPassword));
+  //   //const base64EncodedPassword = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encryptedPassword));
+  //   const saltRounds = 10; // El número de rondas de hashing
+  //   bcrypt.hash(passworEcripty, saltRounds, (err, hash) => {
+  //   // Envía 'hash' al servidor
+  //   console.log('Contraseña encriptada:', hash);
+  //   const criteria = {
+  //     usuario: String(this.loginFormGroup.value.usuario),
+  //     password: hash
+  //   }
+  //   this._serviceAuth.login(criteria).subscribe(data=>{
+  //     debugger;
+  //     console.log(data)
+  //   })
+        
+  // });
+  const criteria = {
+       usuario: String(this.loginFormGroup.value.usuario),
+       password: String(this.loginFormGroup.value.password)
+     }
+  if(criteria.usuario == 'kaas' && criteria.password == 'Bg123456'){
+    this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
+    this._roter.navigateByUrl("/home");
+  }
+  else
+    this.openSnackBar(this._translateService.instant('aut-module.input.login-fallido'),'custom-snackbar_fallido');
 
-    if(criteria.usuario == 'kaas' && criteria.password == 'Bg123456')
-        this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
-    else
-        this.openSnackBar(this._translateService.instant('aut-module.input.login-fallido'),'custom-snackbar_fallido');
+
   }
 
   openSnackBar(message: string, class_customer: string) {
