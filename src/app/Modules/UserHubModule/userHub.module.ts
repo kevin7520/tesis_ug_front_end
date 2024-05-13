@@ -6,13 +6,15 @@ import { AppRoutingUserHubModule } from './userHub-routing.module';
 import { HomeComponent } from './View/Pages/home/home.component';
 import { SeriosGameComponent } from './View/Pages/serios-game/serios-game.component';
 import { PerfilComponent } from './View/Pages/perfil/perfil.component';
+import { DragulaModule } from 'ng2-dragula';
 
 @NgModule({
   imports: [
     CommonModule,
     Shared_moduleModule,
     TranslateModule,
-    AppRoutingUserHubModule
+    AppRoutingUserHubModule,
+    //DragulaModule.forRoot()
   ],
   declarations: [
     HomeComponent,

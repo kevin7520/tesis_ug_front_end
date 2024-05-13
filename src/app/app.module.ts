@@ -43,6 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

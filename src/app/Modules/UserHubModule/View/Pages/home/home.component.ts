@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   iniciarSesion : boolean = true;
   ocultarPaaswordCrearCuenta : boolean = true;
   ocultarPaaswordLogin : boolean = true;
+  viewMenu : boolean = true;
 
   usuarioRegistrado = {
     id: 3,

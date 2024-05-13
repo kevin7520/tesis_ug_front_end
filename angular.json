@@ -33,9 +33,12 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "node_modules/primeflex/primeflex.css",
-              "node_modules/primeflex/themes/primeone-light.css"
+              "node_modules/primeflex/themes/primeone-light.css",
+              "node_modules/dragula/dist/dragula.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/dragula/dist/dragula.min.js"
+            ]
           },
           "configurations": {
             "production": {

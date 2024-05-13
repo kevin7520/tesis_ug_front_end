@@ -1,3 +1,41 @@
-<p>
-  serios-game works!
-</p>
+<div style="max-width: 99%;" class="w-full">
+  <div class="mt-4 w-full flex justify-content-between flex-wrap">
+   <div class="w-max col-fixed">
+     <p class="color-primary font-medium text-subtitulos-3-size">Aciertos:
+      <span class="text-teal-700">5</span>
+    </p>
+     <p class="color-primary font-medium text-subtitulos-3-size">Puntaje:
+      <span class="text-teal-700">200</span>
+     </p>
+   </div>
+   <div class="w-max col-fixed">
+    <p class="text-purple-600 font-medium text-subtitulos-2-size">Nivel 1</p>
+   </div>
+  </div>
+  <div class="wrapper grid m-0 mt-4">
+    <div class="col-4">
+      <p class="text-center text-subtitulos-2-size mb-4">Ambiguos</p>
+      <div class="w-full h-full bg-primary-200 shadow-5 estilo-cuadro-requisitos cursor-pointer grid m-0" dragula="DRAGULA_FACTS">
+        <div class="col-6" *ngFor="let requisito of requesitosAmbiguos">
+            <p>{{requisito.texto}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <p class="text-center text-subtitulos-2-size mb-4">Conjunto de requitos no funcionales</p>
+      <div class="w-full h-full bg-primary-200 shadow-5 estilo-cuadro-requisitos cursor-pointer grid m-0" dragula="DRAGULA_FACTS">
+        <div class="col-6" *ngFor="let requisito of requesitosNoAmbiguos">
+            <p>{{requisito.texto}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <p class="text-center text-subtitulos-2-size mb-4">No Ambiguos</p>
+      <div class="w-full h-full bg-primary-200 shadow-5 estilo-cuadro-requisitos cursor-pointer grid m-0" dragula="DRAGULA_FACTS">
+        <div class="col-6" *ngFor="let requisito of requesitosNoAmbiguos">
+            <p>{{requisito.texto}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

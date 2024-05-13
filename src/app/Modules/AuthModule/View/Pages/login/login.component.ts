@@ -41,34 +41,32 @@ export class LoginComponent implements OnInit {
 
   login() {
     
-  //   const passworEcripty : string = String(this.loginFormGroup.value.password);
-  //   //const encryptedPassword =  CryptoJS.AES.encrypt(passworEcripty, 'seriousGame').toString();
-  //   //const base64EncodedPassword = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encryptedPassword));
-  //   //const base64EncodedPassword = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encryptedPassword));
+    const passworEcripty : string = String(this.loginFormGroup.value.password);
+    //const encryptedPassword =  CryptoJS.AES.encrypt(passworEcripty, 'seriousGame').toString();
+    //const base64EncodedPassword = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encryptedPassword));
+    //const base64EncodedPassword = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encryptedPassword));
   //   const saltRounds = 10; // El número de rondas de hashing
   //   bcrypt.hash(passworEcripty, saltRounds, (err, hash) => {
-  //   // Envía 'hash' al servidor
   //   console.log('Contraseña encriptada:', hash);
-  //   const criteria = {
-  //     usuario: String(this.loginFormGroup.value.usuario),
-  //     password: hash
-  //   }
-  //   this._serviceAuth.login(criteria).subscribe(data=>{
-  //     debugger;
-  //     console.log(data)
-  //   })
+   
         
   // });
   const criteria = {
-       usuario: String(this.loginFormGroup.value.usuario),
-       password: String(this.loginFormGroup.value.password)
-     }
-  if(criteria.usuario == 'kaas' && criteria.password == 'Bg123456'){
-    this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
-    this._roter.navigateByUrl("/home");
+    usuario: String(this.loginFormGroup.value.usuario),
+    password: String(this.loginFormGroup.value.password)
   }
-  else
-    this.openSnackBar(this._translateService.instant('aut-module.input.login-fallido'),'custom-snackbar_fallido');
+
+  this._serviceAuth.login(criteria).subscribe(data=>{
+    if(data.msg == 'usuario_incorrecto' || data.msg == 'password_incorrecto') {
+      
+    }
+    else {
+      this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
+      this._roter.navigateByUrl("/home");
+    }
+  })
+
+  //this.openSnackBar(this._translateService.instant('aut-module.input.login-fallido'),'custom-snackbar_fallido');
 
 
   }

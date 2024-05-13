@@ -10,8 +10,13 @@
     --SG_primary-800: #0019e2;
     --SG_primary-900: #0b1fa4;
     --SG_primary: #07115f;
+    --SG_cuadro: rgba(0,0,0,.2);
     --black: #000000;
     --white: #ffffff;
+}
+
+.bg-cuadro {
+    background-color: rgba(0,0,0,.2);
 }
 
 .bg-white {

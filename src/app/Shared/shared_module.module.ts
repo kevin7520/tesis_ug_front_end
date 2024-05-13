@@ -14,7 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDividerModule} from '@angular/material/divider';
-
+import {CdkDrag, CdkDragHandle} from '@angular/cdk/drag-drop';
+import { DragulaModule } from 'ng2-dragula';
 
 @NgModule({
   imports: [
@@ -28,7 +29,10 @@ import {MatDividerModule} from '@angular/material/divider';
     ReactiveFormsModule,
     MatIconModule,
     MatSnackBarModule,
-    MatDividerModule
+    MatDividerModule,
+    CdkDrag,
+    CdkDragHandle,
+    DragulaModule.forRoot(),
   ],
   declarations: [
     Page404Component,
@@ -46,7 +50,10 @@ import {MatDividerModule} from '@angular/material/divider';
     ReactiveFormsModule,
     MatIconModule,
     MatSnackBarModule,
-    MatDividerModule
+    MatDividerModule,
+    CdkDrag,
+    CdkDragHandle,
+    DragulaModule
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
 })
