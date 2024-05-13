@@ -15,7 +15,8 @@
             "correo-placeholder": "Enter your email address",
             "olvidaste-password": "Forgot your password?",
             "login-exitoso": "Successful login!",
-            "login-fallido": "Login failed. Try again"
+            "login-fallido": "Login failed. Try again",
+            "usuario-incorrecto": "Incorrect username. Please check and try again"
         }
     },
     "user-hub-module": {

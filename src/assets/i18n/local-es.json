@@ -15,7 +15,8 @@
             "correo-placeholder": "Ingresa tu correo electrónico",
             "olvidaste-password": "¿Has olvidado tu contraseña?",
             "login-exitoso": "¡Inicio de sesión exitoso!",
-            "login-fallido": "Inicio de sesión fallido. Intenta de nuevo"
+            "login-fallido": "Inicio de sesión fallido. Intenta de nuevo",
+            "usuario-incorrecto": "Nombre de usuario incorrecto. Por favor, verifica e intenta de nuevo"
         }
     },
     "user-hub-module": {

@@ -57,12 +57,23 @@ export class LoginComponent implements OnInit {
   }
 
   this._serviceAuth.login(criteria).subscribe(data=>{
-    if(data.msg == 'usuario_incorrecto' || data.msg == 'password_incorrecto') {
-      
+    if(data.msg != 'OK') {
+      let texto_retorno = "";
+      switch(data.msg) {
+        case 'usuario_incorrecto':
+          texto_retorno = 'aut-module.input.usuario-incorrecto';
+          break;
+        case 'password_incorrecto':
+          texto_retorno = 'aut-module.input.password-incorrecto';
+          break;
+        default:
+          texto_retorno = 'aut-module.input.login-fallido';
+      }
+      this.openSnackBar(this._translateService.instant(texto_retorno),'custom-snackbar_fallido');
     }
     else {
       this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
-      this._roter.navigateByUrl("/home");
+      this._roter.navigateByUrl("/home/serious-game");
     }
   })
 

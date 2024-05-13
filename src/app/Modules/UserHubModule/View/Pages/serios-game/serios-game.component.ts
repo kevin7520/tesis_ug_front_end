@@ -8,9 +8,9 @@ import { DragulaService } from 'ng2-dragula';
 export class SeriosGameComponent implements OnInit {
 
   constructor(private dragulaService: DragulaService) {
-    dragulaService.createGroup('my-bag', {
-      // Configuración opcional aquí
-    });
+    // dragulaService.createGroup('my-bag', {
+    //   // Configuración opcional aquí
+    // });
    }
 
   ngOnInit() {
