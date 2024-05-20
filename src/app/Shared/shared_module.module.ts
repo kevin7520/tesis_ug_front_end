@@ -16,6 +16,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDividerModule} from '@angular/material/divider';
 import {CdkDrag, CdkDragHandle} from '@angular/cdk/drag-drop';
 import { DragulaModule } from 'ng2-dragula';
+import { ModalComponent } from './Common/modal/modal.component';
+import { UiKaasInputComponent } from './Common/ui-kaas-input/ui-kaas-input/ui-kaas-input.component';
+import { UiKaasHeadingComponent } from './Common/ui-kaas-input/ui-kaas-heading/ui-kaas-heading.component';
+import { UiKaasHintComponent } from './Common/ui-kaas-input/ui-kaas-hint/ui-kaas-hint.component';
 
 @NgModule({
   imports: [
@@ -37,7 +41,11 @@ import { DragulaModule } from 'ng2-dragula';
   declarations: [
     Page404Component,
     Change_of_anguageComponent,
-    UiKaasButtonComponent
+    UiKaasButtonComponent,
+    ModalComponent,
+    UiKaasInputComponent,
+    UiKaasHeadingComponent,
+    UiKaasHintComponent
   ],
   exports: [
     Page404Component,
@@ -53,7 +61,11 @@ import { DragulaModule } from 'ng2-dragula';
     MatDividerModule,
     CdkDrag,
     CdkDragHandle,
-    DragulaModule
+    DragulaModule,
+    ModalComponent,
+    UiKaasInputComponent,
+    UiKaasHeadingComponent,
+    UiKaasHintComponent
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
 })
