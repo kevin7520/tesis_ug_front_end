@@ -7,6 +7,7 @@ import { HomeComponent } from './View/Pages/home/home.component';
 import { SeriosGameComponent } from './View/Pages/serios-game/serios-game.component';
 import { PerfilComponent } from './View/Pages/perfil/perfil.component';
 import { DragulaModule } from 'ng2-dragula';
+import { CreateGameComponent } from './View/Pages/create-game/create-game.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { DragulaModule } from 'ng2-dragula';
   declarations: [
     HomeComponent,
     SeriosGameComponent,
-    PerfilComponent
+    PerfilComponent,
+    CreateGameComponent
   ]
 })
 export class UserHubModule { }

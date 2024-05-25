@@ -1,5 +1,6 @@
 @import "assets/styles/main";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 *{
     font-family: 'Roboto', sans-serif;
@@ -12,6 +13,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-mdc-button:not(:disabled) {
     color: #07115f!important;
 }
+
+// .cdk-overlay-pane {width: 100%!important;}
+// .mat-menu-panel {max-width: 100%!important; min-width: 64px!important;}
+
 p{
     margin-bottom: 0px !important;
 }

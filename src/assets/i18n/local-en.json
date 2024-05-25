@@ -26,6 +26,7 @@
             "menu": {
                 "inicio": "Home",
                 "perfil": "Profile",
+                "crear-juego": "Create Game",
                 "salir": "Log out"
             }
         }
@@ -41,5 +42,10 @@
     "general":{
         "boton-continuar": "Continue",
         "boton-regresar": "Return"
+    },
+    "tipo-juego": {
+        "juego 1": "X Juego 1",
+        "juego 2": "X Juego 3",
+        "juego 3": "X Juego 3"
     }
 }

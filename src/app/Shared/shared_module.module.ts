@@ -20,6 +20,20 @@ import { ModalComponent } from './Common/modal/modal.component';
 import { UiKaasInputComponent } from './Common/ui-kaas-input/ui-kaas-input/ui-kaas-input.component';
 import { UiKaasHeadingComponent } from './Common/ui-kaas-input/ui-kaas-heading/ui-kaas-heading.component';
 import { UiKaasHintComponent } from './Common/ui-kaas-input/ui-kaas-hint/ui-kaas-hint.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter } from '@angular/material/core';
+
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+  },
+  display: {
+    dateInput: 'input',
+    monthYearLabel: { year: 'numeric', month: 'short' },
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
+  },
+};
 
 @NgModule({
   imports: [
@@ -34,6 +48,7 @@ import { UiKaasHintComponent } from './Common/ui-kaas-input/ui-kaas-hint/ui-kaas
     MatIconModule,
     MatSnackBarModule,
     MatDividerModule,
+    MatDatepickerModule,
     CdkDrag,
     CdkDragHandle,
     DragulaModule.forRoot(),
@@ -65,8 +80,13 @@ import { UiKaasHintComponent } from './Common/ui-kaas-input/ui-kaas-hint/ui-kaas
     ModalComponent,
     UiKaasInputComponent,
     UiKaasHeadingComponent,
-    UiKaasHintComponent
+    UiKaasHintComponent,
+    MatDatepickerModule
   ],
-  providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
+  providers: [
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }, // Define tus propios formatos de fecha
+    { provide: DateAdapter, useClass: NativeDateAdapter }
+  ],
 })
 export class Shared_moduleModule { }

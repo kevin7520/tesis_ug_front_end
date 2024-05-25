@@ -26,6 +26,7 @@
             "menu": {
                 "inicio": "Inicio",
                 "perfil": "Perfil",
+                "crear-juego": "Crear juego",
                 "salir": "Cerrar sesión"
             }
         }
@@ -41,5 +42,10 @@
     "general":{
         "boton-continuar": "Continuar",
         "boton-regresar": "Regresar"
+    },
+    "tipo-juego": {
+        "juego 1": "Juego 1",
+        "juego 2": "Juego 2",
+        "juego 3": "Juego 3"
     }
 }

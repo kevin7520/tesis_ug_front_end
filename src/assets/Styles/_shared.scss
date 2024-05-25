@@ -25,3 +25,30 @@
 .tex-titulo-Serius-Game {
     font-size: 20px;
 }
+
+.menu-select { 
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: black;
+    padding: 0.75rem 0.75rem;
+}
+
+.input-style {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: black;
+    padding: 0.75rem 0.75rem;
+}
+
+.menu-select:hover {
+    border-color: #3B82F6;
+}
+
+.menu-select-active {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #BFDBFE;
+    border-color: #3B82F6;
+}

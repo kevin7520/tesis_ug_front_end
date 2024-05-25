@@ -41,11 +41,18 @@ export class HomeComponent implements OnInit {
       id: 2
     },
     {
+      titulo: "user-hub-module.home.menu.crear-juego",
+      icono: "bi bi-joystick",
+      ruta: "/home/crear-juego",
+      activo: false,
+      id: 3
+    },
+    {
       titulo: "user-hub-module.home.menu.salir",
       icono: "bi bi-arrow-left-square-fill",
       ruta: "/auth",
       activo: false,
-      id: 3
+      id: 4
     }
   ]
 
