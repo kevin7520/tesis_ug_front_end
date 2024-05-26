@@ -4,23 +4,24 @@
       <div class="col-12">
         <p class="text-center">Completa tu registro</p>
       </div>
-      <div class="col-12 px-1">
+      <div class="col-6 px-1">
         <mat-form-field class="w-full hide-hint" appearance="outline">
           <mat-label>{{'aut-module.input.usuario' | translate}}</mat-label>
           <input matInput placeholder="{{'aut-module.input.usuario-placeholder' | translate}}" formControlName="nombre">
         </mat-form-field>
       </div>
-      <div class="col-12 px-1">
+      <div class="col-6 px-1">
         <mat-form-field class="w-full hide-hint" appearance="outline">
           <mat-label>{{'aut-module.input.usuario' | translate}}</mat-label>
           <input matInput placeholder="{{'aut-module.input.usuario-placeholder' | translate}}" formControlName="apellido">
         </mat-form-field>
       </div>
-      <div class="col-12 px-1">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1">Option 1</mat-radio-button>
-          <mat-radio-button value="2">Option 2</mat-radio-button>
-        </mat-radio-group>
+      <div class="col-6 px-1">
+        <app-radio-button [label]="'Prueba'" [hint]="'Prueba'" [options]="opcion"></app-radio-button>
+      </div>
+      <p>{{opcionRol}}</p>
+      <div class="col-6 px-1">
+        <app-datepicker [label]="'Prueba'" [hint]="'Prueba'" [value]="fechaNacimiento"></app-datepicker>
       </div>
     </div>
   </div>

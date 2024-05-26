@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  private urlEndPoint: string = 'http://localhost/api-SeriusGame/auth';
+  private urlEndPoint: string = 'http://localhost/tesis_ug_back_end/auth';
   
   login(criteria : any) : Observable<any> {
     return this.http.post<any>(this.urlEndPoint,criteria);

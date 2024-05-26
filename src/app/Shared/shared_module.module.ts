@@ -9,7 +9,7 @@ import { TranslateModule} from '@ngx-translate/core';
 import { UiKaasButtonComponent } from './Common/ui-kaas-button/ui-kaas-button.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -23,6 +23,8 @@ import { UiKaasHintComponent } from './Common/ui-kaas-input/ui-kaas-hint/ui-kaas
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
+import { CalendareComponent } from './Common/calendare/calendare.component';
+import { RadioButtonComponent } from './Common/radio-button/radio-button.component';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -51,6 +53,7 @@ export const MY_DATE_FORMATS = {
     MatDividerModule,
     MatDatepickerModule,
     MatRadioModule,
+    FormsModule,
     CdkDrag,
     CdkDragHandle,
     DragulaModule.forRoot(),
@@ -62,7 +65,9 @@ export const MY_DATE_FORMATS = {
     ModalComponent,
     UiKaasInputComponent,
     UiKaasHeadingComponent,
-    UiKaasHintComponent
+    UiKaasHintComponent,
+    CalendareComponent,
+    RadioButtonComponent
   ],
   exports: [
     Page404Component,
@@ -84,7 +89,10 @@ export const MY_DATE_FORMATS = {
     UiKaasHeadingComponent,
     UiKaasHintComponent,
     MatDatepickerModule,
-    MatRadioModule
+    MatRadioModule,
+    CalendareComponent,
+    RadioButtonComponent,
+    FormsModule
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},

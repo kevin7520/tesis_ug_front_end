@@ -1,0 +1,7 @@
+<app-ui-kaas-heading [label]="label" *ngIf=" label != '' "></app-ui-kaas-heading>
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" [value]="value" (dateChange)="value = $event.value" (input)="picker.close()" readonly>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<app-ui-kaas-hint [label]="hint" *ngIf=" hint != '' "></app-ui-kaas-hint>

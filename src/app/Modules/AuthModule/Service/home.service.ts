@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
   constructor(private http: HttpClient) { }
-  private urlEndPoint: string = 'http://localhost/api-SeriusGame/home';
+  private urlEndPoint: string = 'http://localhost/tesis_ug_back_end/home';
   
   recuperarRegistro(criteria : any) : Observable<any> {
     return this.http.post<any>(this.urlEndPoint,criteria);
