@@ -5,16 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-
+export class HomeService {
   constructor(private http: HttpClient) { }
-  private urlEndPoint: string = 'http://localhost/api-SeriusGame/auth';
+  private urlEndPoint: string = 'http://localhost/api-SeriusGame/home';
   
-  login(criteria : any) : Observable<any> {
+  recuperarRegistro(criteria : any) : Observable<any> {
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
 
-  crearCuenta(criteria : any) : Observable<any> {
-    return this.http.put<any>(this.urlEndPoint,criteria);
-  }
+  // crearCuenta(criteria : any) : Observable<any> {
+  //   return this.http.put<any>(this.urlEndPoint,criteria);
+  // }
 }

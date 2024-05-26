@@ -4,6 +4,8 @@ import { AppRoutingAuthModule } from './auth-routing.module';
 import { Shared_moduleModule } from 'src/app/Shared/shared_module.module';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { MigracionComponent } from './View/Pages/migracion/migracion.component';
+import { AuthModuloComponent } from './auth-module.component';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    MigracionComponent,
+    AuthModuloComponent
   ]
 })
 export class AuthModule { }

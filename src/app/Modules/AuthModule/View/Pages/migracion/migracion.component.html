@@ -1,0 +1,27 @@
+<div class="w-full h-full grid justify-content-center border-box">
+  <div class="w-6 h-full flex align-content-center flex-wrap">
+    <div class="w-12 grid m-0 container-auth shadow-6 bg-green-500">
+      <div class="col-12">
+        <p class="text-center">Completa tu registro</p>
+      </div>
+      <div class="col-12 px-1">
+        <mat-form-field class="w-full hide-hint" appearance="outline">
+          <mat-label>{{'aut-module.input.usuario' | translate}}</mat-label>
+          <input matInput placeholder="{{'aut-module.input.usuario-placeholder' | translate}}" formControlName="nombre">
+        </mat-form-field>
+      </div>
+      <div class="col-12 px-1">
+        <mat-form-field class="w-full hide-hint" appearance="outline">
+          <mat-label>{{'aut-module.input.usuario' | translate}}</mat-label>
+          <input matInput placeholder="{{'aut-module.input.usuario-placeholder' | translate}}" formControlName="apellido">
+        </mat-form-field>
+      </div>
+      <div class="col-12 px-1">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1">Option 1</mat-radio-button>
+          <mat-radio-button value="2">Option 2</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+</div>

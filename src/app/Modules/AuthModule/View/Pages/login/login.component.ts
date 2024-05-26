@@ -40,53 +40,63 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    
-    const passworEcripty : string = String(this.loginFormGroup.value.password);
-    //const encryptedPassword =  CryptoJS.AES.encrypt(passworEcripty, 'seriousGame').toString();
-    //const base64EncodedPassword = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encryptedPassword));
-    //const base64EncodedPassword = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encryptedPassword));
-  //   const saltRounds = 10; // El número de rondas de hashing
-  //   bcrypt.hash(passworEcripty, saltRounds, (err, hash) => {
-  //   console.log('Contraseña encriptada:', hash);
-   
-        
-  // });
-  const criteria = {
-    usuario: String(this.loginFormGroup.value.usuario),
-    password: String(this.loginFormGroup.value.password)
+    const criteria = {
+      usuario: String(this.loginFormGroup.value.usuario),
+      password: String(this.loginFormGroup.value.password)
+    }
+
+    this._serviceAuth.login(criteria).subscribe(data=>{
+      if(data.msg != 'OK') {
+        let texto_retorno = "";
+        switch(data.msg) {
+          case 'usuario_incorrecto':
+            texto_retorno = 'aut-module.input.usuario-incorrecto';
+            break;
+          case 'password_incorrecto':
+            texto_retorno = 'aut-module.input.password-incorrecto';
+            break;
+          default:
+            texto_retorno = 'aut-module.input.login-fallido';
+        }
+        this.openSnackBar(this._translateService.instant(texto_retorno),'custom-snackbar_fallido');
+      }
+      else {
+        const dataResponse = {
+          id: data.result.idUsuario,
+          user: data.result.usuario
+        }
+        localStorage.setItem('persona', JSON.stringify(dataResponse));
+        this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
+        this._roter.navigateByUrl("/home/serious-game");
+      }
+    })
   }
 
-  this._serviceAuth.login(criteria).subscribe(data=>{
-    if(data.msg != 'OK') {
-      let texto_retorno = "";
-      switch(data.msg) {
-        case 'usuario_incorrecto':
-          texto_retorno = 'aut-module.input.usuario-incorrecto';
-          break;
-        case 'password_incorrecto':
-          texto_retorno = 'aut-module.input.password-incorrecto';
-          break;
-        default:
-          texto_retorno = 'aut-module.input.login-fallido';
+  crearCuenta() {
+    const criteria = {
+      usuario: String(this.crearCuentaFormGroup.value.usuario),
+      password: String(this.crearCuentaFormGroup.value.password),
+      correo: String(this.crearCuentaFormGroup.value.correo),
+    }
+
+    this._serviceAuth.crearCuenta(criteria).subscribe((data)=>{
+      if(data.msg == 'OK') {
+        this.openSnackBar(this._translateService.instant('aut-module.input.crear-exitoso'),'custom-snackbar_exitoso');
+        this.crearCuentaFormGroup.reset();
+        this.loginFormGroup.reset();
+        this.iniciarSesion = true;
       }
-      this.openSnackBar(this._translateService.instant(texto_retorno),'custom-snackbar_fallido');
-    }
-    else {
-      this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
-      this._roter.navigateByUrl("/home/serious-game");
-    }
-  })
-
-  //this.openSnackBar(this._translateService.instant('aut-module.input.login-fallido'),'custom-snackbar_fallido');
-
-
+      else {
+        this.openSnackBar(this._translateService.instant('aut-module.input.crear-fallido'),'custom-snackbar_fallido');
+      }
+    });
   }
 
   openSnackBar(message: string, class_customer: string) {
     const config = new MatSnackBarConfig();
-    config.duration = 3000; // Duración en milisegundos
-    config.verticalPosition = 'top'; // Posición vertical arriba
-    config.horizontalPosition = 'center'; // Posición horizontal a la derecha
+    config.duration = 5000;
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'center';
     config.panelClass = [class_customer];
     this._snackBar.open(message,'',config);
   }

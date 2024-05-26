@@ -22,6 +22,7 @@ import { UiKaasHeadingComponent } from './Common/ui-kaas-input/ui-kaas-heading/u
 import { UiKaasHintComponent } from './Common/ui-kaas-input/ui-kaas-hint/ui-kaas-hint.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter } from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -49,6 +50,7 @@ export const MY_DATE_FORMATS = {
     MatSnackBarModule,
     MatDividerModule,
     MatDatepickerModule,
+    MatRadioModule,
     CdkDrag,
     CdkDragHandle,
     DragulaModule.forRoot(),
@@ -81,7 +83,8 @@ export const MY_DATE_FORMATS = {
     UiKaasInputComponent,
     UiKaasHeadingComponent,
     UiKaasHintComponent,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatRadioModule
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},

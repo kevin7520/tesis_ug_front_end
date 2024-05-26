@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { HomeService } from 'src/app/Modules/AuthModule/Service/home.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _snackBar: MatSnackBar, private _translateService: TranslateService, private _router : Router) { }
+  constructor(private _snackBar: MatSnackBar, private _translateService: TranslateService, private _router : Router, private _serviceHome : HomeService) { }
 
   iniciarSesion : boolean = true;
   ocultarPaaswordCrearCuenta : boolean = true;
@@ -20,9 +21,9 @@ export class HomeComponent implements OnInit {
   viewMenu : boolean = true;
 
   usuarioRegistrado = {
-    id: 3,
-    usuario: "Kevin Arévalo",
-    ultimoRegistro: "12/10/2024 8:30 AM"
+    id: 0,
+    usuario: "",
+    ultimoRegistro: ""
    }
 
   menu_lista = [
@@ -56,21 +57,31 @@ export class HomeComponent implements OnInit {
     }
   ]
 
-  loginFormGroup = new FormGroup({
-    usuario: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
-    password: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
-    // nombre_responsable_editar: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
-    // numero_responsable_editar: new FormControl('', { validators: [Validators.required, Validators.minLength(8), Validators.maxLength(8)], updateOn: 'blur' })
-  });
+  ngOnInit() {
+    this.obtenerRegistro();
+  }
 
-  crearCuentaFormGroup = new FormGroup({
-    usuario: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
-    correo: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
-    password: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
-    confirmarPassword: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
-  });
-
-  ngOnInit() {}
+  obtenerRegistro() {
+    const dataLocal = JSON.parse(localStorage.getItem('persona')!);
+    const criteria = {
+      "idUsuario": dataLocal.id,
+      "usuario": dataLocal.user
+    }
+    this._serviceHome.recuperarRegistro(criteria).subscribe(dataResponse => {
+      if(dataResponse.msg == 'OK') {
+        this.usuarioRegistrado = {
+          id : dataLocal.id,
+          usuario : dataLocal.user,
+          ultimoRegistro : dataResponse.result.registro
+        }
+      }
+      else {
+        this.openSnackBar(this._translateService.instant('USUARIO NO ENCONTRADO'),'custom-snackbar_fallido');
+        localStorage.clear();
+        this._router.navigateByUrl("/auth");
+      }
+    })
+  }
 
   cambioMenu(id : number, ruta : string) {
     if(ruta == '/auth') {
@@ -87,25 +98,13 @@ export class HomeComponent implements OnInit {
 
   }
 
-  // login() {
-  //   const criteria = {
-  //     usuario: this.loginFormGroup.value.usuario,
-  //     password: this.loginFormGroup.value.password
-  //   }
-
-  //   if(criteria.usuario == 'kaas' && criteria.password == 'Bg123456')
-  //       this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
-  //   else
-  //       this.openSnackBar(this._translateService.instant('aut-module.input.login-fallido'),'custom-snackbar_fallido');
-  // }
-
-  // openSnackBar(message: string, class_customer: string) {
-  //   const config = new MatSnackBarConfig();
-  //   config.duration = 3000;
-  //   config.verticalPosition = 'top';
-  //   config.horizontalPosition = 'center';
-  //   config.panelClass = [class_customer];
-  //   this._snackBar.open(message,'',config);
-  // }
+  openSnackBar(message: string, class_customer: string) {
+    const config = new MatSnackBarConfig();
+    config.duration = 3000;
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'center';
+    config.panelClass = [class_customer];
+    this._snackBar.open(message,'',config);
+  }
 
 }

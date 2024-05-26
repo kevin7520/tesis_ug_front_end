@@ -15,7 +15,9 @@
             "correo-placeholder": "Ingresa tu correo electrónico",
             "olvidaste-password": "¿Has olvidado tu contraseña?",
             "login-exitoso": "¡Inicio de sesión exitoso!",
+            "crear-exitoso": "La cuenta se ha creado correctamente. Ahora simplemente inicia sesión",
             "login-fallido": "Inicio de sesión fallido. Intenta de nuevo",
+            "crear-fallido": "La creación de la cuenta no fue exitosa. Por favor, inténtelo nuevamente más tarde",
             "usuario-incorrecto": "Nombre de usuario incorrecto. Por favor, verifica e intenta de nuevo"
         }
     },
