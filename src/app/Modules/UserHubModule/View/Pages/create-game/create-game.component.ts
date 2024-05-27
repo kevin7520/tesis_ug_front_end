@@ -15,6 +15,18 @@ export class CreateGameComponent implements OnInit, DoCheck {
     { name: 'tipo-juego.juego 3', code: 'J3' }
   ];
 
+  datosJuego = {
+    fechaFinalizacion: new Date(),
+    data: [
+      {
+        option_code: "J1",
+        option_select: "",
+        requerimiento: "",
+        retroalimentacion: ""
+      }
+    ]
+  }
+
   id_menu : string = "pruebaEstilo";
 
   option_select: string = "";
@@ -24,7 +36,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
   menuOpen: boolean | undefined;
 
   constructor(private buttonRef: ElementRef) {
-    this.selectTypeGame("J1");
+    this.selectTypeGame("J1",0);
    }
 
   ngOnInit() {
@@ -35,7 +47,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
   }
 
   adjustPanelWidth(): void {
-    const widthButton= document.getElementById("menuElement")!.offsetWidth;
+    const widthButton= document.getElementById("menuElement")?.offsetWidth;
     const element = document.getElementsByClassName('mat-mdc-menu-content') as HTMLCollectionOf<HTMLElement>;
     const elementPanel = document.getElementsByClassName('mat-mdc-menu-panel') as HTMLCollectionOf<HTMLElement>;
     for(var i = 0; i < element.length; i++) {
@@ -44,26 +56,34 @@ export class CreateGameComponent implements OnInit, DoCheck {
       elementPanel[i].style.maxWidth = "none";
       elementPanel[i].style.marginTop = "4px";
     }
-    console.log(element)
   }
 
-  selectTypeGame(code : string) {
+  selectTypeGame(code : string, index : number) {
     const index_label = this.options_game.findIndex(value=> value.code == code);
-    this.option_select = this.options_game[index_label].name;
-    this.option_code = this.options_game[index_label].code;
+    this.datosJuego.data[index].option_select = this.options_game[index_label].name;
+    this.datosJuego.data[index].option_code = this.options_game[index_label].code;
   }
 
-  onChangeTypeGame(code : string){
-    this.selectTypeGame(code);
+  onChangeTypeGame(code : string, index : number){
+    this.selectTypeGame(code, index);
+  }
+
+  createNuveoNivel() {
+    const criteria =  {
+      option_code: "J1",
+      option_select: "",
+      requerimiento: "",
+      retroalimentacion: ""
+    }
+    this.datosJuego.data.push(criteria);
+    this.selectTypeGame("J1",this.datosJuego.data.length -1);
   }
 
   openMenu(){
-    console.log("HOKA");
     this.classStyleActive = true;
   }
 
   closeMenu() {
-    console.log("cierre");
     this.classStyleActive = false;
   }
   

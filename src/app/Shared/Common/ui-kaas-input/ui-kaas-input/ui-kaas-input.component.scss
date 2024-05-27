@@ -6,7 +6,7 @@
 .ui-kaas-input-text {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol;
   font-size: 1rem;
-  color: #333;
+  color: #000000;
   background: #ffffff;
   padding: 0.5rem;
   border: 2px solid #ced4da;
@@ -15,9 +15,18 @@
   appearance: none;
   border-radius: 6px;
 }
+
+.ui-kaas-input-text:hover {
+  border-color: #3B82F6;
+}
+
 .ui-kaas-input-text:focus {
-  border-color: #4d98d4;
-  box-shadow: none;
   outline: 0 none;
   outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #BFDBFE;
+  border-color: #3B82F6;
+}
+
+::placeholder {
+  color: rgb(173, 173, 173);
 }

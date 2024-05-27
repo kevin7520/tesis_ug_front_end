@@ -10,6 +10,7 @@ export class UiKaasInputComponent implements OnInit {
   @Input() characterFilter : 'num' | 'letra' | 'all' | any = 'all';
   @Input() label : string = "";
   @Input() hint : string = "";
+  @Input() placeholder : string = "";
   @Input() value : string = "";
   @Output() valueChange = new EventEmitter<string>();
   constructor() { }

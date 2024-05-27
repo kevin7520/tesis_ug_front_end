@@ -1,30 +1,40 @@
 <div style="max-width: 99%;" class="w-full">
   <div class="w-full ml-2">
     <form action="">
-      <p>CREACIÓN DE NIVELES</p>
-      <app-ui-kaas-heading [label]="'Tipo juego'"></app-ui-kaas-heading>
-      <div id="menuElement" class="menu-select w-7" [ngClass]="{'menu-select-active': classStyleActive}" [matMenuTriggerFor]="menu" (menuOpened)="openMenu()" (menuClosed)="closeMenu()">
-        <div class="w-full flex justify-content-between flex-wrap">
-          <span class="col p-0">{{option_select | translate}}</span>
-          <div class="w-max">
-            <i class="bi" [ngClass]="{'bi-chevron-down': !classStyleActive, 'bi-chevron-up': classStyleActive}"></i>
+      <p class="mt-4 text-center color-primary tex-titulo-Serius-Game">CREACIÓN DE NIVELES</p>
+      <ng-container *ngFor="let data of datosJuego.data; let indice = index">
+        <div class="w-full grid m-0 mt-4 shadow-5 border-round-xl border-color p-4">
+          <div class="col-6">
+            <app-ui-kaas-heading [label]="'Tipo juego'"></app-ui-kaas-heading>
+            <div id="menuElement" class="menu-select w-full" [ngClass]="{'menu-select-active': classStyleActive}" [matMenuTriggerFor]="menu" (menuOpened)="openMenu()" (menuClosed)="closeMenu()">
+              <div class="w-full flex justify-content-between flex-wrap">
+                <span class="col p-0">{{data.option_select | translate}}</span>
+                <div class="w-max">
+                  <i class="bi" [ngClass]="{'bi-chevron-down': !classStyleActive, 'bi-chevron-up': classStyleActive}"></i>
+                </div>
+              </div>
+            </div>
+              <!-- <buttn class="text-color-black w-full" type="button" ></buttn n> -->
+            <mat-menu #menu="matMenu" class="pruebaEstilo" id="prueba 1">
+                <ng-container *ngFor="let value of options_game;">
+                    <button (click)="onChangeTypeGame(value.code, indice)" type="button" mat-menu-item>{{value.name | translate }}</button>
+                </ng-container>
+            </mat-menu>
+            <app-ui-kaas-hint [label]="'Prueba hint'"></app-ui-kaas-hint>
+          </div>
+          <div class="col-6">
+            <app-ui-kaas-input label="Requerimiento" hint="hint" [(value)]="data.requerimiento"></app-ui-kaas-input>
+          </div>
+          <div class="col-6">
+            <app-ui-kaas-input label="Retro Alimentación" hint="hint" placeholder="Opcional" [(value)]="data.retroalimentacion"></app-ui-kaas-input>
           </div>
         </div>
+      </ng-container>
+      <p>{{datosJuego | json}}</p>
+      <button (click)="createNuveoNivel()"></button>
+      <div class="col-12 mt-2">
+        <app-datepicker label="aut-module.migracion.fecha-nacimiento" [(value)]="datosJuego.fechaFinalizacion"></app-datepicker>
       </div>
-        <!-- <buttn class="text-color-black w-full" type="button" ></buttn n> -->
-      <mat-menu #menu="matMenu" class="pruebaEstilo" id="prueba 1">
-          <ng-container *ngFor="let value of options_game;">
-              <button (click)="onChangeTypeGame(value.code)" type="button" mat-menu-item>{{value.name | translate }}</button>
-          </ng-container>
-      </mat-menu>
-      <app-ui-kaas-hint [label]="'Prueba hint'"></app-ui-kaas-hint>
-      <app-ui-kaas-heading [label]="'Fecha finilización'"></app-ui-kaas-heading>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <app-ui-kaas-hint [label]="'Ingrese la fecha de vigencia del juego'"></app-ui-kaas-hint>
     </form>
   </div> 
 </div>
