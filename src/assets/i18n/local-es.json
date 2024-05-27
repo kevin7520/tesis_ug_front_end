@@ -19,6 +19,17 @@
             "login-fallido": "Inicio de sesión fallido. Intenta de nuevo",
             "crear-fallido": "La creación de la cuenta no fue exitosa. Por favor, inténtelo nuevamente más tarde",
             "usuario-incorrecto": "Nombre de usuario incorrecto. Por favor, verifica e intenta de nuevo"
+        },
+        "migracion": {
+            "title": "Finaliza tu registro",
+            "nombre": "Nombre",
+            "nombre-hint": "Ingrese su nombre completo",
+            "apellido": "Apellido",
+            "apellido-hint": "Ingrese su apellido completo",
+            "rol": "Rol",
+            "fecha-nacimiento": "Fecha de Nacimiento",
+            "estudiante": "Estudiante",
+            "profesor": "Profesor"
         }
     },
     "user-hub-module": {

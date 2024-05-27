@@ -1,0 +1,9 @@
+
+::ng-deep {
+    .mat-mdc-radio-button:first-of-type .mdc-radio {
+        padding-left: 0px!important;
+    }
+    .mat-mdc-radio-button .mdc-radio {
+        padding-right: 2px!important;
+    }
+}

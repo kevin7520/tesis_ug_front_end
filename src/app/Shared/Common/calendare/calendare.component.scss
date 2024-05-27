@@ -1,0 +1,21 @@
+.calendare-style {
+    ::ng-deep {
+        .mat-mdc-text-field-wrapper {
+            border: 1px solid var(--border)!important;
+            border-radius: 6px;
+            color: black;
+            background-color: white!important;
+        }
+        
+        .mat-mdc-form-field-subscript-wrapper {
+            display: none;
+        } 
+        .mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-line-ripple::before {
+            border-color: transparent!important;
+        }
+
+        .mdc-line-ripple {
+            border: none!important;
+        }
+    }
+}

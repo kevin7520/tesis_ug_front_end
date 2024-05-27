@@ -16,6 +16,10 @@
     --border: #ced4da
 }
 
+.border-color {
+    border: 1px solid var(--border);
+}
+
 .bg-cuadro {
     background-color: rgba(0,0,0,.2);
 }

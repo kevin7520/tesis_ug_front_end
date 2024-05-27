@@ -23,39 +23,11 @@ export class HomeComponent implements OnInit {
   usuarioRegistrado = {
     id: 0,
     usuario: "",
-    ultimoRegistro: ""
+    ultimoRegistro: "",
+    rol: ""
    }
 
-  menu_lista = [
-    {
-      titulo: "user-hub-module.home.menu.inicio",
-      icono: "bi bi-house-door-fill",
-      ruta: "/home/serious-game",
-      activo: true,
-      id: 1
-    },
-    {
-      titulo: "user-hub-module.home.menu.perfil",
-      icono: "bi bi-person-fill-gear",
-      ruta: "/home/perfil",
-      activo: false,
-      id: 2
-    },
-    {
-      titulo: "user-hub-module.home.menu.crear-juego",
-      icono: "bi bi-joystick",
-      ruta: "/home/crear-juego",
-      activo: false,
-      id: 3
-    },
-    {
-      titulo: "user-hub-module.home.menu.salir",
-      icono: "bi bi-arrow-left-square-fill",
-      ruta: "/auth",
-      activo: false,
-      id: 4
-    }
-  ]
+  menu_lista : any [] = [];
 
   ngOnInit() {
     this.obtenerRegistro();
@@ -72,7 +44,15 @@ export class HomeComponent implements OnInit {
         this.usuarioRegistrado = {
           id : dataLocal.id,
           usuario : dataLocal.user,
-          ultimoRegistro : dataResponse.result.registro
+          ultimoRegistro : dataResponse.result.registro,
+          rol : dataResponse.result.rol
+        }
+        this.llenarOpcionesMenu(dataResponse.result.rol);
+        if(dataResponse.result.rol == 'p') {
+          this._router.navigateByUrl("/home/perfil");
+        }
+        else {
+          this._router.navigateByUrl("/home/serious-game");
         }
       }
       else {
@@ -83,6 +63,58 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  llenarOpcionesMenu(rol : string){
+    if(rol == 'p') {
+      this.menu_lista = [
+        {
+          titulo: "user-hub-module.home.menu.perfil",
+          icono: "bi bi-person-fill-gear",
+          ruta: "/home/perfil",
+          activo: true,
+          id: 2
+        },
+        {
+          titulo: "user-hub-module.home.menu.crear-juego",
+          icono: "bi bi-joystick",
+          ruta: "/home/crear-juego",
+          activo: false,
+          id: 3
+        },
+        {
+          titulo: "user-hub-module.home.menu.salir",
+          icono: "bi bi-arrow-left-square-fill",
+          ruta: "/auth",
+          activo: false,
+          id: 4
+        }
+      ]
+    }
+    else {
+      this.menu_lista = [
+        {
+          titulo: "user-hub-module.home.menu.inicio",
+          icono: "bi bi-house-door-fill",
+          ruta: "/home/serious-game",
+          activo: true,
+          id: 1
+        },
+        {
+          titulo: "user-hub-module.home.menu.perfil",
+          icono: "bi bi-person-fill-gear",
+          ruta: "/home/perfil",
+          activo: false,
+          id: 2
+        },
+        {
+          titulo: "user-hub-module.home.menu.salir",
+          icono: "bi bi-arrow-left-square-fill",
+          ruta: "/auth",
+          activo: false,
+          id: 4
+        }
+      ]
+    }
+ }
   cambioMenu(id : number, ruta : string) {
     if(ruta == '/auth') {
       localStorage.clear();

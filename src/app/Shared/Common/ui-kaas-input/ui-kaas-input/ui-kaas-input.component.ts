@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-ui-kaas-input',
@@ -7,7 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class UiKaasInputComponent implements OnInit {
 
-  @Input() characterFilter : 'num' | 'letra' | 'all' | any = 'all'
+  @Input() characterFilter : 'num' | 'letra' | 'all' | any = 'all';
+  @Input() label : string = "";
+  @Input() hint : string = "";
+  @Input() value : string = "";
+  @Output() valueChange = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
@@ -16,7 +20,7 @@ export class UiKaasInputComponent implements OnInit {
   blockEvent(event: KeyboardEvent) {
     if(this.characterFilter != 'all'){
       const patternMap: Record<typeof this.characterFilter, string> = {
-        'num': '00000',
+        'num': '/[0-9]/',
         'letra': 'AAAAA',
         'all': '*****',
       };
@@ -27,6 +31,10 @@ export class UiKaasInputComponent implements OnInit {
           event.preventDefault();
       }
     }
+  }
+
+  onInputChange() {
+    this.valueChange.emit(this.value);
   }
 
 } 

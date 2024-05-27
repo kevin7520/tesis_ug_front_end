@@ -66,8 +66,14 @@ export class LoginComponent implements OnInit {
           user: data.result.usuario
         }
         localStorage.setItem('persona', JSON.stringify(dataResponse));
-        this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
-        this._roter.navigateByUrl("/home/serious-game");
+        if(data.result.migrado == 'NOT') {
+          this._roter.navigateByUrl("/auth/completar-perfil");
+        }
+
+        else {
+          this.openSnackBar(this._translateService.instant('aut-module.input.login-exitoso'),'custom-snackbar_exitoso');
+          this._roter.navigateByUrl("/home");
+        }        
       }
     })
   }
