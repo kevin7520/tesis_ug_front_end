@@ -2,36 +2,101 @@
   <div class="w-full ml-2">
     <form action="">
       <p class="mt-4 text-center color-primary tex-titulo-Serius-Game">CREACIÓN DE NIVELES</p>
-      <ng-container *ngFor="let data of datosJuego.data; let indice = index">
-        <div class="w-full grid m-0 mt-4 shadow-5 border-round-xl border-color p-4">
-          <div class="col-6">
-            <app-ui-kaas-heading [label]="'Tipo juego'"></app-ui-kaas-heading>
-            <div id="menuElement" class="menu-select w-full" [ngClass]="{'menu-select-active': classStyleActive}" [matMenuTriggerFor]="menu" (menuOpened)="openMenu()" (menuClosed)="closeMenu()">
-              <div class="w-full flex justify-content-between flex-wrap">
-                <span class="col p-0">{{data.option_select | translate}}</span>
-                <div class="w-max">
-                  <i class="bi" [ngClass]="{'bi-chevron-down': !classStyleActive, 'bi-chevron-up': classStyleActive}"></i>
-                </div>
+      <ng-container *ngFor="let data of datosJuego.niveles; let indice = index">
+       <div class="w-full grid m-0 mt-4 mat-elevation-z8 border-round-xl p-4">
+         <div class="w-full">
+            <div class="col-6">
+              <app-ui-kaas-input-select 
+                                        label="Tipo juego" 
+                                        hint="hint" 
+                                        [(value)]="data.opcionJuego" 
+                                        [options]="options_game" 
+                                        [id_menu]="indice+'tipo_juego'">
+            
+              </app-ui-kaas-input-select>
+            </div>
+         </div>
+          <ng-container *ngFor="let requerimiento of data.requerimientos;">
+            <div class="col-6">
+              <app-ui-kaas-input-select 
+                                        label="Tipo requerimiento" 
+                                        hint="hint" 
+                                        [(value)]="requerimiento.opcionRequerimiento" 
+                                        [options]="options_game" 
+                                        [id_menu]="indice+'requerimiento_tipo'">
+
+              </app-ui-kaas-input-select>
+            </div>
+            <div class="col-6">
+              <app-ui-kaas-input label="Requerimiento" hint="hint" [(value)]="requerimiento.requerimiento"></app-ui-kaas-input>
+            </div>
+            <div class="col-6">
+              <app-ui-kaas-input label="Retro Alimentación" hint="hint" placeholder="Opcional" [(value)]="requerimiento.retroalimentacion"></app-ui-kaas-input>
+            </div>
+            <div class="col-6">
+              <app-ui-kaas-slider label="Puntos adicionales" hint="hint" [(value)]="requerimiento.puntosAdicionales"></app-ui-kaas-slider>
+            </div>
+            <div class="col-12 flex flex-grap justify-content-center" *ngIf="true">
+              <div class="w-max flex gap-3 flex-grap">
+                <app-ui-kaas-button [label]="'general.boton-Finalizar' | translate" 
+                                    [butonFull]="false" 
+                                    buttonSize="small"
+                                    (eventClick)="crearNuevoRequerimiento(indice)">
+                </app-ui-kaas-button>
+                <app-ui-kaas-button [label]="'general.boton-crear' | translate" 
+                                    [butonFull]="false" 
+                                    buttonSize="small"
+                                    (eventClick)="crearNuevoRequerimiento(indice)">
+                </app-ui-kaas-button>
               </div>
             </div>
-              <!-- <buttn class="text-color-black w-full" type="button" ></buttn n> -->
-            <mat-menu #menu="matMenu" class="pruebaEstilo" id="prueba 1">
-                <ng-container *ngFor="let value of options_game;">
-                    <button (click)="onChangeTypeGame(value.code, indice)" type="button" mat-menu-item>{{value.name | translate }}</button>
-                </ng-container>
-            </mat-menu>
-            <app-ui-kaas-hint [label]="'Prueba hint'"></app-ui-kaas-hint>
-          </div>
-          <div class="col-6">
-            <app-ui-kaas-input label="Requerimiento" hint="hint" [(value)]="data.requerimiento"></app-ui-kaas-input>
-          </div>
-          <div class="col-6">
-            <app-ui-kaas-input label="Retro Alimentación" hint="hint" placeholder="Opcional" [(value)]="data.retroalimentacion"></app-ui-kaas-input>
-          </div>
+          </ng-container>
+          <section class="container-table" tabindex="0">
+            <table mat-table [dataSource]="data.requerimientos">
+
+              <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+            
+              <!-- Position Column -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> 1 </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="req">
+                <th mat-header-cell *matHeaderCellDef> Requerimiento </th>
+                <td mat-cell *matCellDef="let element"> {{element.requerimiento}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="typeReq">
+                <th mat-header-cell *matHeaderCellDef> Tipo Requerimiento </th>
+                <td mat-cell *matCellDef="let element"> {{element.opcionRequerimiento}} </td>
+              </ng-container>
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="ReqPlus">
+                <th mat-header-cell *matHeaderCellDef> Retroalimentación </th>
+                <td mat-cell *matCellDef="let element"> {{element.retroalimentacion}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="acctions">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <i  matTooltip="Eliminar requerimiento" class="bi bi-trash-fill cursor-pointer"></i>
+                  &nbsp;&nbsp;
+                  <i  matTooltip="Editar requerimiento" class="bi bi-pen-fill cursor-pointer"></i>   
+                </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </section>  
         </div>
       </ng-container>
       <p>{{datosJuego | json}}</p>
-      <button (click)="createNuveoNivel()"></button>
       <div class="col-12 mt-2">
         <app-datepicker label="aut-module.migracion.fecha-nacimiento" [(value)]="datosJuego.fechaFinalizacion"></app-datepicker>
       </div>

@@ -25,6 +25,11 @@ import { DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter } from '@angular/mater
 import {MatRadioModule} from '@angular/material/radio';
 import { CalendareComponent } from './Common/calendare/calendare.component';
 import { RadioButtonComponent } from './Common/radio-button/radio-button.component';
+import { UiKaasInputSelectComponent } from './Common/ui-kaas-input-select/ui-kaas-input-select.component';
+import {MatSliderModule} from '@angular/material/slider';
+import { UiKaasSliderComponent } from './Common/ui-kaas-slider/ui-kaas-slider.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -54,6 +59,9 @@ export const MY_DATE_FORMATS = {
     MatDatepickerModule,
     MatRadioModule,
     FormsModule,
+    MatSliderModule,
+    MatTableModule,
+    MatTooltipModule,
     CdkDrag,
     CdkDragHandle,
     DragulaModule.forRoot(),
@@ -67,7 +75,9 @@ export const MY_DATE_FORMATS = {
     UiKaasHeadingComponent,
     UiKaasHintComponent,
     CalendareComponent,
-    RadioButtonComponent
+    RadioButtonComponent,
+    UiKaasInputSelectComponent,
+    UiKaasSliderComponent
   ],
   exports: [
     Page404Component,
@@ -92,7 +102,12 @@ export const MY_DATE_FORMATS = {
     MatRadioModule,
     CalendareComponent,
     RadioButtonComponent,
-    FormsModule
+    FormsModule,
+    UiKaasInputSelectComponent,
+    MatSliderModule,
+    UiKaasSliderComponent,
+    MatTableModule,
+    MatTooltipModule
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
