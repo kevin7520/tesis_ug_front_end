@@ -3,7 +3,7 @@
     <div class="w-full h-full mt-5 flex flex-wrap justify-content-center">
       <p class="w-full text-center">Por favor, ingresa el código del juego</p>
       <div class="w-max flex gap-3 mt-4">
-        <app-ui-kaas-input></app-ui-kaas-input>
+        <app-ui-kaas-input [(value)]="valorCodigo"></app-ui-kaas-input>
         <div class="mt-1">
           <app-ui-kaas-button
                             [label]="'Buscar' | translate" 

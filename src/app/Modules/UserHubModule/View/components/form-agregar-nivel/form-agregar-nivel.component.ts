@@ -35,8 +35,8 @@ export class FormAgregarNivelComponent implements OnInit {
   options_Requerimientos : any[] = [
     { name: 'No funcional ambiguo', code: 'NFA' },
     { name: 'No Funicional no ambiguo', code: 'NFN' },
-    { name: 'Funcional Ambiguo', code: 'FA' },
-    { name: 'Funcional no ambiguo', code: 'FN' },
+    // { name: 'Funcional Ambiguo', code: 'FA' },
+    // { name: 'Funcional no ambiguo', code: 'FN' },
   ];
 
   displayedColumns: string[] = ['position', 'req', 'typeReq', 'ReqPlus', 'pts', "acctions"];

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
 import { Subscription } from 'rxjs';
+import { AlumnoService } from '../../../Service/alumno.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-serios-game',
   templateUrl: './serios-game.component.html',
@@ -17,9 +20,16 @@ export class SeriosGameComponent{
   mostrarRetoAlimentacion : boolean = false;
   mostrarFinilazion : boolean = false;
   retroalimentacion : string = "";
-  event: Event | undefined
+  event: Event | undefined;
+  valorCodigo : string = "";
 
-  public constructor(private dragulaService:DragulaService) {
+  requesitosAmbiguos : any[] = []
+
+  requesitosNoAmbiguos : any[] = []
+
+  requisitosNoFuncionales  : any[] = []
+
+  public constructor(private dragulaService:DragulaService,private _translateService: TranslateService, private _alumnoService : AlumnoService, private _snackBar: MatSnackBar) {
     this.subs.add(dragulaService.dropModel(this.REQUERIMIENTOS_DRAGULA)
       .subscribe(({ el, target, source, sourceModel, targetModel, item }) => {
         const itemId = target!.id;
@@ -69,28 +79,45 @@ export class SeriosGameComponent{
   }
 
   buscarJuego() {
-    this.pedirCodigo = false;
+    const criteria = {
+      id: this.valorCodigo
+    }
+    this._alumnoService.recuperarJuego(criteria).subscribe((dataResponse) => {
+      if(dataResponse.msg == 'OK') {
+        const jsonTemp = JSON.parse(dataResponse.result.json);
+        this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data:any)=> {
+          return {
+            texto: data.requerimiento,
+            retroAlimentacion: data.retroalimentacion,
+            ambiguo: (data.opcionRequerimiento == 'NFA') ? true : false,
+            requrimientoFallido: data.requerimientoFallido,
+            requerimientoCompleto: "no",
+            id: data.id
+
+          }
+        })
+        this.pedirCodigo = false;
+      }
+      else {
+        this.openSnackBar(this._translateService.instant('Código incorrecto'),'custom-snackbar_fallido');
+      }
+      this.valorCodigo = "";
+    })
+    
   }
 
   ngOnDestroy() {
     this.subs.unsubscribe();
   }
 
-
-  requesitosAmbiguos : any[] = []
-
-  requesitosNoAmbiguos : any[] = []
-
-  requisitosNoFuncionales  : any[] = [
-    { texto : "El sistema debe ser rápido", retroAlimentacion: "Ambiguo porque no especifica qué se considera rápido.", ambiguo: false, id: "1RequerimientoAmbiguo", requerimientoCompleto: 'no', requrimientoFallido: false},
-    { texto : "El sistema debe ser fácil de usar", retroAlimentacion: "Ambiguo porque la facilidad de uso puede interpretarse de diferentes maneras.", ambiguo: true, id: "2RequerimientoAmbiguo", requerimientoCompleto: 'no',  requrimientoFallido: false},
-    { texto : "El sistema debe ser seguro", retroAlimentacion: "Ambiguo porque no especifica qué tipo de seguridad se necesita. ¿Seguridad de datos, seguridad física, seguridad en el acceso?", ambiguo: true, id: "3RequerimientoAmbiguo", requerimientoCompleto: 'no',  requrimientoFallido: false},
-    { texto : "El sistema debe ser confiable", retroAlimentacion: "Ambiguo porque no define qué se entiende por confiable. ¿Cuál es el nivel de fiabilidad requerido?", ambiguo: true, id: "4RequerimientoAmbiguo", requerimientoCompleto: 'no',  requrimientoFallido: false},
-    { texto : "El sistema debe ser fácil de mantener", retroAlimentacion: "Ambiguo porque no define qué aspectos de mantenimiento se consideran. ¿Se refiere a la facilidad de realizar actualizaciones, correcciones de errores, etc.?", ambiguo: true, id: "5RequerimientoAmbiguo", requerimientoCompleto: 'no',  requrimientoFallido: false},
-    { texto : "El sistema debe ser eficiente", retroAlimentacion: "Ambiguo porque no especifica qué se entiende por eficiencia. ¿Se refiere al uso eficiente de recursos como la memoria o el procesador?", ambiguo: true, id: "6RequerimientoAmbiguo", requerimientoCompleto: 'no',  requrimientoFallido: false},
-    { texto : "El sistema debe ser escalable", retroAlimentacion: "Ambiguo porque no indica cómo se medirá la escalabilidad. ¿Cuántos usuarios adicionales debe poder soportar el sistema?", ambiguo: true, id: "7RequerimientoAmbiguo", requerimientoCompleto: 'no',  requrimientoFallido: false},
-    { texto : "El sistema debe estar siempre disponible", retroAlimentacion: "Ambiguo porque no define qué se entiende por siempre disponible. ¿Cuál es el tiempo máximo de inactividad permitido?", ambiguo: true, id: "8RequerimientoAmbiguo", requerimientoCompleto: 'no',  requrimientoFallido: false},
-    { texto : "El sistema debe ser adaptable a diferentes entornos", retroAlimentacion: "Ambiguo porque no especifica qué tipo de adaptabilidad se requiere. ¿Se refiere a la adaptación a diferentes dispositivos, entornos de red, etc.?", ambiguo: true, id: "9RequerimientoAmbiguo", requerimientoCompleto: 'no',  requrimientoFallido: false},
-  ]
+  openSnackBar(message: string, class_customer: string) {
+    const config = new MatSnackBarConfig();
+    config.duration = 3000;
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'center';
+    config.panelClass = "ml-8"
+    config.panelClass = [class_customer];
+    this._snackBar.open(message,'',config);
+  }
 
 }

@@ -113,7 +113,7 @@ export class CreateGameComponent implements OnInit {
       json: JSON.stringify(this.datosJuego.niveles)
     }
 
-    this._profesorService.recuperarRegistro(criteria).subscribe(dataResponse => {
+    this._profesorService.crearJuego(criteria).subscribe(dataResponse => {
       if(dataResponse.msg == 'OK'){
         this.verificarCreacion = true;
         this.codigo_juego = dataResponse.result.id_juego;

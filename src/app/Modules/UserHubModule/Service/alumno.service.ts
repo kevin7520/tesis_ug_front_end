@@ -5,15 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfesorService {
+export class AlumnoService {
 
   constructor(private http: HttpClient) { }
   private urlEndPoint: string = 'http://localhost/tesis_ug_back_end/home';
   
-  crearJuego(criteria : any) : Observable<any> {
-    criteria.action = "crearJuego";
+  recuperarJuego(criteria : any) : Observable<any> {
+    criteria.action = "obtenerJuego";
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
-
 
 }
