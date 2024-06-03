@@ -2,6 +2,7 @@ import { Component, DoCheck, ElementRef, OnInit } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { DatosJuego, Requerimiento } from '../../Model/requerimientos.model';
 import { Router } from '@angular/router';
+import { ProfesorService } from '../../../Service/profesor.service';
 
 @Component({
   selector: 'app-create-game',
@@ -10,8 +11,13 @@ import { Router } from '@angular/router';
 })
 export class CreateGameComponent implements OnInit {
 
-
+  
+  
   validarCrearNivel : boolean = false;
+  verificarCreacion : boolean = false;
+  retornoMsg : string = "";
+
+  codigo_juego = 0;
 
   datosJuego : DatosJuego = {
     fechaFinalizacion: this.sumarDias(new Date(), 7),
@@ -31,7 +37,7 @@ export class CreateGameComponent implements OnInit {
   viewModalResponse: boolean = false;
   menuOpen: boolean | undefined;
   
-  constructor(private buttonRef: ElementRef, private _router : Router) {
+  constructor(private buttonRef: ElementRef, private _router : Router, private _profesorService: ProfesorService) {
     
    }
 
@@ -107,8 +113,18 @@ export class CreateGameComponent implements OnInit {
       json: JSON.stringify(this.datosJuego.niveles)
     }
 
-    console.log(this.datosJuego);
-    this.viewModalResponse = true;
+    this._profesorService.recuperarRegistro(criteria).subscribe(dataResponse => {
+      if(dataResponse.msg == 'OK'){
+        this.verificarCreacion = true;
+        this.codigo_juego = dataResponse.result.id_juego;
+        this.retornoMsg = "Los niveles del juego se creación de forma exitosa. El código del juego es "+this.codigo_juego+" te servira para que tus alumnos encuentre tu juego."
+      }
+      else{
+        this.verificarCreacion = false;
+        this.retornoMsg = "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde."
+      }
+      this.viewModalResponse = true;
+    })
   }
 
   verJuegoshome(){

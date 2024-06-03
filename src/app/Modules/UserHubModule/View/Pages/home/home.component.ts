@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { HomeService } from 'src/app/Modules/AuthModule/Service/home.service';
+import { HomeService } from 'src/app/Modules/UserHubModule/Service/home.service';
 
 @Component({
   selector: 'app-home',

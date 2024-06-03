@@ -32,8 +32,9 @@
 </div>
 <app-modal  *ngIf="viewModalResponse" 
                   [titulo]="'Creación Juego'" 
-                  [content]="'Los niveles del juego se crewaón de forma exitosa'"
-                  [hideClose]="false">
+                  [content]="retornoMsg"
+                  [hideClose]="false"
+                  [peticionError]="!verificarCreacion">
     <div app-footer-mensaje>
       <button mat-raised-button class="button-aceptar" (click)="verJuegoshome()">Aceptar</button>
     </div> 
