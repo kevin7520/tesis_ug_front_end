@@ -17,6 +17,7 @@ export class UiKaasButtonComponent implements OnInit {
   @Input() custom_text_color : boolean = false;
   @Input() background_color_value! : string;
   @Input() custom_text_color_value! : string;
+  @Input() tooltip : string = "";
 
   // Propiedades de entrada icono
   @Input() icon_visible : boolean = false;
@@ -39,7 +40,7 @@ export class UiKaasButtonComponent implements OnInit {
 
   ngOnInit() {
     if(this.custom_background_color)
-      this.custom_background_color_class = "background-color: "+this.background_color_value;
+      this.custom_background_color_class = this.background_color_value;
     if(this.custom_text_color)
       this.custom_text_color_class = "color: "+this.custom_text_color_value;
     this.button_size_class = "ui-kaas-style-button-"+this.buttonSize;

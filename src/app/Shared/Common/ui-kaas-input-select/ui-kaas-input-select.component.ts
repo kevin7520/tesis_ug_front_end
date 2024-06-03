@@ -22,7 +22,7 @@ export class UiKaasInputSelectComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    this.selectTypeGame("J1");
+    this.selectTypeGame(this.value);
   }
   
   ngDoCheck(){

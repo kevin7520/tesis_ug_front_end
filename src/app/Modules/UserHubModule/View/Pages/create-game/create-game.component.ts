@@ -1,5 +1,7 @@
 import { Component, DoCheck, ElementRef, OnInit } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { DatosJuego, Requerimiento } from '../../Model/requerimientos.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-game',
@@ -9,54 +11,27 @@ import { MatMenuTrigger } from '@angular/material/menu';
 export class CreateGameComponent implements OnInit {
 
 
-  options_game : any[] = [
-    { name: 'tipo-juego.juego 1', code: 'J1' },
-    { name: 'tipo-juego.juego 2', code: 'J2' },
-    { name: 'tipo-juego.juego 3', code: 'J3' }
-  ];
+  validarCrearNivel : boolean = false;
 
-  ELEMENT_DATA: any[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
-
-  datosJuego = {
-    fechaFinalizacion: new Date(),
+  datosJuego : DatosJuego = {
+    fechaFinalizacion: this.sumarDias(new Date(), 7),
     niveles: [
      {
       id_nivel: 1+'nivel',
       nivel: 1,
       opcionJuego: "J1",
-      requerimientos : [
-        {
-          requerimiento: "",
-          retroalimentacion: "",
-          opcionRequerimiento: "NFN",
-          puntosAdicionales: 100
-        }
-      ]
+      requerimientos : []
      }
     ]
   }
 
-  id_menu : string = "pruebaEstilo";
+  //requrimientoData : Requerimiento = this.llenarDatoRequerimiento();
 
-  option_select: string = "";
-  option_code: string = "J1";
-
-  
+  agregarRequerimiento: boolean = true;
+  viewModalResponse: boolean = false;
   menuOpen: boolean | undefined;
-  dataSource = this.ELEMENT_DATA;
-  displayedColumns: string[] = ['position', 'req', 'typeReq', 'ReqPlus', "acctions"];
-  constructor(private buttonRef: ElementRef) {
+  
+  constructor(private buttonRef: ElementRef, private _router : Router) {
     
    }
 
@@ -64,38 +39,80 @@ export class CreateGameComponent implements OnInit {
     
     
   }
+
+  sumarDias(fecha: Date, dias: number): Date {
+    fecha.setDate(fecha.getDate() + dias);
+    return fecha;
+  }
   
+  finalizarRequerimiento(){
+    this.validarCrearNivel = true;
+  }
 
   crearNuevoNivel() {
+    this.validarCrearNivel = false;
     const indice = this.datosJuego.niveles.length-1;
     const id_ultimo : number = this.datosJuego.niveles[indice].nivel+1;
     const criteria =  {
       id_nivel: id_ultimo+'nivel',
       nivel: id_ultimo,
       opcionJuego: "J1",
-      requerimientos : [
-        {
-          requerimiento: "",
-          retroalimentacion: "",
-          opcionRequerimiento: "NFN",
-          puntosAdicionales: 100
-        }
-      ]
+      requerimientos : []
      }
     this.datosJuego.niveles.push(criteria);
   }
 
-  crearNuevoRequerimiento(indiceNivel : number) {
-    const criteria = {
-      requerimiento: "",
-      retroalimentacion: "",
-      opcionRequerimiento: "NFN",
-      puntosAdicionales: 100
-    }
-    this.datosJuego.niveles[indiceNivel].requerimientos.push(criteria);
-  }
+  // crearNuevoRequerimiento(indiceNivel : number) {
+  //   const criteria = {
+  //     requerimiento: "",
+  //     retroalimentacion: "",
+  //     opcionRequerimiento: "NFN",
+  //     puntosAdicionales: 100
+  //   }
+  //   this.datosJuego.niveles[indiceNivel].requerimientos.push(criteria);
+  // }
 
   
-  
+
+  guardarRequerimiento(data : any,indiceNivel : number) {
+    this.datosJuego.niveles[indiceNivel].requerimientos.push(data);
+  }
+
+  // llenarDatoRequerimiento() : Requerimiento {
+  //   const data : Requerimiento = {
+  //     requerimiento: "",
+  //     retroalimentacion: "",
+  //     opcionRequerimiento: "NFN",
+  //     puntosAdicionales: 100
+  //   }
+  //   return data;
+  // }
+
+  eliminarRequerimiento(indiceNivel : number, indiceRequerimiento : number) {
+    //debugger;
+    this.datosJuego.niveles[indiceNivel].requerimientos = this.datosJuego.niveles[indiceNivel].requerimientos.filter((_, i) => i !== indiceRequerimiento);
+    ///this.datosJuego = { ...this.datosJuego, niveles: [...this.datosJuego.niveles] };
+  }  
+
+  finalizarCreacion() {
+    const dataLocal = JSON.parse(localStorage.getItem('persona')!);
+    // const criteria = {
+    //   "idUsuario": dataLocal.id,
+    //   "usuario": dataLocal.user
+    // }
+    const criteria = {
+      id_profesor: dataLocal.id,
+      fechaCreacion: new Date(),
+      fechaFinilizacion: this.datosJuego.fechaFinalizacion,
+      json: JSON.stringify(this.datosJuego.niveles)
+    }
+
+    console.log(this.datosJuego);
+    this.viewModalResponse = true;
+  }
+
+  verJuegoshome(){
+    this._router.navigateByUrl('/home/perfil');
+  }
 
 }

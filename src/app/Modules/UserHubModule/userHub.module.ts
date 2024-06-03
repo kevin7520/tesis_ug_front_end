@@ -8,6 +8,7 @@ import { SeriosGameComponent } from './View/Pages/serios-game/serios-game.compon
 import { PerfilComponent } from './View/Pages/perfil/perfil.component';
 import { DragulaModule } from 'ng2-dragula';
 import { CreateGameComponent } from './View/Pages/create-game/create-game.component';
+import { FormAgregarNivelComponent } from './View/components/form-agregar-nivel/form-agregar-nivel.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { CreateGameComponent } from './View/Pages/create-game/create-game.compon
     HomeComponent,
     SeriosGameComponent,
     PerfilComponent,
-    CreateGameComponent
+    CreateGameComponent,
+    FormAgregarNivelComponent
   ]
 })
 export class UserHubModule { }
