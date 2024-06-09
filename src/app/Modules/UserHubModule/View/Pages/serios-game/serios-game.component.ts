@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './serios-game.component.html',
   styleUrls: ['./serios-game.component.scss']
 })
-export class SeriosGameComponent{
+export class SeriosGameComponent implements OnInit{
 
   subs = new Subscription(); 
   puntos : number = 0;
@@ -23,11 +23,15 @@ export class SeriosGameComponent{
   event: Event | undefined;
   valorCodigo : string = "";
 
+  juegosPublicos: any[] = [];
+
   requesitosAmbiguos : any[] = []
 
   requesitosNoAmbiguos : any[] = []
 
-  requisitosNoFuncionales  : any[] = []
+  requisitosNoFuncionales  : any[] = [];
+
+  displayedColumns: string[] = ['position', 'id_juego', 'fecha_creacion', 'fecha_finalizacion', "acctions"];
 
   public constructor(private dragulaService:DragulaService,private _translateService: TranslateService, private _alumnoService : AlumnoService, private _snackBar: MatSnackBar) {
     this.subs.add(dragulaService.dropModel(this.REQUERIMIENTOS_DRAGULA)
@@ -77,6 +81,9 @@ export class SeriosGameComponent{
     });
     
   }
+  ngOnInit(): void {
+    this.buscarJuegosPublicos();
+  }
 
   buscarJuego() {
     const criteria = {
@@ -118,6 +125,35 @@ export class SeriosGameComponent{
     config.panelClass = "ml-8"
     config.panelClass = [class_customer];
     this._snackBar.open(message,'',config);
+  }
+
+  buscarJuegosPublicos() {
+    this._alumnoService.recuperJuegosPublicos().subscribe(Response => {
+      if(Response.msg == 'OK') {
+        this.juegosPublicos = Response.result;
+      }
+      else{
+        this.openSnackBar(this._translateService.instant('Juego no encontrado'),'custom-snackbar_fallido');
+      }
+    })
+  }
+
+  elegirJuego(id : number) {
+    const juego = this.juegosPublicos.find(data => data.id_juego == id);
+    const jsonTemp = JSON.parse(juego.json);
+    this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data:any)=> {
+      return {
+        texto: data.requerimiento,
+        retroAlimentacion: data.retroalimentacion,
+        ambiguo: (data.opcionRequerimiento == 'NFA') ? true : false,
+        requrimientoFallido: data.requerimientoFallido,
+        requerimientoCompleto: "no",
+        id: data.id
+
+      }
+    });
+    this.pedirCodigo = false;
+
   }
 
 }

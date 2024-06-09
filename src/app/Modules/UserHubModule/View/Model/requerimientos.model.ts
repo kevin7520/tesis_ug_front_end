@@ -17,5 +17,6 @@ export interface Requerimiento {
   
   export interface DatosJuego {
     fechaFinalizacion: Date;
+    privacidad: string;
     niveles: Nivel[];
   }

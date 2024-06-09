@@ -17,10 +17,12 @@ export class CreateGameComponent implements OnInit {
   verificarCreacion : boolean = false;
   retornoMsg : string = "";
 
+
   codigo_juego = 0;
 
   datosJuego : DatosJuego = {
     fechaFinalizacion: this.sumarDias(new Date(), 7),
+    privacidad: 'N',
     niveles: [
      {
       id_nivel: 1+'nivel',
@@ -30,6 +32,11 @@ export class CreateGameComponent implements OnInit {
      }
     ]
   }
+
+  options_Visibilidad : any[] = [
+    { name: 'Privado', code: 'N'},
+    { name: 'Público', code: 'S'}
+  ];
 
   //requrimientoData : Requerimiento = this.llenarDatoRequerimiento();
 
@@ -108,6 +115,7 @@ export class CreateGameComponent implements OnInit {
     // }
     const criteria = {
       id_profesor: dataLocal.id,
+      privacidad: this.datosJuego.privacidad,
       fechaCreacion: new Date(),
       fechaFinilizacion: this.datosJuego.fechaFinalizacion,
       json: JSON.stringify(this.datosJuego.niveles)

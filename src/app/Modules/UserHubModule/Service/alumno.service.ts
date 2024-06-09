@@ -15,4 +15,11 @@ export class AlumnoService {
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
 
+  recuperJuegosPublicos(){
+    const criteria = {
+      "action": "obtenerJuegoPublicos"
+    }
+    return this.http.post<any>(this.urlEndPoint,criteria);
+  }
+
 }

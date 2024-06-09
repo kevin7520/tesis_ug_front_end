@@ -2,8 +2,19 @@
   <div class="w-full ml-2 mb-4">
     <form action="">
       <p class="mt-4 text-center color-primary tex-titulo-Serius-Game">CREACIÓN DE NIVELES</p>
-      <div class="w-max  col-fixed mt-4">
-        <app-datepicker label="Fecha Finalización" [hint]="'Es la fecha que finaliza tu juego por defecto son 7 días'" [(value)]="datosJuego.fechaFinalizacion"></app-datepicker>
+      <div class="w-full grid mt-4 gap-3">
+        <div class="w-max col-fixed">
+          <app-datepicker label="Fecha Finalización" [hint]="'Es la fecha que finaliza tu juego por defecto son 7 días'" [(value)]="datosJuego.fechaFinalizacion"></app-datepicker>
+        </div>
+        <div class="w-max col-fixed">
+          <app-ui-kaas-input-select 
+                                 label="Privacidad del juego" 
+                                 hint="Elige si tu juego será visible a todo el público o séra provado." 
+                                 [(value)]="datosJuego.privacidad" 
+                                 [options]="options_Visibilidad" 
+                                 [id_menu]="'visibilidad_juego'">
+          </app-ui-kaas-input-select>
+        </div>
       </div>
         <ng-container *ngFor="let data of datosJuego.niveles; let indice = index">
             <app-form-agregar-nivel 
