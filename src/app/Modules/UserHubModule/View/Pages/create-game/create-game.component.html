@@ -51,3 +51,30 @@
     </div> 
 </app-modal>
 
+<app-modal [titulo]="'Ayudanos a mejorar'" *ngIf="verModalGuardarRequerimientos">
+  <div app-content class="w-full">
+    <div class="w-full grid">
+      <div class="col-5 py-0">
+        <img src="assets/Img/Icons/iconos/colaboracion.svg" alt="no se cargo imagen">
+      </div>
+      <div class="col py-0 flex flex-wrap align-content-center">
+        <p>Ayudanos a mejorar nuestra base de datos de requerimiento. Deseas que tus requerimientos se queden alamcenadas en nuestra base de datos para que en un futuro otros docentes puedan ocuparlas?.</p>
+      </div>
+    </div>
+  </div>
+  <div app-footer>
+    <div class="w-full flex flex-grap justify-content-center gap-3">
+      <app-ui-kaas-button [label]="'general.boton-no' | translate" 
+                          [butonFull]="true" 
+                          buttonSize="small"
+                          [background_color]="'bg-red-600'"
+                          (eventClick)="false">
+      </app-ui-kaas-button>
+      <app-ui-kaas-button [label]="'general.boton-si' | translate" 
+                          [butonFull]="true" 
+                          buttonSize="small"
+                          (eventClick)="false">
+      </app-ui-kaas-button>
+    </div>
+  </div>
+</app-modal>

@@ -14,6 +14,7 @@ export class ModalComponent implements OnInit, OnDestroy  {
   @Input() hideClose : boolean = true;
   @Output() emmiterClose : EventEmitter<any> = new EventEmitter<any>();
   @Input() peticionError : boolean = false;
+  @Input() width : string = "40%";
   constructor() { }
   ngOnDestroy(): void {
     document.body.classList.remove('modal-open');

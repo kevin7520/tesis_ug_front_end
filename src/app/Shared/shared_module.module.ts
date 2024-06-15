@@ -30,6 +30,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { UiKaasSliderComponent } from './Common/ui-kaas-slider/ui-kaas-slider.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -62,6 +63,7 @@ export const MY_DATE_FORMATS = {
     MatSliderModule,
     MatTableModule,
     MatTooltipModule,
+    MatPaginatorModule,
     CdkDrag,
     CdkDragHandle,
     DragulaModule.forRoot(),
@@ -107,7 +109,8 @@ export const MY_DATE_FORMATS = {
     MatSliderModule,
     UiKaasSliderComponent,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},

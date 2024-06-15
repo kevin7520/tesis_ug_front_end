@@ -15,6 +15,7 @@ export class UiKaasInputComponent implements OnInit {
   @Input() icono : string = "";
   @Input() readOnly : boolean = false;
   @Output() valueChange = new EventEmitter<string>();
+  @Output() iconClick = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
@@ -50,6 +51,10 @@ export class UiKaasInputComponent implements OnInit {
 
   onInputChange() {
     this.valueChange.emit(this.value);
+  }
+
+  clickIcon() {
+    this.iconClick.emit();
   }
 
 } 

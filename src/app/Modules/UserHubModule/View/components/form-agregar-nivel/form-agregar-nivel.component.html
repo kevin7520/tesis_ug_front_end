@@ -8,11 +8,13 @@
     <div class="separate-line"></div>
    </div>
    <div class="col-6" *ngIf="expandible">
-    <app-radio-button label="Cargar requerimientos" 
+    <app-radio-button *ngIf="agregarRequerimiento || nivel.requerimientos.length == 0"
+                      label="Cargar requerimientos" 
                       hint="Puedes cargar requerimientos creado por otros profesores"
                       [(value)]="requrimientoCargado"
                       classIn = "m-0 p-0" 
-                      [options]="options_game">
+                      [options]="options_game"
+                      (valueChange)="onChangeRequerimientos($event)">
     </app-radio-button>
    </div>
   </div>
@@ -24,6 +26,7 @@
             hint="hint" 
             [(value)]="requrimientoData.requerimiento" 
             icono="bi bi-search"
+            (iconClick)="abrirModalRequerimientosCargados()"
             [readOnly]="true"></app-ui-kaas-input>
       </div>
       <div class="col-6">
@@ -105,13 +108,20 @@
             <th mat-header-cell *matHeaderCellDef> Puntos </th>
             <td mat-cell *matCellDef="let element"> {{element.puntosAdicionales}} </td>
           </ng-container>
+
+          <ng-container matColumnDef="base">
+            <th mat-header-cell *matHeaderCellDef> Requerimiento desde base </th>
+            <td mat-cell *matCellDef="let element"> {{element.requerimientoBase}} </td>
+          </ng-container>
      
           <ng-container matColumnDef="acctions">
-            <th mat-header-cell *matHeaderCellDef> Acciones </th>
-            <td mat-cell *matCellDef="let element; let i = index"> 
+            <th mat-header-cell *matHeaderCellDef class="text-center"> Acciones </th>
+            <td mat-cell *matCellDef="let element; let i = index" class="text-center"> 
               <i  matTooltip="Eliminar requerimiento" (click)="eliminarRequerimiento(i)" class="bi bi-trash-fill cursor-pointer"></i>
-              &nbsp;&nbsp;
-              <i  matTooltip="Editar requerimiento" class="bi bi-pen-fill cursor-pointer"></i>   
+              <ng-container *ngIf="element.requerimientoBase == 'No'">
+                &nbsp;&nbsp;
+                <i  matTooltip="Editar requerimiento" (click)="abirModalActualiza(i)" class="bi bi-pen-fill cursor-pointer"></i>     
+              </ng-container>
             </td>
           </ng-container>
         
@@ -126,6 +136,7 @@
                               buttonSize="small"
                               [tooltip]="nivel.requerimientos.length < 5 ? 'Debes tener minimo 5 requerimientos' : ''"
                               [disabled]="nivel.requerimientos.length < 5"
+                              [background_color]="'bg-red-600'"
                               (eventClick)="verificarDosRequisitos()">
           </app-ui-kaas-button>
           <app-ui-kaas-button [label]="'Agregar requerimiento' | translate" 
@@ -182,6 +193,108 @@
                           buttonSize="small"
                           (eventClick)="verificarRequerimientos = false">
       </app-ui-kaas-button>
+    </div>
+  </div>
+</app-modal>
+
+<app-modal  [titulo]="'Elige el requerimientos guardados'"
+            *ngIf="verRequerimientosCargados"
+            [width]="'60%'">
+  <div app-content>
+    <section class="container-table-v2" tabindex="0">
+      <table mat-table [dataSource]="dataSource">
+   
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="req">
+          <th mat-header-cell *matHeaderCellDef> Requerimiento </th>
+          <td mat-cell *matCellDef="let element"> {{element.requerimiento}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="typeReq">
+          <th mat-header-cell *matHeaderCellDef> Tipo Requerimiento </th>
+          <td mat-cell *matCellDef="let element"> {{element.opcionRequerimiento}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="ReqPlus">
+          <th mat-header-cell *matHeaderCellDef> Retroalimentación </th>
+          <td mat-cell *matCellDef="let element"> {{element.retroalimentacion}} </td>
+        </ng-container>
+   
+        <ng-container matColumnDef="acctions">
+          <th mat-header-cell *matHeaderCellDef class="text-center w-max"> Acciones </th>
+          <td mat-cell *matCellDef="let element; let i = index" class="text-center w-max"> 
+            <i  matTooltip="Seleccionar requerimiento" (click)="seleccionarRequerimientoCargado(i)" class="bi bi-check2-square cursor-pointer text-lg"></i>          
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="requisitosCargadosColumnas; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: requisitosCargadosColumnas;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 15]" aria-label="Select page of users"></mat-paginator>
+    </section> 
+  </div> 
+  <div app-footer>
+    <div class="w-full flex flex-grap justify-content-center">
+      <app-ui-kaas-button [label]="'general.boton-cancelar' | translate" 
+                          [butonFull]="true" 
+                          buttonSize="small"
+                          (eventClick)="verificarRequerimientos = false">
+      </app-ui-kaas-button>
+    </div>
+  </div>
+</app-modal>
+
+<app-modal  [titulo]="'Edita tu requerimiento'"  
+            *ngIf="verActualizar"
+            [width]="'60%'">
+  <div app-content class="w-full grid">
+    <div class="col-6">
+      <app-ui-kaas-input-select 
+                                label="Tipo requerimiento" 
+                                hint="hint" 
+                                [(value)]="requrimientoData.opcionRequerimiento" 
+                                [options]="options_Requerimientos" 
+                                [readOnly]="requrimientoCargado == 'si'"
+                                [id_menu]="indice+'requerimiento_tipo'">
+  
+      </app-ui-kaas-input-select>
+    </div>
+    <div class="col-6">
+      <app-ui-kaas-input label="Requerimiento" hint="hint" [(value)]="requrimientoData.requerimiento"></app-ui-kaas-input>
+    </div>
+    <div class="col-6">
+      <app-ui-kaas-input [readOnly]="requrimientoCargado == 'si'" label="Retro Alimentación" hint="hint" placeholder="Opcional" [(value)]="requrimientoData.retroalimentacion"></app-ui-kaas-input>
+    </div>
+    <div class="col-6">
+      <app-ui-kaas-slider label="Puntos adicionales" hint="hint" [(value)]="requrimientoData.puntosAdicionales"></app-ui-kaas-slider>
+    </div>
+    <div class="col-12 flex flex-grap justify-content-center">
+      <div class="w-max flex gap-3 flex-grap">
+        <app-ui-kaas-button 
+                            [label]="'Cancelar'" 
+                            [butonFull]="false" 
+                            buttonSize="small"
+                            [background_color]="'bg-red-600'"
+                            (eventClick)="cerrarModalActualiza()">
+        </app-ui-kaas-button>
+        <app-ui-kaas-button [label]="'Actualizar'" 
+                            [butonFull]="false" 
+                            buttonSize="small"
+                            [disabled]="validarGuardarRequerimiento()"
+                            (eventClick)="actualizarRegisto()">
+        </app-ui-kaas-button>
+      </div>
     </div>
   </div>
 </app-modal>

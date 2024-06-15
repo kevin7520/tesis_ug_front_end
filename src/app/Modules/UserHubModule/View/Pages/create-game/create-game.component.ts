@@ -43,6 +43,7 @@ export class CreateGameComponent implements OnInit {
   agregarRequerimiento: boolean = true;
   viewModalResponse: boolean = false;
   menuOpen: boolean | undefined;
+  verModalGuardarRequerimientos = false;
   
   constructor(private buttonRef: ElementRef, private _router : Router, private _profesorService: ProfesorService) {
     
@@ -102,7 +103,6 @@ export class CreateGameComponent implements OnInit {
   // }
 
   eliminarRequerimiento(indiceNivel : number, indiceRequerimiento : number) {
-    //debugger;
     this.datosJuego.niveles[indiceNivel].requerimientos = this.datosJuego.niveles[indiceNivel].requerimientos.filter((_, i) => i !== indiceRequerimiento);
     ///this.datosJuego = { ...this.datosJuego, niveles: [...this.datosJuego.niveles] };
   }  
@@ -126,13 +126,14 @@ export class CreateGameComponent implements OnInit {
         this.verificarCreacion = true;
         this.codigo_juego = dataResponse.result.id_juego;
         this.retornoMsg = "Los niveles del juego se creación de forma exitosa. El código del juego es "+this.codigo_juego+" te servira para que tus alumnos encuentre tu juego."
+        this.verModalGuardarRequerimientos = true;
       }
       else{
         this.verificarCreacion = false;
         this.retornoMsg = "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde."
       }
       this.viewModalResponse = true;
-    })
+    });
   }
 
   verJuegoshome(){

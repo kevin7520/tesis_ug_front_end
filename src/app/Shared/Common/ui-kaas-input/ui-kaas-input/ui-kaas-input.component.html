@@ -10,7 +10,7 @@
               type="text" 
               (keypress)="blockEvent($event)" 
               (input)="onInputChange()">
-      <i *ngIf="icono != '' || readOnly" [ngClass]="{'bi bi-lock-fill': readOnly}" class="{{icono}} cursor-pointer absolute top-0 right-0 mr-2 text-lg" style="transform: translateY(50%);"></i>
+      <i (click)="clickIcon()" *ngIf="icono != '' || readOnly" [ngClass]="{'bi bi-lock-fill': readOnly}" class="{{icono}} cursor-pointer absolute top-0 right-0 mr-2 text-lg" style="transform: translateY(50%);"></i>
     </div>
     <app-ui-kaas-hint [label]="hint" *ngIf=" hint != '' "></app-ui-kaas-hint>
   </div>

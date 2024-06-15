@@ -6,6 +6,7 @@ export interface Requerimiento {
     id: string,
     requerimientoCompleto: string;
     requerimientoFallido: boolean;
+    requerimientoBase: string;
   }
   
   export interface Nivel {

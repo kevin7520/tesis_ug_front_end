@@ -1,4 +1,4 @@
-import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-ui-kaas-input-select',
@@ -28,6 +28,22 @@ export class UiKaasInputSelectComponent implements OnInit, DoCheck {
   
   ngDoCheck(){
     this.adjustPanelWidth();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['value']) {
+      this.ejecutarMetodo(changes['value'].currentValue);
+    }
+  }
+
+  ejecutarMetodo(code: any) {
+    const index_label = this.options.findIndex(value=> value.code == code);
+    if(index_label == -1){
+      this.selectString = "";
+    }
+    else {
+      this.selectString = this.options[index_label].name;
+    }
   }
 
   adjustPanelWidth(): void {

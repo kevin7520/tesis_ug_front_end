@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Nivel, Requerimiento } from '../../Model/requerimientos.model';
+import {MatPaginator} from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-form-agregar-nivel',
@@ -15,17 +18,27 @@ export class FormAgregarNivelComponent implements OnInit {
   @Output() _eliminarRequerimiento = new EventEmitter();
   @Output() _finalizarRequerimiento = new EventEmitter();
 
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort) sort: MatSort | undefined;
+
   agregarRequerimiento = true;
   verificarFinalizar = false;
   verificarRequerimientos = false;
+  verRequerimientosCargados = false;
+  verActualizar = false;
+  id_Actualizar = "";
 
   expandible = true;
   mostrarExpandible = false;
   requrimientoCargado = "no";
 
   requrimientoData! : Requerimiento;
+  requerimientoDataCopy!: Requerimiento;
 
-  constructor() { }
+
+  constructor() {
+    this.dataSource = new MatTableDataSource(this.requerimientosCargados);
+   }
 
   options_game : any[] = [];
 
@@ -36,15 +49,74 @@ export class FormAgregarNivelComponent implements OnInit {
     // { name: 'Funcional no ambiguo', code: 'FN' },
   ];
 
-  displayedColumns: string[] = ['position', 'req', 'typeReq', 'ReqPlus', 'pts', "acctions"];
+  displayedColumns: string[] = ['position', 'req', 'typeReq', 'ReqPlus', 'pts', 'base', "acctions"];
 
+  requisitosCargadosColumnas: string[] = ['position', 'req', 'typeReq', 'ReqPlus', "acctions"];
+
+  requerimientosCargados : any[] = [
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola2", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola2", retroalimentacion: "Hola3", opcionRequerimiento: "NFN"},
+    {id: 1, requerimiento: "Hola3", retroalimentacion: "Hola4", opcionRequerimiento: "NFN"},
+    {id: 1, requerimiento: "Hola4", retroalimentacion: "Hola6", opcionRequerimiento: "NFN"},
+    {id: 1, requerimiento: "Hola5", retroalimentacion: "Hola5", opcionRequerimiento: "NFN"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFN"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"}
+  ]
+
+  dataSource!: MatTableDataSource<any>;
   
   ngOnInit() {
     this.requrimientoData = this.llenarDatoRequerimiento();
+    this.requerimientoDataCopy ={...this.requrimientoData};
     this.options_game = [
       { label: 'Sì', value: 'si' },
       { label: 'No', value: 'no' },
     ];
+  }
+
+  ngAfterViewInit() {
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    } else {
+      this.dataSource.paginator = null; // Maneja el caso cuando paginator es undefined
+    }
+    if (this.sort) {
+      this.dataSource.sort = this.sort;
+    } else {
+      this.dataSource.sort = null; // Maneja el caso cuando paginator es undefined
+    }
   }
 
   llenarDatoRequerimiento() : Requerimiento {
@@ -56,7 +128,8 @@ export class FormAgregarNivelComponent implements OnInit {
       puntosAdicionales: 100,
       id: id_req,
       requerimientoFallido: false,
-      requerimientoCompleto: "No"
+      requerimientoCompleto: "No",
+      requerimientoBase: "No"
     }
     return data;
   }
@@ -87,6 +160,9 @@ export class FormAgregarNivelComponent implements OnInit {
   _agregarRequerimiento() {
     this.agregarRequerimiento = true;
     this.requrimientoData = this.llenarDatoRequerimiento();
+    this.requerimientoDataCopy = {...this.requrimientoData};
+    this.requrimientoCargado = "no";
+    this.valorAntiguoOpcion = "no";
   }
 
   finalizarNivel() {
@@ -105,6 +181,63 @@ export class FormAgregarNivelComponent implements OnInit {
     else {
       this.verificarFinalizar = true;
     }
+  }
+
+  valorAntiguoOpcion: string = "no";
+  onChangeRequerimientos(event:any) {
+    if(this.valorAntiguoOpcion != event) {
+      if(event == 'si') {
+        this.requerimientoDataCopy = {...this.requrimientoData};
+        this.requrimientoData.opcionRequerimiento = "";
+        this.requrimientoData.requerimiento = "";
+        this.requrimientoData.retroalimentacion = "";
+        this.requrimientoData.requerimientoBase = "Sí"
+      }
+      else {
+        this.requrimientoData = {...this.requerimientoDataCopy};
+        this.requrimientoData.requerimientoBase = "No";
+      }
+      this.valorAntiguoOpcion = event;
+    }
+  }
+
+  seleccionarRequerimientoCargado(index: number) {
+    this.requrimientoData.requerimiento = this.requerimientosCargados[index].requerimiento;
+    this.requrimientoData.retroalimentacion = this.requerimientosCargados[index].retroalimentacion;
+    this.requrimientoData.opcionRequerimiento = this.requerimientosCargados[index].opcionRequerimiento;
+    this.salirEscogerRequerimiento();
+  }
+
+  salirEscogerRequerimiento() {
+    this.verRequerimientosCargados = false;
+  }
+
+  abrirModalRequerimientosCargados() {
+    this.verRequerimientosCargados = true;
+  }
+
+  abirModalActualiza(index: number) {
+    this.verActualizar = true;
+    this.id_Actualizar = this.nivel.requerimientos[index].id;
+    this.requrimientoData.requerimiento = this.nivel.requerimientos[index].requerimiento;
+    this.requrimientoData.retroalimentacion = this.nivel.requerimientos[index].retroalimentacion;
+    this.requrimientoData.opcionRequerimiento = this.nivel.requerimientos[index].opcionRequerimiento;
+    this.requrimientoData.puntosAdicionales = this.nivel.requerimientos[index].puntosAdicionales;
+  }
+
+  cerrarModalActualiza() {
+    this.verActualizar = false;
+    this.id_Actualizar = "";
+  }
+
+  actualizarRegisto() {
+    const index = this.nivel.requerimientos.findIndex(data => data.id == this.id_Actualizar);
+    this.nivel.requerimientos[index].id = this.id_Actualizar;
+    this.nivel.requerimientos[index].requerimiento = this.requrimientoData.requerimiento;
+    this.nivel.requerimientos[index].retroalimentacion = this.requrimientoData.retroalimentacion;
+    this.nivel.requerimientos[index].opcionRequerimiento = this.requrimientoData.opcionRequerimiento;
+    this.nivel.requerimientos[index].puntosAdicionales = this.requrimientoData.puntosAdicionales;
+    this.cerrarModalActualiza();
   }
 
 
