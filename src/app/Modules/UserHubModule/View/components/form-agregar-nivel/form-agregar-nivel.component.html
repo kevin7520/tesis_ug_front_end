@@ -8,33 +8,40 @@
     <div class="separate-line"></div>
    </div>
    <div class="col-6" *ngIf="expandible">
-     <app-ui-kaas-input-select 
-                               label="Tipo juego" 
-                               hint="hint" 
-                               [(value)]="nivel.opcionJuego" 
-                               [options]="options_game" 
-                               [id_menu]="indice+'tipo_juego'">
-   
-     </app-ui-kaas-input-select>
+    <app-radio-button label="Cargar requerimientos" 
+                      hint="Puedes cargar requerimientos creado por otros profesores"
+                      [(value)]="requrimientoCargado"
+                      classIn = "m-0 p-0" 
+                      [options]="options_game">
+    </app-radio-button>
    </div>
   </div>
   <ng-container *ngIf="expandible">
     <ng-container *ngIf="agregarRequerimiento || nivel.requerimientos.length == 0">
+      <div class="col-6" *ngIf="requrimientoCargado == 'si'">
+        <app-ui-kaas-input 
+            label="Requerimiento" 
+            hint="hint" 
+            [(value)]="requrimientoData.requerimiento" 
+            icono="bi bi-search"
+            [readOnly]="true"></app-ui-kaas-input>
+      </div>
       <div class="col-6">
         <app-ui-kaas-input-select 
                                   label="Tipo requerimiento" 
                                   hint="hint" 
                                   [(value)]="requrimientoData.opcionRequerimiento" 
                                   [options]="options_Requerimientos" 
+                                  [readOnly]="requrimientoCargado == 'si'"
                                   [id_menu]="indice+'requerimiento_tipo'">
     
         </app-ui-kaas-input-select>
       </div>
-      <div class="col-6">
+      <div class="col-6" *ngIf="requrimientoCargado == 'no'">
         <app-ui-kaas-input label="Requerimiento" hint="hint" [(value)]="requrimientoData.requerimiento"></app-ui-kaas-input>
       </div>
       <div class="col-6">
-        <app-ui-kaas-input label="Retro Alimentación" hint="hint" placeholder="Opcional" [(value)]="requrimientoData.retroalimentacion"></app-ui-kaas-input>
+        <app-ui-kaas-input [readOnly]="requrimientoCargado == 'si'" label="Retro Alimentación" hint="hint" placeholder="Opcional" [(value)]="requrimientoData.retroalimentacion"></app-ui-kaas-input>
       </div>
       <div class="col-6">
         <app-ui-kaas-slider label="Puntos adicionales" hint="hint" [(value)]="requrimientoData.puntosAdicionales"></app-ui-kaas-slider>

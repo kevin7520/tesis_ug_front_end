@@ -69,7 +69,7 @@ export class CreateGameComponent implements OnInit {
     const criteria =  {
       id_nivel: id_ultimo+'nivel',
       nivel: id_ultimo,
-      opcionJuego: "J1",
+      opcionJuego: "no",
       requerimientos : []
      }
     this.datosJuego.niveles.push(criteria);

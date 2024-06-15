@@ -21,16 +21,13 @@ export class FormAgregarNivelComponent implements OnInit {
 
   expandible = true;
   mostrarExpandible = false;
+  requrimientoCargado = "no";
 
   requrimientoData! : Requerimiento;
 
   constructor() { }
 
-  options_game : any[] = [
-    { name: 'tipo-juego.juego 1', code: 'J1' },
-    { name: 'tipo-juego.juego 2', code: 'J2' },
-    { name: 'tipo-juego.juego 3', code: 'J3' }
-  ];
+  options_game : any[] = [];
 
   options_Requerimientos : any[] = [
     { name: 'No funcional ambiguo', code: 'NFA' },
@@ -44,6 +41,10 @@ export class FormAgregarNivelComponent implements OnInit {
   
   ngOnInit() {
     this.requrimientoData = this.llenarDatoRequerimiento();
+    this.options_game = [
+      { label: 'Sì', value: 'si' },
+      { label: 'No', value: 'no' },
+    ];
   }
 
   llenarDatoRequerimiento() : Requerimiento {

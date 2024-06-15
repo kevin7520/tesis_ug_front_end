@@ -12,11 +12,25 @@ export class UiKaasInputComponent implements OnInit {
   @Input() hint : string = "";
   @Input() placeholder : string = "";
   @Input() value : string = "";
+  @Input() icono : string = "";
+  @Input() readOnly : boolean = false;
   @Output() valueChange = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
+    // if(this.readOnly && this.icono == '') {
+    //   this.icono = 'bi bi-lock-fill'
+    // }
   }
+
+  // iconoRetorno() : string {
+  //   debugger;
+  //   if(this.readOnly && this.icono == '') {
+  //     this.icono = 'bi bi-lock-fill'
+  //   }
+  //   return this.icono;
+  // }
+  
 
   blockEvent(event: KeyboardEvent) {
     if(this.characterFilter != 'all'){

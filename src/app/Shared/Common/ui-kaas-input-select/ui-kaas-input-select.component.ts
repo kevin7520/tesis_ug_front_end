@@ -13,6 +13,7 @@ export class UiKaasInputSelectComponent implements OnInit, DoCheck {
   @Input() value! : any;
   @Input() classIn : string = "";
   @Input() id_menu : string = "";
+  @Input() readOnly : boolean = false;
   @Output() valueChange = new EventEmitter<string>();
 
   classStyleActive : boolean = false;
