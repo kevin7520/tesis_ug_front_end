@@ -15,5 +15,20 @@ export class ProfesorService {
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
 
+  guardarRequerimiento(criteria : any) : Observable<any> {
+    const criteriaRequest  = {
+      action: "guardarRequerimientos",
+      requisitos: []
+    }
+    return this.http.post<any>(this.urlEndPoint,criteriaRequest);
+  }
+
+  obtenerRequerimiento() : Observable<any> {
+    const criteriaRequest  = {
+      action: "obtenerRequerimientos",
+    }
+    return this.http.post<any>(this.urlEndPoint,criteriaRequest);
+  }
+
 
 }

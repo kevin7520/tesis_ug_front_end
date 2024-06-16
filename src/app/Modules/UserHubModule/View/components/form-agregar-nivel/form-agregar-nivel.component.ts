@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Nivel, Requerimiento } from '../../Model/requerimientos.model';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -13,6 +13,7 @@ export class FormAgregarNivelComponent implements OnInit {
 
   @Input() indice! : number;
   @Input() nivel! : Nivel;
+  @Input() requerimientosCargados : any[] = [];
 
   @Output() _guardarRequerimiento = new EventEmitter();
   @Output() _eliminarRequerimiento = new EventEmitter();
@@ -40,6 +41,23 @@ export class FormAgregarNivelComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.requerimientosCargados);
    }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['requerimientosCargados']) {
+      //this.ejecutarMetodo(changes['value'].currentValue);
+      this.dataSource = new MatTableDataSource(this.requerimientosCargados);
+      if (this.paginator) {
+        this.dataSource.paginator = this.paginator;
+      } else {
+        this.dataSource.paginator = null; // Maneja el caso cuando paginator es undefined
+      }
+      if (this.sort) {
+        this.dataSource.sort = this.sort;
+      } else {
+        this.dataSource.sort = null; // Maneja el caso cuando paginator es undefined
+      }
+    }
+  }
+
   options_game : any[] = [];
 
   options_Requerimientos : any[] = [
@@ -53,47 +71,47 @@ export class FormAgregarNivelComponent implements OnInit {
 
   requisitosCargadosColumnas: string[] = ['position', 'req', 'typeReq', 'ReqPlus', "acctions"];
 
-  requerimientosCargados : any[] = [
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola2", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola2", retroalimentacion: "Hola3", opcionRequerimiento: "NFN"},
-    {id: 1, requerimiento: "Hola3", retroalimentacion: "Hola4", opcionRequerimiento: "NFN"},
-    {id: 1, requerimiento: "Hola4", retroalimentacion: "Hola6", opcionRequerimiento: "NFN"},
-    {id: 1, requerimiento: "Hola5", retroalimentacion: "Hola5", opcionRequerimiento: "NFN"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFN"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
-    {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"}
-  ]
+  // requerimientosCargados : any[] = [
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola2", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola2", retroalimentacion: "Hola3", opcionRequerimiento: "NFN"},
+  //   {id: 1, requerimiento: "Hola3", retroalimentacion: "Hola4", opcionRequerimiento: "NFN"},
+  //   {id: 1, requerimiento: "Hola4", retroalimentacion: "Hola6", opcionRequerimiento: "NFN"},
+  //   {id: 1, requerimiento: "Hola5", retroalimentacion: "Hola5", opcionRequerimiento: "NFN"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFN"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
+  //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"}
+  // ]
 
   dataSource!: MatTableDataSource<any>;
   
@@ -107,16 +125,16 @@ export class FormAgregarNivelComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    if (this.paginator) {
-      this.dataSource.paginator = this.paginator;
-    } else {
-      this.dataSource.paginator = null; // Maneja el caso cuando paginator es undefined
-    }
-    if (this.sort) {
-      this.dataSource.sort = this.sort;
-    } else {
-      this.dataSource.sort = null; // Maneja el caso cuando paginator es undefined
-    }
+    // if (this.paginator) {
+    //   this.dataSource.paginator = this.paginator;
+    // } else {
+    //   this.dataSource.paginator = null; // Maneja el caso cuando paginator es undefined
+    // }
+    // if (this.sort) {
+    //   this.dataSource.sort = this.sort;
+    // } else {
+    //   this.dataSource.sort = null; // Maneja el caso cuando paginator es undefined
+    // }
   }
 
   llenarDatoRequerimiento() : Requerimiento {
@@ -202,6 +220,7 @@ export class FormAgregarNivelComponent implements OnInit {
   }
 
   seleccionarRequerimientoCargado(index: number) {
+    debugger;
     this.requrimientoData.requerimiento = this.requerimientosCargados[index].requerimiento;
     this.requrimientoData.retroalimentacion = this.requerimientosCargados[index].retroalimentacion;
     this.requrimientoData.opcionRequerimiento = this.requerimientosCargados[index].opcionRequerimiento;

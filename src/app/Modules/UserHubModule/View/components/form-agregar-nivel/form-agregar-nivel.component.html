@@ -135,7 +135,7 @@
                               [butonFull]="false" 
                               buttonSize="small"
                               [tooltip]="nivel.requerimientos.length < 5 ? 'Debes tener minimo 5 requerimientos' : ''"
-                              [disabled]="nivel.requerimientos.length < 5"
+                              [disabled]="nivel.requerimientos.length < 2"
                               [background_color]="'bg-red-600'"
                               (eventClick)="verificarDosRequisitos()">
           </app-ui-kaas-button>
@@ -265,7 +265,6 @@
                                 hint="hint" 
                                 [(value)]="requrimientoData.opcionRequerimiento" 
                                 [options]="options_Requerimientos" 
-                                [readOnly]="requrimientoCargado == 'si'"
                                 [id_menu]="indice+'requerimiento_tipo'">
   
       </app-ui-kaas-input-select>
@@ -274,7 +273,7 @@
       <app-ui-kaas-input label="Requerimiento" hint="hint" [(value)]="requrimientoData.requerimiento"></app-ui-kaas-input>
     </div>
     <div class="col-6">
-      <app-ui-kaas-input [readOnly]="requrimientoCargado == 'si'" label="Retro Alimentación" hint="hint" placeholder="Opcional" [(value)]="requrimientoData.retroalimentacion"></app-ui-kaas-input>
+      <app-ui-kaas-input label="Retro Alimentación" hint="hint" placeholder="Opcional" [(value)]="requrimientoData.retroalimentacion"></app-ui-kaas-input>
     </div>
     <div class="col-6">
       <app-ui-kaas-slider label="Puntos adicionales" hint="hint" [(value)]="requrimientoData.puntosAdicionales"></app-ui-kaas-slider>

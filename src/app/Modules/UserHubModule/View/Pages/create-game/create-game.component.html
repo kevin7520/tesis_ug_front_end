@@ -6,7 +6,7 @@
         <div class="w-max col-fixed">
           <app-datepicker label="Fecha Finalización" [hint]="'Es la fecha que finaliza tu juego por defecto son 7 días'" [(value)]="datosJuego.fechaFinalizacion"></app-datepicker>
         </div>
-        <div class="w-max col-fixed">
+        <!-- <div class="w-max col-fixed">
           <app-ui-kaas-input-select 
                                  label="Privacidad del juego" 
                                  hint="Elige si tu juego será visible a todo el público o séra provado." 
@@ -14,12 +14,13 @@
                                  [options]="options_Visibilidad" 
                                  [id_menu]="'visibilidad_juego'">
           </app-ui-kaas-input-select>
-        </div>
+        </div> -->
       </div>
         <ng-container *ngFor="let data of datosJuego.niveles; let indice = index">
             <app-form-agregar-nivel 
                                       [indice]="indice" 
                                       [nivel]="data" 
+                                      [requerimientosCargados]="requerimientosCargados"
                                       (_guardarRequerimiento)="guardarRequerimiento($event,indice)"
                                       (_eliminarRequerimiento)="eliminarRequerimiento(indice,$event)"
                                       (_finalizarRequerimiento)="finalizarRequerimiento()"></app-form-agregar-nivel>
@@ -29,6 +30,7 @@
             <app-ui-kaas-button [label]="'Finalizar Juego' | translate" 
                                 [butonFull]="false" 
                                 buttonSize="small"
+                                [background_color]="'bg-red-600'"
                                 (eventClick)="finalizarCreacion()">
             </app-ui-kaas-button>
             <app-ui-kaas-button [label]="'Agregar nivel' | translate" 
@@ -68,13 +70,36 @@
                           [butonFull]="true" 
                           buttonSize="small"
                           [background_color]="'bg-red-600'"
-                          (eventClick)="false">
+                          (eventClick)="cerrarGuardarRequerimientos()">
       </app-ui-kaas-button>
       <app-ui-kaas-button [label]="'general.boton-si' | translate" 
                           [butonFull]="true" 
                           buttonSize="small"
-                          (eventClick)="false">
+                          (eventClick)="guardarRequerimientos()">
       </app-ui-kaas-button>
     </div>
   </div>
 </app-modal>
+
+<app-modal [titulo]="'Gracias por tu ayuda'" *ngIf="modalAgradecimiento">
+  <div app-content class="w-full">
+    <div class="w-full grid">
+      <div class="col-5 py-0">
+        <img src="assets/Img/Icons/iconos/agredecimiento.svg" alt="no se cargo imagen">
+      </div>
+      <div class="col py-0 flex flex-wrap align-content-center">
+        <p>Los requerimientos se guardaron de forma exitoso. Ahora si desas crear más juegos tus requerimientos se enbcontraran cargados en la base</p>
+      </div>
+    </div>
+  </div>
+  <div app-footer>
+    <div class="w-full flex flex-grap justify-content-center">
+      <app-ui-kaas-button [label]="'general.button-aceptar' | translate" 
+                          [butonFull]="true" 
+                          buttonSize="small"
+                          (eventClick)="cerrarModalAgradecimiento()">
+      </app-ui-kaas-button>
+    </div>
+  </div>
+</app-modal>
+
