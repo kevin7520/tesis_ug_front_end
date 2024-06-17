@@ -135,7 +135,7 @@
                               [butonFull]="false" 
                               buttonSize="small"
                               [tooltip]="nivel.requerimientos.length < 5 ? 'Debes tener minimo 5 requerimientos' : ''"
-                              [disabled]="nivel.requerimientos.length < 2"
+                              [disabled]="nivel.requerimientos.length < 5"
                               [background_color]="'bg-red-600'"
                               (eventClick)="verificarDosRequisitos()">
           </app-ui-kaas-button>

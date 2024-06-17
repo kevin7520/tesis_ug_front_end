@@ -22,4 +22,9 @@ export class AlumnoService {
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
 
+  guardarPuntaje(criteria : any) : Observable<any> {
+    criteria.action = "guardarPuntaje";
+    return this.http.post<any>(this.urlEndPoint,criteria);
+  }
+
 }

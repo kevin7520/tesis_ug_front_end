@@ -18,7 +18,7 @@ export class ProfesorService {
   guardarRequerimiento(criteria : any) : Observable<any> {
     const criteriaRequest  = {
       action: "guardarRequerimientos",
-      requisitos: []
+      requisitos: [...criteria]
     }
     return this.http.post<any>(this.urlEndPoint,criteriaRequest);
   }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router, Event } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { filter } from 'rxjs/operators';
 import { HomeService } from 'src/app/Modules/UserHubModule/Service/home.service';
 
 @Component({
@@ -30,6 +31,16 @@ export class HomeComponent implements OnInit {
   menu_lista : any [] = [];
 
   ngOnInit() {
+    this._router.events
+      .pipe(filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        //this.handleChildAction();
+        let currentRoute = event.urlAfterRedirects; // Obtener la ruta actual
+        this.menu_lista = this.menu_lista.map((menu)=>{
+          menu.activo = menu.ruta == currentRoute;
+          return menu
+        })
+      });
     this.obtenerRegistro();
   }
 
@@ -119,12 +130,12 @@ export class HomeComponent implements OnInit {
     if(ruta == '/auth') {
       localStorage.clear();
     }
-    else {
-      this.menu_lista = this.menu_lista.map((menu)=>{
-        menu.activo = menu.id == id
-        return menu
-      })
-    }
+    // else {
+    //   this.menu_lista = this.menu_lista.map((menu)=>{
+    //     menu.activo = menu.id == id
+    //     return menu
+    //   })
+    // }
 
     this._router.navigateByUrl(ruta);
 

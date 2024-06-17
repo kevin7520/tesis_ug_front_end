@@ -2,9 +2,9 @@
   <ng-container *ngIf="pedirCodigo;else juegoInicio">
     <div class="w-full h-full mt-5 flex flex-wrap justify-content-center">
       <p class="w-full text-center">Por favor, ingresa el código del juego</p>
-      <div class="w-max flex gap-3 mt-4">
+      <div class="w-max flex flex-wrap align-items-center gap-3 mt-4">
         <app-ui-kaas-input [(value)]="valorCodigo"></app-ui-kaas-input>
-        <div class="mt-1">
+        <div>
           <app-ui-kaas-button
                             [label]="'Buscar' | translate" 
                             [butonFull]="true" 
@@ -14,32 +14,24 @@
         </div>
       </div>
 
-      <p class="w-full mt-4">Si no tienes un código puedes jugar los juegos públicos</p>
-      <section class="container-table mt-4" tabindex="0">
+      <!-- <p class="w-full mt-4">Si no tienes un código puedes jugar los juegos públicos</p> -->
+      <!-- <section class="container-table mt-4" tabindex="0">
         <table mat-table [dataSource]="juegosPublicos">
-     
-          <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-        
-          <!-- Position Column -->
           <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
           </ng-container>
-        
-          <!-- Name Column -->
+                  
           <ng-container matColumnDef="id_juego">
             <th mat-header-cell *matHeaderCellDef> Id juego </th>
             <td mat-cell *matCellDef="let element"> {{element.id_juego}} </td>
           </ng-container>
-        
-          <!-- Weight Column -->
+                  
           <ng-container matColumnDef="fecha_creacion">
             <th mat-header-cell *matHeaderCellDef> Fecha Creación </th>
             <td mat-cell *matCellDef="let element"> {{element.fecha_creacion}} </td>
           </ng-container>
-        
-          <!-- Symbol Column -->
+                  
           <ng-container matColumnDef="fecha_finalizacion">
             <th mat-header-cell *matHeaderCellDef> Fecha Finalizacion </th>
             <td mat-cell *matCellDef="let element"> {{element.fecha_finalizacion}} </td>
@@ -55,15 +47,12 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-      </section> 
+      </section>  -->
     </div>
   </ng-container>
   <ng-template #juegoInicio>
     <div class="mt-4 w-full flex justify-content-between flex-wrap">
       <div class="w-max col-fixed">
-        <!-- <p class="color-primary font-medium text-subtitulos-3-size">Aciertos:
-         <span class="text-teal-700">5</span>
-       </p> -->
         <p class="color-primary font-medium text-subtitulos-3-size">Puntaje:
          <span [ngClass]="{'text-teal-700': this.puntos >= 0, 'text-red-600': this.puntos < 0}">{{this.puntos}}</span>
         </p>
@@ -152,7 +141,7 @@
                           [label]="'general.boton-continuar' | translate" 
                           [butonFull]="true" 
                           buttonSize="small"
-                          (eventClick)="mostrarFinilazion = false">
+                          (eventClick)="enviarPuntajeJuego()">
       </app-ui-kaas-button>
     </div> 
   </app-modal>

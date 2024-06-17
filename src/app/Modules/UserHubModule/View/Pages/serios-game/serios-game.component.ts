@@ -23,7 +23,8 @@ export class SeriosGameComponent implements OnInit{
   event: Event | undefined;
   valorCodigo : string = "";
 
-  juegosPublicos: any[] = [];
+  id_juegoTemp : number = 0;
+  //juegosPublicos: any[] = [];
 
   requesitosAmbiguos : any[] = []
 
@@ -82,7 +83,7 @@ export class SeriosGameComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    this.buscarJuegosPublicos();
+    //this.buscarJuegosPublicos();
   }
 
   buscarJuego() {
@@ -104,6 +105,7 @@ export class SeriosGameComponent implements OnInit{
           }
         })
         this.pedirCodigo = false;
+        this.id_juegoTemp = Number(this.valorCodigo);
       }
       else {
         this.openSnackBar(this._translateService.instant('Código incorrecto'),'custom-snackbar_fallido');
@@ -115,6 +117,10 @@ export class SeriosGameComponent implements OnInit{
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+    const group = this.dragulaService.find(this.REQUERIMIENTOS_DRAGULA);
+    if (group) {
+      this.dragulaService.destroy(this.REQUERIMIENTOS_DRAGULA);
+    }
   }
 
   openSnackBar(message: string, class_customer: string) {
@@ -127,33 +133,68 @@ export class SeriosGameComponent implements OnInit{
     this._snackBar.open(message,'',config);
   }
 
-  buscarJuegosPublicos() {
-    this._alumnoService.recuperJuegosPublicos().subscribe(Response => {
-      if(Response.msg == 'OK') {
-        this.juegosPublicos = Response.result;
-      }
-      else{
-        this.openSnackBar(this._translateService.instant('Juego no encontrado'),'custom-snackbar_fallido');
+  // buscarJuegosPublicos() {
+  //   this._alumnoService.recuperJuegosPublicos().subscribe(Response => {
+  //     if(Response.msg == 'OK') {
+  //       this.juegosPublicos = Response.result;
+  //     }
+  //     else{
+  //       this.openSnackBar(this._translateService.instant('Juego no encontrado'),'custom-snackbar_fallido');
+  //     }
+  //   })
+  // }
+
+  // elegirJuego(id : number) {
+  //   this.id_juegoTemp = id;
+  //   const juego = this.juegosPublicos.find(data => data.id_juego == id);
+  //   const jsonTemp = JSON.parse(juego.json);
+  //   this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data:any)=> {
+  //     return {
+  //       texto: data.requerimiento,
+  //       retroAlimentacion: data.retroalimentacion,
+  //       ambiguo: (data.opcionRequerimiento == 'NFA') ? true : false,
+  //       requrimientoFallido: data.requerimientoFallido,
+  //       requerimientoCompleto: "no",
+  //       id: data.id
+
+  //     }
+  //   });
+  //   this.pedirCodigo = false;
+
+  // }
+
+  enviarPuntajeJuego() {
+    const dataLocal = JSON.parse(localStorage.getItem('persona')!);
+    const criteria = {
+      id_juego: this.id_juegoTemp,
+      id_persona: dataLocal.id,
+      puntaje: this.puntos
+    }
+    this._alumnoService.guardarPuntaje(criteria).subscribe(dataResponse=>{
+      if(dataResponse.msg == 'OK') {
+        if(dataResponse.result == "usuario_jugado") {
+          this.openSnackBar(this._translateService.instant('USTED YA JUGO PREVIAAMENTE ESTE JUEGO'),'custom-snackbar_fallido');
+        }
+        if(dataResponse.result == "error_insert"){
+          this.openSnackBar(this._translateService.instant('ERROR AL GUARDAR PUNTEWJE. INTENTOLO MAS TARDE'),'custom-snackbar_fallido');
+        }
+        if(dataResponse.result == "exito_insert") {
+          this.openSnackBar(this._translateService.instant('PUNTAJE GUARDADO CON EXITO'),'custom-snackbar_exitoso');
+        }
+        this.reiciarComponente();
+        this.mostrarFinilazion = false;
       }
     })
   }
 
-  elegirJuego(id : number) {
-    const juego = this.juegosPublicos.find(data => data.id_juego == id);
-    const jsonTemp = JSON.parse(juego.json);
-    this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data:any)=> {
-      return {
-        texto: data.requerimiento,
-        retroAlimentacion: data.retroalimentacion,
-        ambiguo: (data.opcionRequerimiento == 'NFA') ? true : false,
-        requrimientoFallido: data.requerimientoFallido,
-        requerimientoCompleto: "no",
-        id: data.id
-
-      }
-    });
-    this.pedirCodigo = false;
-
+  reiciarComponente() {
+    this.requesitosAmbiguos = []
+    this.requesitosNoAmbiguos = []
+    this.requisitosNoFuncionales  = [];
+    this.valorCodigo = "";
+    this.pedirCodigo = true;
+    this.puntos = 0,
+    this.id_juegoTemp = 0;
   }
 
 }
