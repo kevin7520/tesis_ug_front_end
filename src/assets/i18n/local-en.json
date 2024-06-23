@@ -40,6 +40,8 @@
                 "inicio": "Home",
                 "perfil": "Profile",
                 "crear-juego": "Create Game",
+                "juegos-creados": "Games Created",
+                "reporte": "Reports",
                 "salir": "Log out"
             }
         },
@@ -60,6 +62,14 @@
                 "titulo": "Confirmation of User Information Update",
                 "subtitulo": "Are you sure you want to edit your user information?"
             }
+        },
+        "juegos-creado": {
+            "title": "View your created games",
+            "subtitle": "In this session, you'll be able to exit the game",
+            "error": "Starting from scratch: Create your first game now",
+            "no-datos":"At the moment, there are no games created in your account. To start creating a new one, simply press the button below this message. This step will take you to the interface where you can begin the game creation process easily and quickly.",
+            "no-datos-2":"Enjoy creating your first game!",
+            "dato-juego-titulo": "Game data"
         }
     },
     "404-page": {
@@ -76,6 +86,8 @@
         "boton-aceptar": "Accept",
         "boton-cancelar": "Cancel",
         "boton-salir": "Exit",
+        "boton-crear-juego": "Create Game",
+        "boton-cerrar-juego": "Exit game",
         "estudiante": "Student",
         "profesor": "Professor"
     },
@@ -85,6 +97,24 @@
         "sucess-put-user": "The user was edited successfully.",
         "error-put-user-password": "The current password provided is incorrect.",
         "error-pasword-repetido": "The current password is the same as the new password entered, they must be different"
+    },
+    "general-table": {
+        "no": "No.",
+        "id_juego": "Game ID",
+        "tipo_req": "Requirement Type",
+        "tipo_req-2": "Requirement Type",
+        "fecha_creacion": "Creation Date",
+        "fecha_finalizacion": "Completion Date",
+        "retro-alimentacion": "Feedback",
+        "puntos": "Points",
+        "req": "Requirement",
+        "estado": "Status",
+        "estado-acitvo": "Active",
+        "estado-inacitvo": "Inactive",
+        "acciones": "Actions"
+    },
+    "general-tool": {
+        "revisar-juego": "Review Game"
     },
     "tipo-juego": {
         "juego 1": "X Juego 1",

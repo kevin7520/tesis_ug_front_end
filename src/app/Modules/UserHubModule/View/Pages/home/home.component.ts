@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
         }
         this.llenarOpcionesMenu(dataResponse.result.rol);
         if(dataResponse.result.rol == 'p') {
-          this._router.navigateByUrl("/home/perfil");
+          this._router.navigateByUrl("/home/juegos-creados");
         }
         else {
           this._router.navigateByUrl("/home/serious-game");
@@ -78,10 +78,17 @@ export class HomeComponent implements OnInit {
     if(rol == 'p') {
       this.menu_lista = [
         {
+          titulo: "user-hub-module.home.menu.juegos-creados",
+          icono: "bi bi-person-arms-up",
+          ruta: "/home/juegos-creados",
+          activo: true,
+          id: 1
+        },
+        {
           titulo: "user-hub-module.home.menu.perfil",
           icono: "bi bi-person-fill-gear",
           ruta: "/home/perfil",
-          activo: true,
+          activo: false,
           id: 2
         },
         {
@@ -92,11 +99,18 @@ export class HomeComponent implements OnInit {
           id: 3
         },
         {
+          titulo: "user-hub-module.home.menu.reporte",
+          icono: "bi bi-file-earmark-pdf-fill",
+          ruta: "/home/reportes",
+          activo: false,
+          id: 4
+        },
+        {
           titulo: "user-hub-module.home.menu.salir",
           icono: "bi bi-arrow-left-square-fill",
           ruta: "/auth",
           activo: false,
-          id: 4
+          id: 5
         }
       ]
     }

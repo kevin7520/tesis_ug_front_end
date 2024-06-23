@@ -40,6 +40,8 @@
                 "inicio": "Inicio",
                 "perfil": "Perfil",
                 "crear-juego": "Crear juego",
+                "juegos-creados": "Juegos creados",
+                "reporte": "Reportes",
                 "salir": "Cerrar sesión"
             }
         },
@@ -60,6 +62,14 @@
                 "titulo": "Confirmación de edición de información de usuario",
                 "subtitulo": "¿Estás seguro de que deseas editar tu información de usuario?"
             }
+        },
+        "juegos-creado": {
+            "title": "Visualiza los juegos que has creado",
+            "subtitle": "En esta sesión podrás cerrar el juego",
+            "error": "Empezando desde cero: Crea tu primer juego ahora mismo",
+            "no-datos":"En este momento, no hay juegos creados en tu cuenta. Para comenzar a crear uno nuevo, simplemente presiona el botón que se encuentra debajo de este mensaje. Este paso te llevará a la interfaz donde podrás iniciar el proceso de creación de tu juego de manera fácil y rápida.",
+            "no-datos-2":"¡Disfruta creando tu primer juego!",
+            "dato-juego-titulo": "Datos del juego"
         }
     },
     "404-page": {
@@ -76,6 +86,8 @@
         "boton-aceptar": "Aceptar",
         "boton-cancelar": "Cancelar",
         "boton-salir": "Salir",
+        "boton-crear-juego":"Crear juego",
+        "boton-cerrar-juego": "Cerrar juego",
         "estudiante": "Estudiante",
         "profesor": "Profesor"
     },
@@ -85,6 +97,24 @@
         "sucess-put-user": "El usuario se editó correctamente.",
         "error-put-user-password": "La contraseña actual proporcionada es incorrecta.",
         "error-pasword-repetido": "La contraseña actual es igual a la contraseña nueva ingresada, deben ser diferentes"
+    },
+    "general-table": {
+        "no": "No.",
+        "id_juego": "Id juego",
+        "tipo_req": "Tipo Requerimiento",
+        "tipo_req-2": "Tipo Requerimiento",
+        "fecha_creacion": "Fecha Creación",
+        "fecha_finalizacion": "Fecha Finalización",
+        "retro-alimentacion": "Retroalimentación",
+        "puntos": "Puntos",
+        "req": "Requerimiento",
+        "estado": "Estado",
+        "estado-acitvo": "Activo",
+        "estado-inacitvo": "Inactivo",
+        "acciones": "Acciones"
+    },
+    "general-tool": {
+        "revisar-juego": "Revisar juego"
     },
     "tipo-juego": {
         "juego 1": "Juego 1",

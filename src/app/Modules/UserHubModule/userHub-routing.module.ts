@@ -4,6 +4,8 @@ import { HomeComponent } from './View/Pages/home/home.component';
 import { SeriosGameComponent } from './View/Pages/serios-game/serios-game.component';
 import { PerfilComponent } from './View/Pages/perfil/perfil.component';
 import { CreateGameComponent } from './View/Pages/create-game/create-game.component';
+import { JuegosCreadosComponent } from './View/Pages/juegos-creados/juegos-creados.component';
+import { ReportesComponent } from './View/Pages/reportes/reportes.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, 
@@ -11,6 +13,8 @@ const routes: Routes = [
       {path: 'serious-game', component: SeriosGameComponent},
       {path: 'perfil', component: PerfilComponent},
       {path: 'crear-juego', component: CreateGameComponent},
+      {path: 'juegos-creados', component: JuegosCreadosComponent},
+      {path: 'reportes', component: ReportesComponent},
     ] 
   },
 ];

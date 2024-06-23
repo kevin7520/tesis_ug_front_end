@@ -9,6 +9,8 @@ import { PerfilComponent } from './View/Pages/perfil/perfil.component';
 import { DragulaModule } from 'ng2-dragula';
 import { CreateGameComponent } from './View/Pages/create-game/create-game.component';
 import { FormAgregarNivelComponent } from './View/components/form-agregar-nivel/form-agregar-nivel.component';
+import { JuegosCreadosComponent } from './View/Pages/juegos-creados/juegos-creados.component';
+import { ReportesComponent } from './View/Pages/reportes/reportes.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { FormAgregarNivelComponent } from './View/components/form-agregar-nivel/
     SeriosGameComponent,
     PerfilComponent,
     CreateGameComponent,
-    FormAgregarNivelComponent
+    FormAgregarNivelComponent,
+    JuegosCreadosComponent,
+    ReportesComponent
   ]
 })
 export class UserHubModule { }

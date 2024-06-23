@@ -14,6 +14,10 @@ export class ProfesorService {
     criteria.action = "crearJuego";
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
+  obtenerJuegosProfesor(criteria : any) : Observable<any> {
+    criteria.action = "obtenerJuegosProfesor";
+    return this.http.post<any>(this.urlEndPoint,criteria);
+  }
 
   guardarRequerimiento(criteria : any) : Observable<any> {
     const criteriaRequest  = {
