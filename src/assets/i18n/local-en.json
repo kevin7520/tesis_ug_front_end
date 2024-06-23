@@ -19,6 +19,17 @@
             "login-fallido": "Login failed. Try again",
             "crear-fallido": "X La creación de la cuenta no fue exitosa. Por favor, inténtelo nuevamente más tarde",
             "usuario-incorrecto": "Incorrect username. Please check and try again"
+        },
+        "migration": {
+            "title": "Complete your registration",
+            "nombre": "First Name",
+            "nombre-hint": "Enter your full name",
+            "apellido": "Last Name",
+            "apellido-hint": "Enter your full last name",
+            "rol": "Role",
+            "fecha-nacimiento": "Date of Birth",
+            "estudiante": "Student",
+            "profesor": "Professor"
         }
     },
     "user-hub-module": {
@@ -30,6 +41,24 @@
                 "perfil": "Profile",
                 "crear-juego": "Create Game",
                 "salir": "Log out"
+            }
+        },
+        "perfil": {
+            "title": "Update Personal Information",
+            "usuario-titulo":"User",
+            "nombres-titulo": "First Names",
+            "apellidos-titulo": "Last Names",
+            "correo-titulo": "Email",
+            "rol-titulo": "Role",
+            "edad-titulo": "Age",
+            "fechaN-titulo": "Date of birth",
+            "contrasena-titulo": "New Password",
+            "contrasena-hint": "If you do not wish to update the password, simply leave the field empty",
+            "contrasena-actual-titulo": "Current password",
+            "contrasena-actual-hint": "To confirm the modification of your information, please provide your current password",
+            "modal": {
+                "titulo": "Confirmation of User Information Update",
+                "subtitulo": "Are you sure you want to edit your user information?"
             }
         }
     },
@@ -43,7 +72,19 @@
     },
     "general":{
         "boton-continuar": "Continue",
-        "boton-regresar": "Return"
+        "boton-regresar": "Return",
+        "boton-aceptar": "Accept",
+        "boton-cancelar": "Cancel",
+        "boton-salir": "Exit",
+        "estudiante": "Student",
+        "profesor": "Professor"
+    },
+    "general-msg": {
+        "error-get-user": "User not found. Please try again later",
+        "error-put-user": "The user was not successfully edited. Please try again later.",
+        "sucess-put-user": "The user was edited successfully.",
+        "error-put-user-password": "The current password provided is incorrect.",
+        "error-pasword-repetido": "The current password is the same as the new password entered, they must be different"
     },
     "tipo-juego": {
         "juego 1": "X Juego 1",

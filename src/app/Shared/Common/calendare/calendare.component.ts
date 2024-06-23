@@ -11,6 +11,7 @@ export class CalendareComponent implements OnInit {
   @Input() hint : string = "";
   @Input() value! : Date;
   @Output() valueChange = new EventEmitter<Date>();
+  @Output() changeDate = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -18,5 +19,7 @@ export class CalendareComponent implements OnInit {
 
   change(event:any){
     this.valueChange.emit(this.value);
+    this.changeDate.emit();
   }
+
 }

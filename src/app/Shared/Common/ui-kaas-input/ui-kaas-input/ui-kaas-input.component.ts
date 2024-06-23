@@ -14,10 +14,12 @@ export class UiKaasInputComponent implements OnInit {
   @Input() value : string = "";
   @Input() icono : string = "";
   @Input() readOnly : boolean = false;
+  @Input() type : string = "text";
   @Output() valueChange = new EventEmitter<string>();
   @Output() iconClick = new EventEmitter<string>();
   constructor() { }
 
+  mostrar_password: boolean = false;
   ngOnInit() {
     // if(this.readOnly && this.icono == '') {
     //   this.icono = 'bi bi-lock-fill'

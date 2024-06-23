@@ -42,6 +42,24 @@
                 "crear-juego": "Crear juego",
                 "salir": "Cerrar sesión"
             }
+        },
+        "perfil": {
+            "title": "Actualización de Datos Personales",
+            "usuario-titulo":"Usuario",
+            "nombres-titulo": "Nombres",
+            "apellidos-titulo": "Apellidos",
+            "correo-titulo": "Correo Electrónico",
+            "rol-titulo": "Rol",
+            "edad-titulo": "Edad",
+            "fechaN-titulo": "Fecha de nacimiento",
+            "contrasena-titulo": "Nueva Contraseña",
+            "contrasena-hint": "Si no deseas actualizar la contraseña, simplemente deja vacío el campo",
+            "contrasena-actual-titulo": "Contraseña actual",
+            "contrasena-actual-hint": "Para confirmar la modificación de tu información, por favor proporciona tu contraseña actual",
+            "modal": {
+                "titulo": "Confirmación de edición de información de usuario",
+                "subtitulo": "¿Estás seguro de que deseas editar tu información de usuario?"
+            }
         }
     },
     "404-page": {
@@ -54,7 +72,19 @@
     },
     "general":{
         "boton-continuar": "Continuar",
-        "boton-regresar": "Regresar"
+        "boton-regresar": "Regresar",
+        "boton-aceptar": "Aceptar",
+        "boton-cancelar": "Cancelar",
+        "boton-salir": "Salir",
+        "estudiante": "Estudiante",
+        "profesor": "Profesor"
+    },
+    "general-msg": {
+        "error-get-user": "El usuario no fue encontrado. Intentolo más tarde",
+        "error-put-user": "El usuario no se editó correctamente. Por favor, inténtalo de nuevo más tarde.",
+        "sucess-put-user": "El usuario se editó correctamente.",
+        "error-put-user-password": "La contraseña actual proporcionada es incorrecta.",
+        "error-pasword-repetido": "La contraseña actual es igual a la contraseña nueva ingresada, deben ser diferentes"
     },
     "tipo-juego": {
         "juego 1": "Juego 1",
