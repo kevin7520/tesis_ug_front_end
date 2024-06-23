@@ -4,6 +4,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Chart, ChartType } from 'chart.js/auto';
 
 @Component({
   selector: 'app-reportes',
@@ -19,6 +20,8 @@ export class ReportesComponent implements OnInit {
 
   dataSource = new MatTableDataSource<any>(this.juegos);
   selection = new SelectionModel<any>(true, []);
+
+  chart!: Chart;
   
   ngOnInit() {
     this.buscarJuegos();
@@ -60,7 +63,36 @@ export class ReportesComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
+  duu = 0;
   public openPDF(): void {
+    if(this.duu == 0) {
+      const data = {
+        labels: [
+          'Red',
+          'Blue',
+          'Yellow'
+        ],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [300, 50, 100],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+          ],
+          hoverOffset: 4
+        }]
+      };
+  
+      // Creamos la gráfica
+      this.chart = new Chart("chart", {
+        type: 'pie' as ChartType, // tipo de la gráfica 
+        data // datos 
+      })
+    }
+    this.duu = 1
+
+    ///////////////////////
     let DATA: any = document.getElementById('htmlData');
 
     html2canvas(DATA, { scale: 5, useCORS: true }).then((canvas) => {

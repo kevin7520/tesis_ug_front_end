@@ -3,6 +3,7 @@
    <p class="mt-4 text-center color-primary tex-titulo-Serius-Game">{{'user-hub-module.reporte.titulo' | translate}}</p>
    <div class="w-full grid m-0 mt-4 mat-elevation-z4 border-round-xl p-4">
     <section class="container-table w-full" tabindex="0" id="htmlData">
+      <canvas id="chart">{{ chart }}</canvas>
      <table mat-table [dataSource]="juegos">
        <ng-container matColumnDef="seleccion">
          <!-- <th mat-header-cell *matHeaderCellDef> {{'general-table.seleccionar' | translate}} </th>

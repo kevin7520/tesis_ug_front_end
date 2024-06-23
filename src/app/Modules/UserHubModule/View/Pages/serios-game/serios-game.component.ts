@@ -34,6 +34,8 @@ export class SeriosGameComponent implements OnInit{
 
   displayedColumns: string[] = ['position', 'id_juego', 'fecha_creacion', 'fecha_finalizacion', "acctions"];
 
+  horaActual: string = new Date().toTimeString().split(' ')[0];
+
   public constructor(private dragulaService:DragulaService,private _translateService: TranslateService, private _alumnoService : AlumnoService, private _snackBar: MatSnackBar) {
     this.subs.add(dragulaService.dropModel(this.REQUERIMIENTOS_DRAGULA)
       .subscribe(({ el, target, source, sourceModel, targetModel, item }) => {
@@ -168,8 +170,11 @@ export class SeriosGameComponent implements OnInit{
     const criteria = {
       id_juego: this.id_juegoTemp,
       id_persona: dataLocal.id,
-      puntaje: this.puntos
+      puntaje: this.puntos,
+      hora_inicio: this.horaActual,
+      hora_fin: new Date().toTimeString().split(' ')[0]
     }
+    debugger;
     this._alumnoService.guardarPuntaje(criteria).subscribe(dataResponse=>{
       if(dataResponse.msg == 'OK') {
         if(dataResponse.result == "usuario_jugado") {
