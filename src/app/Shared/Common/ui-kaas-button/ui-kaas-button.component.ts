@@ -65,6 +65,8 @@ export class UiKaasButtonComponent implements OnInit {
 
     if(this.butonFull)
       colors_finally = colors_finally + ' w-full'
+    if(this.text_color == 'text-primary')
+      colors_finally = colors_finally + ' border-1 border-solid border-primary'
     return colors_finally
   }
 

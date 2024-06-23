@@ -31,6 +31,7 @@ import { UiKaasSliderComponent } from './Common/ui-kaas-slider/ui-kaas-slider.co
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -64,6 +65,7 @@ export const MY_DATE_FORMATS = {
     MatTableModule,
     MatTooltipModule,
     MatPaginatorModule,
+    MatCheckboxModule,
     CdkDrag,
     CdkDragHandle,
     DragulaModule.forRoot(),
@@ -110,6 +112,7 @@ export const MY_DATE_FORMATS = {
     UiKaasSliderComponent,
     MatTableModule,
     MatTooltipModule,
+    MatCheckboxModule,
     MatPaginatorModule
   ],
   providers: [

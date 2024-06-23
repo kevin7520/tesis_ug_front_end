@@ -70,6 +70,9 @@
             "no-datos":"At the moment, there are no games created in your account. To start creating a new one, simply press the button below this message. This step will take you to the interface where you can begin the game creation process easily and quickly.",
             "no-datos-2":"Enjoy creating your first game!",
             "dato-juego-titulo": "Game data"
+        },
+        "reporte": {
+            "titulo": "Report generation"
         }
     },
     "404-page": {
@@ -88,6 +91,7 @@
         "boton-salir": "Exit",
         "boton-crear-juego": "Create Game",
         "boton-cerrar-juego": "Exit game",
+        "boton-generar": "Generate",
         "estudiante": "Student",
         "profesor": "Professor"
     },
@@ -111,7 +115,8 @@
         "estado": "Status",
         "estado-acitvo": "Active",
         "estado-inacitvo": "Inactive",
-        "acciones": "Actions"
+        "acciones": "Actions",
+        "seleccionar": "Select"
     },
     "general-tool": {
         "revisar-juego": "Review Game"

@@ -11,6 +11,7 @@ import { CreateGameComponent } from './View/Pages/create-game/create-game.compon
 import { FormAgregarNivelComponent } from './View/components/form-agregar-nivel/form-agregar-nivel.component';
 import { JuegosCreadosComponent } from './View/Pages/juegos-creados/juegos-creados.component';
 import { ReportesComponent } from './View/Pages/reportes/reportes.component';
+import { JuegosVaciosComponent } from './View/components/juegos-vacios/juegos-vacios.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { ReportesComponent } from './View/Pages/reportes/reportes.component';
     CreateGameComponent,
     FormAgregarNivelComponent,
     JuegosCreadosComponent,
-    ReportesComponent
+    ReportesComponent,
+    JuegosVaciosComponent
   ]
 })
 export class UserHubModule { }
