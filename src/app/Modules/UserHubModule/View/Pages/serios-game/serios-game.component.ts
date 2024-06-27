@@ -174,7 +174,6 @@ export class SeriosGameComponent implements OnInit{
       hora_inicio: this.horaActual,
       hora_fin: new Date().toTimeString().split(' ')[0]
     }
-    debugger;
     this._alumnoService.guardarPuntaje(criteria).subscribe(dataResponse=>{
       if(dataResponse.msg == 'OK') {
         if(dataResponse.result == "usuario_jugado") {

@@ -34,7 +34,20 @@ export class ReportesComponent implements OnInit {
     }
     this._profesprService.obtenerJuegosProfesor(criteria).subscribe(Response => {
       if(Response.msg == 'OK') {
-        this.juegos = [...Response.result];
+        this.juegos = Response.result.map((data : any)=>{
+          switch(data.id_tipo_juego) {
+            case "1":
+              data.tipo_juego = 'tipo-juego.juego-1-title'
+              break;
+            case "2":
+              data.tipo_juego = 'tipo-juego.juego-2-title'
+              break;
+            case "3":
+              data.tipo_juego = 'tipo-juego.juego-3-title'
+              break;
+          };
+          return data
+        });
         this.dataSource = new MatTableDataSource<any>(this.juegos);
         this.selection = new SelectionModel<any>(true, []);
       }

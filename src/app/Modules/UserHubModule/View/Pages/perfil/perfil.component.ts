@@ -143,7 +143,6 @@ export class PerfilComponent implements OnInit {
   }
 
   changeFecha(){
-    debugger;
     this.usuarioInformacion.edad = this.calcularEdad(new Date(this.usuarioInformacion.fechaNacimiento));
   }
 

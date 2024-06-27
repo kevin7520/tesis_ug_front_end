@@ -73,6 +73,43 @@
         },
         "reporte": {
             "titulo": "Generación de reportes"
+        },
+        "crear-juego": {
+            "titulo": "Creación de juego",
+            "fecha-titulo": "Fecha Finalización",
+            "fecha-hint": "Es la fecha en la que tu juego se completa. Por defecto, es de 7 días",
+            "tipo-titulo": "Tipo de juego",
+            "tipo-hint": "Este es el tipo de juego que debes elegir",
+            "modales": {
+                "titulo-ayudanos": "Ayúdanos a mejorar nuestra base de datos de requerimientos",
+                "subtitulo-ayudanos": "¿Te gustaría que tus requerimientos se guarden en nuestra base de datos para que otros docentes puedan utilizarlos en el futuro? Tu contribución nos ayudará a crear una biblioteca más completa y útil para todos. ¡Tu colaboración es muy valiosa!",
+                "titulo-agradecimiento": "Gracias por tu ayuda",
+                "subtitulo-agradecimiento": "Tus requerimientos se han almacenado correctamente. Ahora, si deseas crear más juegos, podrás encontrar tus requerimientos ya cargados en nuestra base de datos. Gracias por tu colaboración, estamos comprometidos en ofrecerte una mejor experiencia."
+            },
+            "componente-form": {
+                "cargar-req-titulo": "Cargar requerimientos",
+                "cargar-req-subtitulo": "Puedes cargar requerimientos creados por ti o por otros profesores",
+                "requerimiento-titulo": "Requerimiento",
+                "type-requerimiento-titulo": "Tipo de requerimiento",
+                "retroA": "Retro alimentación",
+                "puntos": "Puntos adicionales",
+                "modal-1": {
+                    "titulo": "Finalizar juego",
+                    "subtitle": "¿Seguro que deseas finalizar el juego? Una vez finalizado, no se podrá editar el juego creado."
+                },
+                "modal-2": {
+                    "titulo": "Requerimientos faltantes",
+                    "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
+                },
+                "modal-3": {
+                    "titulo": "Elige los requerimientos guardados",
+                    "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
+                },
+                "modal-4": {
+                    "titulo": "Edita tu requerimiento",
+                    "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
+                }
+            }
         }
     },
     "404-page": {
@@ -89,18 +126,33 @@
         "boton-aceptar": "Aceptar",
         "boton-cancelar": "Cancelar",
         "boton-salir": "Salir",
+        "boton-actualizar": "Actualizar",
+        "boton-seleccionar": "Seleccionar",
+        "boton-no": "No",
+        "boton-si": "Sí",
+        "boton-eliminar-req": "Eliminar requerimiento",
+        "boton-guardar-req": "Guardar requerimiento",
+        "boton-agregar-req": "Agregar requerimiento",
+        "boton-editar-req": "Editar requerimiento",
+        "boton-seleccionar-req": "Seleccionar requerimiento",
         "boton-crear-juego":"Crear juego",
         "boton-cerrar-juego": "Cerrar juego",
         "boton-generar": "Generar",
+        "boton-finalizar-juego": "Finalizar juego",
         "estudiante": "Estudiante",
-        "profesor": "Profesor"
+        "profesor": "Profesor",
+        "opcional": "Opcional"
     },
     "general-msg": {
         "error-get-user": "El usuario no fue encontrado. Intentolo más tarde",
         "error-put-user": "El usuario no se editó correctamente. Por favor, inténtalo de nuevo más tarde.",
         "sucess-put-user": "El usuario se editó correctamente.",
         "error-put-user-password": "La contraseña actual proporcionada es incorrecta.",
-        "error-pasword-repetido": "La contraseña actual es igual a la contraseña nueva ingresada, deben ser diferentes"
+        "error-pasword-repetido": "La contraseña actual es igual a la contraseña nueva ingresada, deben ser diferentes",
+        "error-crear-juego": "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde.",
+        "ok-crear-juego": "Los niveles del juego se creación de forma exitosa. El código del juego es xxx te servira para que tus alumnos encuentre tu juego.",
+        "error-cerrar-juego": "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde.",
+        "ok-cerrar-juego": "La creación del juego fue exitosa."
     },
     "general-table": {
         "no": "No.",
@@ -116,14 +168,20 @@
         "estado-acitvo": "Activo",
         "estado-inacitvo": "Inactivo",
         "acciones": "Acciones",
-        "seleccionar": "Seleccionar"
+        "seleccionar": "Seleccionar",
+        "req-base": "Requerimiento desde base",
+        "error": "Debes tener minimo 5 requerimientos"
     },
     "general-tool": {
         "revisar-juego": "Revisar juego"
     },
     "tipo-juego": {
-        "juego 1": "Juego 1",
-        "juego 2": "Juego 2",
-        "juego 3": "Juego 3"
+        "titulo": "Tipo:",
+        "juego-1": "Tipo 1",
+        "juego-2": "Tipo 2",
+        "juego-3": "Tipo 3",
+        "juego-1-title": "Detectar requisitos No funcionales ambiguos y No ambiguos",
+        "juego-2-title": "Detectar requisitos funcionales de los que no son funcionales",
+        "juego-3-title": "Detectar requisitos funcionales ambiguos y no ambiguos"
     }
 }

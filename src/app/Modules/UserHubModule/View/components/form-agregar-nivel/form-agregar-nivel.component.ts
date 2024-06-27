@@ -14,13 +14,14 @@ export class FormAgregarNivelComponent implements OnInit {
   @Input() indice! : number;
   @Input() nivel! : Nivel;
   @Input() requerimientosCargados : any[] = [];
+  @Input() tipo : string = "tipo-juego.juego-1-title";
 
   @Output() _guardarRequerimiento = new EventEmitter();
   @Output() _eliminarRequerimiento = new EventEmitter();
   @Output() _finalizarRequerimiento = new EventEmitter();
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-  @ViewChild(MatSort) sort: MatSort | undefined;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   agregarRequerimiento = true;
   verificarFinalizar = false;
@@ -35,26 +36,52 @@ export class FormAgregarNivelComponent implements OnInit {
 
   requrimientoData! : Requerimiento;
   requerimientoDataCopy!: Requerimiento;
+  dataSource!: MatTableDataSource<any>;
 
 
   constructor() {
-    this.dataSource = new MatTableDataSource(this.requerimientosCargados);
+    this.dataSource = new MatTableDataSource();
    }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['requerimientosCargados']) {
-      //this.ejecutarMetodo(changes['value'].currentValue);
-      this.dataSource = new MatTableDataSource(this.requerimientosCargados);
-      if (this.paginator) {
-        this.dataSource.paginator = this.paginator;
-      } else {
-        this.dataSource.paginator = null; // Maneja el caso cuando paginator es undefined
+    if (changes['requerimientosCargados'] && this.requerimientosCargados) {
+      this.dataSource.data = this.requerimientosCargados;
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
       }
-      if (this.sort) {
-        this.dataSource.sort = this.sort;
-      } else {
-        this.dataSource.sort = null; // Maneja el caso cuando paginator es undefined
-      }
+    }
+    if(changes['tipo']) {
+      switch(this.tipo) {
+        case 'tipo-juego.juego-1-title':
+          this.options_Requerimientos = [
+            { name: 'No Funcional ambiguo', code: 'NFA' },
+            { name: 'No Funicional no ambiguo', code: 'NFN' },
+          ];
+          this.requrimientoData.opcionRequerimiento = "NFA";
+          this.requerimientoDataCopy.opcionRequerimiento = "NFA";
+          break;
+        case 'tipo-juego.juego-2-title':
+          this.options_Requerimientos = [
+            { name: 'Requisitos funcionales', code: 'RF' },
+            { name: 'Requisitos no funcionales', code: 'RNF' },
+          ];
+          this.requrimientoData.opcionRequerimiento = "RF";
+          this.requerimientoDataCopy.opcionRequerimiento = "RF";
+          break;
+        case 'tipo-juego.juego-3-title':
+          this.options_Requerimientos = [
+            { name: 'Funcional ambiguo', code: 'FA' },
+            { name: 'Funicional no ambiguo', code: 'FN' },
+          ];
+          this.requrimientoData.opcionRequerimiento = "FA";
+          this.requerimientoDataCopy.opcionRequerimiento = "FA";
+          break;
+      };
+      this.requrimientoCargado = "no";
+      this.valorAntiguoOpcion = "no";
+      this.requrimientoData.requerimiento = "";
+      this.requrimientoData.retroalimentacion = "";
+      this.requrimientoData.requerimientoBase = "No";
     }
   }
 
@@ -63,8 +90,6 @@ export class FormAgregarNivelComponent implements OnInit {
   options_Requerimientos : any[] = [
     { name: 'No funcional ambiguo', code: 'NFA' },
     { name: 'No Funicional no ambiguo', code: 'NFN' },
-    // { name: 'Funcional Ambiguo', code: 'FA' },
-    // { name: 'Funcional no ambiguo', code: 'FN' },
   ];
 
   displayedColumns: string[] = ['position', 'req', 'typeReq', 'ReqPlus', 'pts', 'base', "acctions"];
@@ -112,8 +137,6 @@ export class FormAgregarNivelComponent implements OnInit {
   //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"},
   //   {id: 1, requerimiento: "Hola", retroalimentacion: "Hola", opcionRequerimiento: "NFA"}
   // ]
-
-  dataSource!: MatTableDataSource<any>;
   
   ngOnInit() {
     this.requrimientoData = this.llenarDatoRequerimiento();
@@ -125,16 +148,8 @@ export class FormAgregarNivelComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    // if (this.paginator) {
-    //   this.dataSource.paginator = this.paginator;
-    // } else {
-    //   this.dataSource.paginator = null; // Maneja el caso cuando paginator es undefined
-    // }
-    // if (this.sort) {
-    //   this.dataSource.sort = this.sort;
-    // } else {
-    //   this.dataSource.sort = null; // Maneja el caso cuando paginator es undefined
-    // }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   llenarDatoRequerimiento() : Requerimiento {
@@ -220,7 +235,6 @@ export class FormAgregarNivelComponent implements OnInit {
   }
 
   seleccionarRequerimientoCargado(index: number) {
-    debugger;
     this.requrimientoData.requerimiento = this.requerimientosCargados[index].requerimiento;
     this.requrimientoData.retroalimentacion = this.requerimientosCargados[index].retroalimentacion;
     this.requrimientoData.opcionRequerimiento = this.requerimientosCargados[index].opcionRequerimiento;
@@ -233,6 +247,11 @@ export class FormAgregarNivelComponent implements OnInit {
 
   abrirModalRequerimientosCargados() {
     this.verRequerimientosCargados = true;
+    this.dataSource.data = this.requerimientosCargados;
+    debugger;
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   abirModalActualiza(index: number) {

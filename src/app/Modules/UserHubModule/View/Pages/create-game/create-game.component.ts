@@ -14,7 +14,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class CreateGameComponent implements OnInit {
 
   
-  
   validarCrearNivel : boolean = false;
   verificarCreacion : boolean = false;
   modalAgradecimiento = false;
@@ -24,10 +23,11 @@ export class CreateGameComponent implements OnInit {
   codigo_juego = 0;
 
   requerimientosCargados : any[] = [];
+  requerimientosCargadosTipos : any[] = [];
 
   datosJuego : DatosJuego = {
     fechaFinalizacion: this.sumarDias(new Date(), 7),
-    privacidad: 'S',
+    privacidad: '1',
     niveles: [
      {
       id_nivel: 1+'nivel',
@@ -38,9 +38,12 @@ export class CreateGameComponent implements OnInit {
     ]
   }
 
+  tipoJuego : string = "tipo-juego.juego-1-title";
+
   options_Visibilidad : any[] = [
-    { name: 'Privado', code: 'N'},
-    { name: 'Público', code: 'S'}
+    { name: 'tipo-juego.juego-1', code: 'tipo-juego.juego-1-title'},
+    { name: 'tipo-juego.juego-2', code: 'tipo-juego.juego-2-title'},
+    { name: 'tipo-juego.juego-3', code: 'tipo-juego.juego-3-title'},
   ];
 
   //requrimientoData : Requerimiento = this.llenarDatoRequerimiento();
@@ -63,9 +66,9 @@ export class CreateGameComponent implements OnInit {
     return fecha;
   }
   
-  finalizarRequerimiento(){
-    this.validarCrearNivel = true;
-  }
+  // finalizarRequerimiento(){
+  //   this.validarCrearNivel = true;
+  // }
 
   crearNuevoNivel() {
     this.validarCrearNivel = false;
@@ -91,9 +94,17 @@ export class CreateGameComponent implements OnInit {
 
   finalizarCreacion() {
     const dataLocal = JSON.parse(localStorage.getItem('persona')!);
+    debugger;
+    let tipoJuegoNumber = 0;
+    if(this.tipoJuego == "tipo-juego.juego-1-title")
+      tipoJuegoNumber = 1;
+    if(this.tipoJuego == "tipo-juego.juego-2-title")
+      tipoJuegoNumber = 2;
+    if(this.tipoJuego == "tipo-juego.juego-3-title")
+      tipoJuegoNumber = 3;
     const criteria = {
       id_profesor: dataLocal.id,
-      privacidad: this.datosJuego.privacidad,
+      id_tipo_juego: tipoJuegoNumber,
       fechaCreacion: new Date(),
       fechaFinilizacion: this.datosJuego.fechaFinalizacion,
       json: JSON.stringify(this.datosJuego.niveles)
@@ -103,11 +114,12 @@ export class CreateGameComponent implements OnInit {
       if(dataResponse.msg == 'OK'){
         this.verificarCreacion = true;
         this.codigo_juego = dataResponse.result.id_juego;
-        this.retornoMsg = "Los niveles del juego se creación de forma exitosa. El código del juego es "+this.codigo_juego+" te servira para que tus alumnos encuentre tu juego."
+        const msg = this._translateService.instant('general-msg.ok-crear-juego');
+        this.retornoMsg = msg.replace("xxx", String(this.codigo_juego))
       }
       else{
         this.verificarCreacion = false;
-        this.retornoMsg = "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde."
+        this.retornoMsg = this._translateService.instant('general-msg.error-crear-juego');
       }
       this.viewModalResponse = true;
     });
@@ -120,6 +132,7 @@ export class CreateGameComponent implements OnInit {
 
   cerrarGuardarRequerimientos() {
     this.verModalGuardarRequerimientos = false;
+    this._router.navigateByUrl('/home/juegos-creados');
   }
 
   guardarRequerimientos() {
@@ -160,8 +173,8 @@ export class CreateGameComponent implements OnInit {
     });
     this._profesorService.guardarRequerimiento(criteria).subscribe(data=>{
       if(data.msg == 'OK') {
+        this.verModalGuardarRequerimientos = false;
         this.modalAgradecimiento = true;
-        this.cerrarGuardarRequerimientos();
       }
       else{
         this.openSnackBar(this._translateService.instant('Error al guardar requerimientos'),'custom-snackbar_fallido');
@@ -174,7 +187,7 @@ export class CreateGameComponent implements OnInit {
 
   cerrarModalAgradecimiento() {
     this.modalAgradecimiento = false;
-    this._router.navigateByUrl('/home/perfil');
+    this._router.navigateByUrl('/home/juegos-creados');
   }
 
   cargarRequerimientos() {
@@ -182,7 +195,6 @@ export class CreateGameComponent implements OnInit {
       if(dataResponse.msg == 'OK') {
         this.requerimientosCargados.push(...dataResponse.result.map((data:any,index:any)=>{
           let TipoReq = "";
-          debugger;
           switch(data.tipo_requerimiento){
             case "1":
               TipoReq = "NFA";
@@ -209,8 +221,35 @@ export class CreateGameComponent implements OnInit {
               retroalimentacion: data.retroalimentacion,
               opcionRequerimiento: TipoReq
             }
-        }))
+        }));
+       this.filtroTipo(this.tipoJuego);
       }
+    })
+  }
+
+  elegitOtroTipo(event : string) {
+    this.filtroTipo(event);
+  }
+
+  filtroTipo(event : string){
+    this.requerimientosCargadosTipos = this.requerimientosCargados.filter(data=> {
+      switch(event) {
+        case 'tipo-juego.juego-1-title':
+          if(data.opcionRequerimiento == 'NFA' || data.opcionRequerimiento == 'NFN'){
+            return data
+          }
+          break;
+        case 'tipo-juego.juego-2-title':
+          if(data.opcionRequerimiento == 'RF' || data.opcionRequerimiento == 'RNF'){
+            return data
+          }
+          break;
+        case 'tipo-juego.juego-3-title':
+          if(data.opcionRequerimiento == 'FA' || data.opcionRequerimiento == 'FN'){
+            return data
+          }
+          break;
+      };
     })
   }
 

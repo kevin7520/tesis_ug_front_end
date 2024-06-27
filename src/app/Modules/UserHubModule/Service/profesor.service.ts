@@ -34,5 +34,10 @@ export class ProfesorService {
     return this.http.post<any>(this.urlEndPoint,criteriaRequest);
   }
 
+  cerrarJuego(criteria : any) : Observable<any> {
+    criteria.action = "cerrarJuego";
+    return this.http.post<any>(this.urlEndPoint,criteria);
+  }
+
 
 }

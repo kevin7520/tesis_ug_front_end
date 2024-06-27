@@ -1,66 +1,70 @@
 <div style="max-width: 99%;" class="w-full">
   <div class="w-full ml-2 mb-4">
     <form action="">
-      <p class="mt-4 text-center color-primary tex-titulo-Serius-Game">CREACIÓN DE NIVELES</p>
+      <p class="mt-4 text-center color-primary tex-titulo-Serius-Game">{{'user-hub-module.crear-juego.titulo'}}</p>
       <div class="w-full grid mt-4 gap-3">
         <div class="w-max col-fixed">
-          <app-datepicker label="Fecha Finalización" [hint]="'Es la fecha que finaliza tu juego por defecto son 7 días'" [(value)]="datosJuego.fechaFinalizacion"></app-datepicker>
+          <app-datepicker [label]="'user-hub-module.crear-juego.fecha-titulo'" 
+                          [hint]="'user-hub-module.crear-juego.fecha-hint'" 
+                          [(value)]="datosJuego.fechaFinalizacion"></app-datepicker>
         </div>
-        <!-- <div class="w-max col-fixed">
+        <div class="w-max col-fixed">
           <app-ui-kaas-input-select 
-                                 label="Privacidad del juego" 
-                                 hint="Elige si tu juego será visible a todo el público o séra provado." 
-                                 [(value)]="datosJuego.privacidad" 
+                                 [label]="'user-hub-module.crear-juego.tipo-titulo'" 
+                                 [hint]="'user-hub-module.crear-juego.tipo-hint'" 
+                                 [(value)]="tipoJuego" 
                                  [options]="options_Visibilidad" 
+                                 [readOnly]="datosJuego.niveles[0].requerimientos.length > 0"
+                                 (onChange)="elegitOtroTipo($event)"
                                  [id_menu]="'visibilidad_juego'">
           </app-ui-kaas-input-select>
-        </div> -->
+        </div>
       </div>
         <ng-container *ngFor="let data of datosJuego.niveles; let indice = index">
             <app-form-agregar-nivel 
                                       [indice]="indice" 
                                       [nivel]="data" 
-                                      [requerimientosCargados]="requerimientosCargados"
+                                      [requerimientosCargados]="requerimientosCargadosTipos"
+                                      [tipo]="tipoJuego"
                                       (_guardarRequerimiento)="guardarRequerimiento($event,indice)"
                                       (_eliminarRequerimiento)="eliminarRequerimiento(indice,$event)"
-                                      (_finalizarRequerimiento)="finalizarRequerimiento()"></app-form-agregar-nivel>
+                                      (_finalizarRequerimiento)="finalizarCreacion()"></app-form-agregar-nivel>
         </ng-container>
-        <div class="w-full flex flex-wrap justify-content-center mt-4" *ngIf="validarCrearNivel">
+        <!-- <div class="w-full flex flex-wrap justify-content-center mt-4" *ngIf="validarCrearNivel">
           <div class="w-max flex flex-wrap gap-3">
-            <app-ui-kaas-button [label]="'Finalizar Juego' | translate" 
+            <app-ui-kaas-button [label]="'general.boton-finalizar-juego' | translate" 
                                 [butonFull]="false" 
                                 buttonSize="small"
-                                [background_color]="'bg-red-600'"
                                 (eventClick)="finalizarCreacion()">
             </app-ui-kaas-button>
-            <app-ui-kaas-button [label]="'Agregar nivel' | translate" 
-                                [butonFull]="false" 
-                                buttonSize="small"
-                                (eventClick)="crearNuevoNivel()">
-            </app-ui-kaas-button>
           </div>
-        </div>
+        </div> -->
     </form>
   </div> 
 </div>
 <app-modal  *ngIf="viewModalResponse" 
-                  [titulo]="'Creación Juego'" 
+                  [titulo]="'user-hub-module.crear-juego.titulo' | translate" 
                   [content]="retornoMsg"
                   [hideClose]="false"
-                  [peticionError]="!verificarCreacion">
+                  [peticionError]="!verificarCreacion"
+                  [width]="'50%'">
     <div app-footer-mensaje>
-      <button mat-raised-button class="button-aceptar" (click)="verJuegoshome()">Aceptar</button>
+      <app-ui-kaas-button [label]="'general.boton-aceptar' | translate" 
+                                [butonFull]="false" 
+                                buttonSize="small"
+                                (eventClick)="verJuegoshome()">
+        </app-ui-kaas-button>
     </div> 
 </app-modal>
 
-<app-modal [titulo]="'Ayudanos a mejorar'" *ngIf="verModalGuardarRequerimientos">
+<app-modal [titulo]="'user-hub-module.crear-juego.modales.titulo-ayudanos' | translate" [width]="'45%'" *ngIf="verModalGuardarRequerimientos">
   <div app-content class="w-full">
     <div class="w-full grid">
       <div class="col-5 py-0">
         <img src="assets/Img/Icons/iconos/colaboracion.svg" alt="no se cargo imagen">
       </div>
       <div class="col py-0 flex flex-wrap align-content-center">
-        <p>Ayudanos a mejorar nuestra base de datos de requerimiento. Deseas que tus requerimientos se queden alamcenadas en nuestra base de datos para que en un futuro otros docentes puedan ocuparlas?.</p>
+        <p class="text-subtitulos-3-size text-justify">{{'user-hub-module.crear-juego.modales.subtitulo-ayudanos' | translate}}</p>
       </div>
     </div>
   </div>
@@ -81,20 +85,20 @@
   </div>
 </app-modal>
 
-<app-modal [titulo]="'Gracias por tu ayuda'" *ngIf="modalAgradecimiento">
+<app-modal [titulo]="'user-hub-module.crear-juego.modales.titulo-agradecimiento' | translate" [width]="'45%'" *ngIf="modalAgradecimiento">
   <div app-content class="w-full">
     <div class="w-full grid">
       <div class="col-5 py-0">
         <img src="assets/Img/Icons/iconos/agredecimiento.svg" alt="no se cargo imagen">
       </div>
       <div class="col py-0 flex flex-wrap align-content-center">
-        <p>Los requerimientos se guardaron de forma exitoso. Ahora si desas crear más juegos tus requerimientos se enbcontraran cargados en la base</p>
+        <p class="text-subtitulos-3-size text-justify">{{'user-hub-module.crear-juego.modales.subtitulo-agradecimiento' | translate}}</p>
       </div>
     </div>
   </div>
   <div app-footer>
     <div class="w-full flex flex-grap justify-content-center">
-      <app-ui-kaas-button [label]="'general.button-aceptar' | translate" 
+      <app-ui-kaas-button [label]="'general.boton-aceptar' | translate" 
                           [butonFull]="true" 
                           buttonSize="small"
                           (eventClick)="cerrarModalAgradecimiento()">

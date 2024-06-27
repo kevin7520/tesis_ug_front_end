@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ui-kaas-input',
@@ -15,15 +16,16 @@ export class UiKaasInputComponent implements OnInit {
   @Input() icono : string = "";
   @Input() readOnly : boolean = false;
   @Input() type : string = "text";
+  @Input() selectType : boolean = false;
   @Output() valueChange = new EventEmitter<string>();
   @Output() iconClick = new EventEmitter<string>();
-  constructor() { }
+  constructor(private _translateService: TranslateService) { }
 
   mostrar_password: boolean = false;
   ngOnInit() {
-    // if(this.readOnly && this.icono == '') {
-    //   this.icono = 'bi bi-lock-fill'
-    // }
+    if(this.selectType) {
+      this.value = this._translateService.instant(this.value);
+    }
   }
 
   // iconoRetorno() : string {

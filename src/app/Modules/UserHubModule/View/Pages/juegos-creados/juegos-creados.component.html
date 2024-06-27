@@ -16,7 +16,7 @@
         
             <ng-container matColumnDef="tipo">
               <th mat-header-cell *matHeaderCellDef> {{'general-table.tipo_req' | translate}} </th>
-              <td mat-cell *matCellDef="let element"> No funcionales </td>
+              <td mat-cell *matCellDef="let element"> {{element.tipo_juego | translate}} </td>
             </ng-container>
                     
             <ng-container matColumnDef="fecha_creacion">
@@ -31,7 +31,7 @@
         
             <ng-container matColumnDef="estado">
               <th mat-header-cell *matHeaderCellDef> {{'general-table.estado' | translate}} </th>
-              <td mat-cell *matCellDef="let element"> Activo </td>
+              <td mat-cell *matCellDef="let element"> {{element.estado == 1 ? 'A' : 'I'}} </td>
             </ng-container>
         
             <ng-container matColumnDef="acctions">
@@ -126,9 +126,11 @@
                                 [background_color]="'bg-red-600'"
                                 (eventClick)="regresarJuego()">
             </app-ui-kaas-button>
-            <app-ui-kaas-button [label]="'general.boton-cerrar-juego' | translate" 
+            <app-ui-kaas-button *ngIf="this.juegoSeleccionado.estado == 'A'"
+                                [label]="'general.boton-cerrar-juego' | translate" 
                                 [butonFull]="false" 
-                                buttonSize="small">
+                                buttonSize="small"
+                                (eventClick)="cerrarJuego()">
             </app-ui-kaas-button>
           </div>
         </div>

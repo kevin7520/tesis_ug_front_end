@@ -73,6 +73,19 @@
         },
         "reporte": {
             "titulo": "Report generation"
+        },
+        "crear-juego": {
+            "titulo": "Game Creation",
+            "fecha-titulo": "Completion Date",
+            "fecha-hint": "This is the date when your game finishes. By default, it is set to 7 days.",
+            "tipo-titulo": "Game Type",
+            "tipo-hint": "This is the type of game you should choose.",
+            "modales": {
+                "titulo-ayudanos": "Help Us Improve Our Requirements Database",
+                "subtitulo-ayudanos": "Would you like your requirements to be stored in our database so that other teachers can use them in the future? Your contribution will help us create a more complete and useful library for everyone. Your collaboration is very valuable!",
+                "titulo-agradecimiento": "Thank You for Your Help",
+                "subtitulo-agradecimiento": "Your requirements have been successfully stored. Now, if you want to create more games, you will find your requirements already loaded in our database. Thank you for your collaboration, we are committed to offering you a better experience."
+            }
         }
     },
     "404-page": {
@@ -89,18 +102,31 @@
         "boton-aceptar": "Accept",
         "boton-cancelar": "Cancel",
         "boton-salir": "Exit",
+        "boton-actualizar": "Update",
+        "boton-seleccionar": "Select",
+        "boton-no": "No",
+        "boton-si": "Yes",
+        "boton-eliminar-req": "Delete requirement",
+        "boton-guardar-req": "Save requirement",
+        "boton-agregar-req": "Add requirement",
+        "boton-editar-req": "Requirement from scratch",
+        "boton-seleccionar-req": "Select requirement",
         "boton-crear-juego": "Create Game",
         "boton-cerrar-juego": "Exit game",
         "boton-generar": "Generate",
+        "boton-finalizar-juego": "Finish game",
         "estudiante": "Student",
-        "profesor": "Professor"
+        "profesor": "Professor",
+        "opcional": "Optional"
     },
     "general-msg": {
         "error-get-user": "User not found. Please try again later",
         "error-put-user": "The user was not successfully edited. Please try again later.",
         "sucess-put-user": "The user was edited successfully.",
         "error-put-user-password": "The current password provided is incorrect.",
-        "error-pasword-repetido": "The current password is the same as the new password entered, they must be different"
+        "error-pasword-repetido": "The current password is the same as the new password entered, they must be different",
+        "error-crear-juego": "The game creation was not successful. Please try again later.",
+        "ok-crear-juego": "The game levels were created successfully. The game code is xxx, which will help your students find your game."
     },
     "general-table": {
         "no": "No.",
@@ -116,14 +142,20 @@
         "estado-acitvo": "Active",
         "estado-inacitvo": "Inactive",
         "acciones": "Actions",
-        "seleccionar": "Select"
+        "seleccionar": "Select",
+        "req-base": "Requirement from base",
+        "error": "You must have at least 5 requirements"
     },
     "general-tool": {
         "revisar-juego": "Review Game"
     },
     "tipo-juego": {
-        "juego 1": "X Juego 1",
-        "juego 2": "X Juego 3",
-        "juego 3": "X Juego 3"
+        "titulo": "Type:",
+        "juego-1": "Type 1",
+        "juego-2": "Type 2",
+        "juego-3": "Type 3",
+        "juego-1-title": "Detect ambiguous and unambiguous non-functional requirements",
+        "juego-2-title": "Detect functional requirements from non-functional ones",
+        "juego-3-title": "Detect ambiguous and unambiguous functional requirements"
     }
 }

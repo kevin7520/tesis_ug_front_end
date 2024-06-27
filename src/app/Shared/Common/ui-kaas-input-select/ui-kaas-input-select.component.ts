@@ -15,6 +15,7 @@ export class UiKaasInputSelectComponent implements OnInit, DoCheck {
   @Input() id_menu : string = "";
   @Input() readOnly : boolean = false;
   @Output() valueChange = new EventEmitter<string>();
+  @Output() onChange = new EventEmitter<string>();
 
   classStyleActive : boolean = false;
   selectString : string = "";
@@ -78,6 +79,7 @@ export class UiKaasInputSelectComponent implements OnInit, DoCheck {
     this.selectString = this.options[index_label].name;
     this.value = this.options[index_label].code;
     this.valueChange.emit(this.value);
+    this.onChange.emit(this.value);
   }
 
   onChangeTypeGame(code : string){
