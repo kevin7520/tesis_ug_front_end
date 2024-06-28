@@ -26,16 +26,7 @@ export class UiKaasInputComponent implements OnInit {
     if(this.selectType) {
       this.value = this._translateService.instant(this.value);
     }
-  }
-
-  // iconoRetorno() : string {
-  //   debugger;
-  //   if(this.readOnly && this.icono == '') {
-  //     this.icono = 'bi bi-lock-fill'
-  //   }
-  //   return this.icono;
-  // }
-  
+  }  
 
   blockEvent(event: KeyboardEvent) {
     if(this.characterFilter != 'all'){

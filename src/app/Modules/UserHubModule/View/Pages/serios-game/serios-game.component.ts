@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AlumnoService } from '../../../Service/alumno.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { Requerimiento } from '../../Model/requerimientos.model';
 @Component({
   selector: 'app-serios-game',
   templateUrl: './serios-game.component.html',
@@ -23,6 +24,11 @@ export class SeriosGameComponent implements OnInit{
   event: Event | undefined;
   valorCodigo : string = "";
 
+  tipoJuego: string = "";
+  ambiguosAndFuncionales: string = "";
+  noAmbiguosAndNoFuncionales: string = "";
+  requerimientoFinal: string = "";
+
   id_juegoTemp : number = 0;
   //juegosPublicos: any[] = [];
 
@@ -40,11 +46,12 @@ export class SeriosGameComponent implements OnInit{
     this.subs.add(dragulaService.dropModel(this.REQUERIMIENTOS_DRAGULA)
       .subscribe(({ el, target, source, sourceModel, targetModel, item }) => {
         const itemId = target!.id;
+        const puntosActual = this.puntos;
         if(itemId != 'requerimientos_no_funcionales') {
           if(item.ambiguo){
             if(itemId == 'requerimientos_ambiguos'){
-              item.requerimientoCompleto = 'si',
-              this.puntos = (item.requrimientoFallido) ? this.puntos : this.puntos + 100;
+              item.requerimientoCompleto = 'si';
+              this.puntos = (item.requrimientoFallido) ? puntosActual : puntosActual + item.puntos;
             }
             else {
               item.requerimientoCompleto = 'error';
@@ -56,8 +63,8 @@ export class SeriosGameComponent implements OnInit{
           }
           else {
             if(itemId == 'requerimientos_no_ambiguos'){
-              item.requerimientoCompleto = 'si'
-              this.puntos = (item.requrimientoFallido) ? this.puntos : this.puntos + 100;
+              item.requerimientoCompleto = 'si';
+              this.puntos = (item.requrimientoFallido) ? puntosActual : puntosActual + item.puntos;
             }
             else {
               item.requerimientoCompleto = 'error';
@@ -94,23 +101,53 @@ export class SeriosGameComponent implements OnInit{
     }
     this._alumnoService.recuperarJuego(criteria).subscribe((dataResponse) => {
       if(dataResponse.msg == 'OK') {
-        const jsonTemp = JSON.parse(dataResponse.result.json);
-        this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data:any)=> {
-          return {
-            texto: data.requerimiento,
-            retroAlimentacion: data.retroalimentacion,
-            ambiguo: (data.opcionRequerimiento == 'NFA') ? true : false,
-            requrimientoFallido: data.requerimientoFallido,
-            requerimientoCompleto: "no",
-            id: data.id
+        if(dataResponse.result.estado == 1) {
+          let tipoJuegoInicial = "";
+          switch(dataResponse.result.id_tipo_juego) {
+            case '1':
+                this.tipoJuego = 'tipo-juego.juego-1-title';
+                this.ambiguosAndFuncionales = 'user-hub-module.serios-game.ambiguos';
+                this.noAmbiguosAndNoFuncionales = 'user-hub-module.serios-game.no-ambiguos';
+                this.requerimientoFinal = 'user-hub-module.serios-game.req-no-funcionales';
+                tipoJuegoInicial = "NFA"
+                break;
+            case '2':
+              this.ambiguosAndFuncionales = 'user-hub-module.serios-game.funcionales';
+              this.noAmbiguosAndNoFuncionales = 'user-hub-module.serios-game.no-funcionales';
+              this.requerimientoFinal = 'user-hub-module.serios-game.req-funcionales-no-funcionales';
+              this.tipoJuego = 'tipo-juego.juego-2-title';
+              tipoJuegoInicial = "RF"
+              break;
+            case '3':
+              this.ambiguosAndFuncionales = 'user-hub-module.serios-game.ambiguos';
+              this.noAmbiguosAndNoFuncionales = 'user-hub-module.serios-game.no-ambiguos';
+              this.requerimientoFinal = 'user-hub-module.serios-game.req-funcionales';
+              tipoJuegoInicial = "FA"
+              this.tipoJuego = 'tipo-juego.juego-3-title';
+              break;
+          };
+          const jsonTemp = JSON.parse(dataResponse.result.json);
+          this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data:any)=> {
+            return {
+              texto: data.requerimiento,
+              retroAlimentacion: data.retroalimentacion,
+              ambiguo: (data.opcionRequerimiento == tipoJuegoInicial) ? true : false,
+              requrimientoFallido: data.requerimientoFallido,
+              requerimientoCompleto: "no",
+              id: data.id,
+              puntos: data.puntosAdicionales
 
-          }
-        })
-        this.pedirCodigo = false;
-        this.id_juegoTemp = Number(this.valorCodigo);
+            }
+          })
+          this.pedirCodigo = false;
+          this.id_juegoTemp = Number(this.valorCodigo);
+        }
+        else {
+          this.openSnackBar(this._translateService.instant('general-msg.esta-incorrecto'),'custom-snackbar_fallido');
+        }
       }
       else {
-        this.openSnackBar(this._translateService.instant('Código incorrecto'),'custom-snackbar_fallido');
+        this.openSnackBar(this._translateService.instant('general-msg.codigo-incorrecto'),'custom-snackbar_fallido');
       }
       this.valorCodigo = "";
     })
@@ -177,13 +214,13 @@ export class SeriosGameComponent implements OnInit{
     this._alumnoService.guardarPuntaje(criteria).subscribe(dataResponse=>{
       if(dataResponse.msg == 'OK') {
         if(dataResponse.result == "usuario_jugado") {
-          this.openSnackBar(this._translateService.instant('USTED YA JUGO PREVIAAMENTE ESTE JUEGO'),'custom-snackbar_fallido');
+          this.openSnackBar(this._translateService.instant('general-msg.error-guardar-juego'),'custom-snackbar_fallido');
         }
         if(dataResponse.result == "error_insert"){
-          this.openSnackBar(this._translateService.instant('ERROR AL GUARDAR PUNTEWJE. INTENTOLO MAS TARDE'),'custom-snackbar_fallido');
+          this.openSnackBar(this._translateService.instant('general-msg.error-guardar-juego-2'),'custom-snackbar_fallido');
         }
         if(dataResponse.result == "exito_insert") {
-          this.openSnackBar(this._translateService.instant('PUNTAJE GUARDADO CON EXITO'),'custom-snackbar_exitoso');
+          this.openSnackBar(this._translateService.instant('general-msg.ok-guardar-juego-2'),'custom-snackbar_exitoso');
         }
         this.reiciarComponente();
         this.mostrarFinilazion = false;

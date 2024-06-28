@@ -1,12 +1,12 @@
 <div style="max-width: 99%;" class="w-full">
   <ng-container *ngIf="pedirCodigo;else juegoInicio">
     <div class="w-full h-full mt-5 flex flex-wrap justify-content-center">
-      <p class="w-full text-center">Por favor, ingresa el código del juego</p>
+      <p class="w-full text-center">{{'user-hub-module.serios-game.titulo' | translate}}</p>
       <div class="w-max flex flex-wrap align-items-center gap-3 mt-4">
         <app-ui-kaas-input [(value)]="valorCodigo"></app-ui-kaas-input>
         <div>
           <app-ui-kaas-button
-                            [label]="'Buscar' | translate" 
+                            [label]="'general.boton-buscar' | translate" 
                             [butonFull]="true" 
                             buttonSize="small"
                             (eventClick)="buscarJuego()">
@@ -53,17 +53,17 @@
   <ng-template #juegoInicio>
     <div class="mt-4 w-full flex justify-content-between flex-wrap">
       <div class="w-max col-fixed">
-        <p class="color-primary font-medium text-subtitulos-3-size">Puntaje:
+        <p class="color-primary font-medium text-subtitulos-3-size">{{'user-hub-module.serios-game.puntaje' | translate}}
          <span [ngClass]="{'text-teal-700': this.puntos >= 0, 'text-red-600': this.puntos < 0}">{{this.puntos}}</span>
         </p>
       </div>
       <div class="w-max col-fixed">
-       <p class="text-purple-600 font-medium text-subtitulos-2-size">Nivel 1</p>
+       <p class="text-purple-600 font-medium text-subtitulos-2-size">{{'tipo-juego.titulo' | translate}} {{tipoJuego | translate}}</p>
       </div>
      </div>
      <div class="wrapper grid m-0 mt-4">
        <div class="col-4">
-         <p class="text-center text-subtitulos-2-size mb-4">Ambiguos</p>
+         <p class="text-center text-subtitulos-2-size mb-4">{{ambiguosAndFuncionales | translate}}</p>
          <div id="requerimientos_ambiguos" class="w-full h-full bg-primary-200 shadow-5 estilo-cuadro-requisitos flex flex-column m-0 p-2" [dragula]="REQUERIMIENTOS_DRAGULA"  [(dragulaModel)]="requesitosAmbiguos">
            <div class="col-12" *ngFor="let requisito of requesitosAmbiguos">
              <div class="w-full estilo-container-requisitos p-3" [ngClass]="{'bg-green-500': requisito.requerimientoCompleto == 'si', 'bg-red-500': requisito.requerimientoCompleto == 'error'}">
@@ -81,7 +81,7 @@
          </div>
        </div>
        <div class="col-4">
-         <p class="text-center text-subtitulos-2-size mb-4">Conjunto de requitos no funcionales</p>
+         <p class="text-center text-subtitulos-2-size mb-4">{{requerimientoFinal | translate}}</p>
          <div id="requerimientos_no_funcionales" class="w-full h-full bg-primary-200 shadow-5 estilo-cuadro-requisitos flex flex-column m-0 p-2" [dragula]="REQUERIMIENTOS_DRAGULA" [(dragulaModel)]="requisitosNoFuncionales">
            <div class="col-12" *ngFor="let requisito of requisitosNoFuncionales" [id]="requisito.id">
              <div class="estilo-container-requisitos w-full p-3">
@@ -94,7 +94,7 @@
          </div>
        </div>
        <div class="col-4">
-         <p class="text-center text-subtitulos-2-size mb-4">No Ambiguos</p>
+         <p class="text-center text-subtitulos-2-size mb-4">{{noAmbiguosAndNoFuncionales | translate}}</p>
          <div id="requerimientos_no_ambiguos" class="w-full h-full bg-primary-200 shadow-5 estilo-cuadro-requisitos flex flex-column m-0 p-2" [dragula]="REQUERIMIENTOS_DRAGULA" [(dragulaModel)]="requesitosNoAmbiguos">
            <div class="col-12" *ngFor="let requisito of requesitosNoAmbiguos">
              <div class="estilo-container-requisitos w-full p-3" [ngClass]="{'bg-green-500': requisito.requerimientoCompleto == 'si', 'bg-red-500': requisito.requerimientoCompleto == 'error'}">
@@ -113,7 +113,7 @@
        </div>
      </div>
   </ng-template>
-  <app-modal  [titulo]="'Retroalimentación del Juego'"  
+  <app-modal  [titulo]="'user-hub-module.serios-game.modales.titulo-1' | translate"  
             *ngIf="mostrarRetoAlimentacion"
             [hideClose]="false"
             [peticionError]="true">
@@ -129,12 +129,12 @@
     </app-ui-kaas-button>
   </div>
   </app-modal>
-  <app-modal  [titulo]="'¡Fin del Juego!'"  
+  <app-modal  [titulo]="'user-hub-module.serios-game.modales.titulo-2' | translate"  
               *ngIf="mostrarFinilazion"
               [hideClose]="false"
               [peticionError]="true">
     <div app-content>
-      <p>El juego ha llegado a su fin. ¡Gracias por jugar!</p>
+      <p>{{'user-hub-module.serios-game.modales.subtitle-2' | translate}}</p>
     </div>
     <div app-footer>
       <app-ui-kaas-button class="w-full" 

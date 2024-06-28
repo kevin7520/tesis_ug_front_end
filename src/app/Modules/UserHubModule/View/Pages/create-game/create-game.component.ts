@@ -94,7 +94,6 @@ export class CreateGameComponent implements OnInit {
 
   finalizarCreacion() {
     const dataLocal = JSON.parse(localStorage.getItem('persona')!);
-    debugger;
     let tipoJuegoNumber = 0;
     if(this.tipoJuego == "tipo-juego.juego-1-title")
       tipoJuegoNumber = 1;

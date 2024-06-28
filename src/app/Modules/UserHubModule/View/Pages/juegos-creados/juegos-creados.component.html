@@ -31,7 +31,7 @@
         
             <ng-container matColumnDef="estado">
               <th mat-header-cell *matHeaderCellDef> {{'general-table.estado' | translate}} </th>
-              <td mat-cell *matCellDef="let element"> {{element.estado == 1 ? 'A' : 'I'}} </td>
+              <td mat-cell *matCellDef="let element"> {{(element.estado == 1 ? 'general.acitvo' : 'general.inacitvo')  | translate}} </td>
             </ng-container>
         
             <ng-container matColumnDef="acctions">

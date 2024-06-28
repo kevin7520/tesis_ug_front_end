@@ -85,7 +85,47 @@
                 "subtitulo-ayudanos": "Would you like your requirements to be stored in our database so that other teachers can use them in the future? Your contribution will help us create a more complete and useful library for everyone. Your collaboration is very valuable!",
                 "titulo-agradecimiento": "Thank You for Your Help",
                 "subtitulo-agradecimiento": "Your requirements have been successfully stored. Now, if you want to create more games, you will find your requirements already loaded in our database. Thank you for your collaboration, we are committed to offering you a better experience."
-            }
+            },
+            "componente-form": {
+                "cargar-req-titulo": "Load Requirements",
+                "cargar-req-subtitulo": "You can load requirements created by you or other teachers",
+                "requerimiento-titulo": "Requirement",
+                "type-requerimiento-titulo": "Type of Requirement",
+                "retroA": "Feedback",
+                "puntos": "Additional Points",
+                "modal-1": {
+                "titulo": "End Game",
+                "subtitle": "Are you sure you want to end the game? Once ended, the created game cannot be edited."
+                },
+                "modal-2": {
+                "titulo": "Missing Requirements",
+                "subtitle": "Only one type of requirement was added, and at least two different types of requirements must be saved."
+                },
+                "modal-3": {
+                "titulo": "Choose Saved Requirements",
+                "subtitle": "Only one type of requirement was added, and at least two different types of requirements must be saved."
+                },
+                "modal-4": {
+                "titulo": "Edit Your Requirement",
+                "subtitle": "Only one type of requirement was added, and at least two different types of requirements must be saved."
+                }
+              }
+        },
+        "serios-game": {
+            "titulo": "Please enter the game code",
+            "puntaje": "Score:",
+            "modales": {
+            "titulo-1": "Game Feedback",
+            "titulo-2": "End of Game!",
+            "subtitle-2": "The game has come to an end. Thank you for playing!"
+            },
+            "ambiguos": "Ambiguous",
+            "no-ambiguos": "Not Ambiguous",
+            "funcionales": "Functional",
+            "no-funcionales": "Non-Functional",
+            "req-no-funcionales": "Set of non-functional requirements",
+            "req-funcionales": "Set of functional requirements",
+            "req-funcionales-no-funcionales": "Set of requirements"
         }
     },
     "404-page": {
@@ -106,6 +146,7 @@
         "boton-seleccionar": "Select",
         "boton-no": "No",
         "boton-si": "Yes",
+        "boton-buscar": "Search",
         "boton-eliminar-req": "Delete requirement",
         "boton-guardar-req": "Save requirement",
         "boton-agregar-req": "Add requirement",
@@ -117,7 +158,9 @@
         "boton-finalizar-juego": "Finish game",
         "estudiante": "Student",
         "profesor": "Professor",
-        "opcional": "Optional"
+        "opcional": "Optional",
+        "inacitvo": "Inactive",
+        "acitvo": "Active"
     },
     "general-msg": {
         "error-get-user": "User not found. Please try again later",
@@ -126,7 +169,14 @@
         "error-put-user-password": "The current password provided is incorrect.",
         "error-pasword-repetido": "The current password is the same as the new password entered, they must be different",
         "error-crear-juego": "The game creation was not successful. Please try again later.",
-        "ok-crear-juego": "The game levels were created successfully. The game code is xxx, which will help your students find your game."
+        "ok-crear-juego": "The game levels were created successfully. The game code is xxx, which will help your students find your game.",
+        "error-cerrar-juego": "The game creation was not successful. Please try again later.",
+        "ok-cerrar-juego": "The game creation was successful.",
+        "ok-guardar-juego": "Score saved successfully",
+        "error-guardar-juego": "You have already played this game before",
+        "error-guardar-juego-2": "Error saving the score. Please try again later",
+        "codigo-incorrecto": "Incorrect code",
+        "esta-incorrecto": "The game is closed"
     },
     "general-table": {
         "no": "No.",

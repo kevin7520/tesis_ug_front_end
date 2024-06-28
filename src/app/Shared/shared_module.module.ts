@@ -33,18 +33,19 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MY_DATE_FORMATS } from '../Utils/fechaFormateada';
 
-export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
-  },
-  display: {
-    dateInput: 'input',
-    monthYearLabel: { year: 'numeric', month: 'short' },
-    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
-    monthYearA11yLabel: { year: 'numeric', month: 'long' },
-  },
-};
+// export const MY_DATE_FORMATS = {
+//   parse: {
+//     dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+//   },
+//   display: {
+//     dateInput: 'input',
+//     monthYearLabel: { year: 'numeric', month: 'short' },
+//     dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+//     monthYearA11yLabel: { year: 'numeric', month: 'long' },
+//   },
+// };
 
 @NgModule({
   imports: [

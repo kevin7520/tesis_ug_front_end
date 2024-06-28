@@ -110,6 +110,22 @@
                     "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
                 }
             }
+        },
+        "serios-game": {
+            "titulo": "Por favor, ingresa el código del juego",
+            "puntaje": "Puntaje:",
+            "modales": {
+                "titulo-1": "Retroalimentación del Juego",
+                "titulo-2": "¡Fin del Juego!",
+                "subtitle-2": "El juego ha llegado a su fin. ¡Gracias por jugar!"
+            },
+            "ambiguos": "Ambiguos",
+            "no-ambiguos": "No Ambiguos",
+            "funcionales": "Funcionales",
+            "no-funcionales": "No Funcionales",
+            "req-no-funcionales": "Conjunto de requitos no funcionales",
+            "req-funcionales": "Conjunto de requitos funcionales",
+            "req-funcionales-no-funcionales": "Conjunto de requitos"
         }
     },
     "404-page": {
@@ -130,6 +146,7 @@
         "boton-seleccionar": "Seleccionar",
         "boton-no": "No",
         "boton-si": "Sí",
+        "boton-buscar": "Buscar",
         "boton-eliminar-req": "Eliminar requerimiento",
         "boton-guardar-req": "Guardar requerimiento",
         "boton-agregar-req": "Agregar requerimiento",
@@ -141,7 +158,9 @@
         "boton-finalizar-juego": "Finalizar juego",
         "estudiante": "Estudiante",
         "profesor": "Profesor",
-        "opcional": "Opcional"
+        "opcional": "Opcional",
+        "inacitvo": "Inactivo",
+        "acitvo": "Activo"
     },
     "general-msg": {
         "error-get-user": "El usuario no fue encontrado. Intentolo más tarde",
@@ -152,7 +171,12 @@
         "error-crear-juego": "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde.",
         "ok-crear-juego": "Los niveles del juego se creación de forma exitosa. El código del juego es xxx te servira para que tus alumnos encuentre tu juego.",
         "error-cerrar-juego": "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde.",
-        "ok-cerrar-juego": "La creación del juego fue exitosa."
+        "ok-cerrar-juego": "La creación del juego fue exitosa.",
+        "ok-guardar-juego": "Puntuación guardada con éxito",
+        "error-guardar-juego": "Ya has jugado este juego anteriormente",
+        "error-guardar-juego-2": "Error al guardar la puntuación. Inténtelo más tarde",
+        "codigo-incorrecto": "Código incorrecto",
+        "esta-incorrecto": "El juego esta cerrado"
     },
     "general-table": {
         "no": "No.",

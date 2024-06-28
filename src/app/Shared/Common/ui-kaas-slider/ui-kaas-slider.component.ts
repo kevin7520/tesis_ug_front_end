@@ -19,8 +19,6 @@ export class UiKaasSliderComponent implements OnInit {
   }
 
   onValueChange(value: any) {
-    //debugger;
-    //this.value = this.value;
     this.valueChange.emit(this.value);
   }
 

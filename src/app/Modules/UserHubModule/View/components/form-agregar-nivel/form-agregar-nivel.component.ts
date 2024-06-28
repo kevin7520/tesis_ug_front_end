@@ -248,7 +248,6 @@ export class FormAgregarNivelComponent implements OnInit {
   abrirModalRequerimientosCargados() {
     this.verRequerimientosCargados = true;
     this.dataSource.data = this.requerimientosCargados;
-    debugger;
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
