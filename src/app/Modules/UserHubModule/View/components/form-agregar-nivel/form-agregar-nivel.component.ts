@@ -157,7 +157,7 @@ export class FormAgregarNivelComponent implements OnInit {
     const data : Requerimiento = {
       requerimiento: "",
       retroalimentacion: "",
-      opcionRequerimiento: "NFA",
+      opcionRequerimiento: this.options_Requerimientos[0].code,
       puntosAdicionales: 100,
       id: id_req,
       requerimientoFallido: false,
