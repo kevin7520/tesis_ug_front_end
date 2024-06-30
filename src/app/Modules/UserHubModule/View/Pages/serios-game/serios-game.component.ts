@@ -127,7 +127,7 @@ export class SeriosGameComponent implements OnInit{
               break;
           };
           const jsonTemp = JSON.parse(dataResponse.result.json);
-          this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data:any)=> {
+          this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data: any) => {
             return {
               texto: data.requerimiento,
               retroAlimentacion: data.retroalimentacion,
@@ -138,7 +138,8 @@ export class SeriosGameComponent implements OnInit{
               puntos: data.puntosAdicionales
 
             }
-          })
+          });
+          this.requisitosNoFuncionales = this.algoritmoShuffleArray(this.requisitosNoFuncionales);
           this.pedirCodigo = false;
           this.id_juegoTemp = Number(this.valorCodigo);
         }
@@ -152,6 +153,14 @@ export class SeriosGameComponent implements OnInit{
       this.valorCodigo = "";
     })
     
+  }
+
+  algoritmoShuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 
   ngOnDestroy() {

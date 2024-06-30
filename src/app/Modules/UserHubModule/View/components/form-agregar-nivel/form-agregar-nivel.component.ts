@@ -54,24 +54,24 @@ export class FormAgregarNivelComponent implements OnInit {
       switch(this.tipo) {
         case 'tipo-juego.juego-1-title':
           this.options_Requerimientos = [
-            { name: 'No Funcional ambiguo', code: 'NFA' },
-            { name: 'No Funicional no ambiguo', code: 'NFN' },
+            { name: 'tipo-juego.juego-1-subtitle-ambiguo', code: 'NFA' },
+            { name: 'tipo-juego.juego-1-subtitle-noAmbiguo', code: 'NFN' },
           ];
           this.requrimientoData.opcionRequerimiento = "NFA";
           this.requerimientoDataCopy.opcionRequerimiento = "NFA";
           break;
         case 'tipo-juego.juego-2-title':
           this.options_Requerimientos = [
-            { name: 'Requisitos funcionales', code: 'RF' },
-            { name: 'Requisitos no funcionales', code: 'RNF' },
+            { name: 'tipo-juego.juego-2-subtitle-ambiguo', code: 'RF' },
+            { name: 'tipo-juego.juego-2-subtitle-noAmbiguo', code: 'RNF' },
           ];
           this.requrimientoData.opcionRequerimiento = "RF";
           this.requerimientoDataCopy.opcionRequerimiento = "RF";
           break;
         case 'tipo-juego.juego-3-title':
           this.options_Requerimientos = [
-            { name: 'Funcional ambiguo', code: 'FA' },
-            { name: 'Funicional no ambiguo', code: 'FN' },
+            { name: 'tipo-juego.juego-3-subtitle-ambiguo', code: 'FA' },
+            { name: 'tipo-juego.juego-3-subtitle-noAmbiguo', code: 'FN' },
           ];
           this.requrimientoData.opcionRequerimiento = "FA";
           this.requerimientoDataCopy.opcionRequerimiento = "FA";
@@ -88,8 +88,8 @@ export class FormAgregarNivelComponent implements OnInit {
   options_game : any[] = [];
 
   options_Requerimientos : any[] = [
-    { name: 'No funcional ambiguo', code: 'NFA' },
-    { name: 'No Funicional no ambiguo', code: 'NFN' },
+    { name: 'tipo-juego.juego-1-subtitle-ambiguo', code: 'NFA' },
+    { name: 'tipo-juego.juego-1-subtitle-noAmbiguo', code: 'NFN' },
   ];
 
   displayedColumns: string[] = ['position', 'req', 'typeReq', 'ReqPlus', 'pts', 'base', "acctions"];
@@ -142,8 +142,8 @@ export class FormAgregarNivelComponent implements OnInit {
     this.requrimientoData = this.llenarDatoRequerimiento();
     this.requerimientoDataCopy ={...this.requrimientoData};
     this.options_game = [
-      { label: 'Sì', value: 'si' },
-      { label: 'No', value: 'no' },
+      { label: 'general.boton-si', value: 'si' },
+      { label: 'general.boton-no', value: 'no' },
     ];
   }
 

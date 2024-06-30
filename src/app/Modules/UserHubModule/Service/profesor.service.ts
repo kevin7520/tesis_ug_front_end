@@ -39,5 +39,10 @@ export class ProfesorService {
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
 
+  obtenerDatosReportes(criteria : any) : Observable<any> {
+    criteria.action = "getDatosReporte";
+    return this.http.post<any>(this.urlEndPoint,criteria);
+  }
+
 
 }

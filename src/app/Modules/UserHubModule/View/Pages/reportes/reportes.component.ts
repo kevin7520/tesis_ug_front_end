@@ -25,6 +25,7 @@ export class ReportesComponent implements OnInit {
   
   ngOnInit() {
     this.buscarJuegos();
+    this.obtenerDatosReportes();
   }
 
   buscarJuegos() {
@@ -74,6 +75,16 @@ export class ReportesComponent implements OnInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+
+  obtenerDatosReportes() {
+    const criteria = {
+      id_usuario: "2",
+      id_juego: "1020"
+    }
+    this._profesprService.obtenerDatosReportes(criteria).subscribe(data => {
+      debugger;
+    })
   }
 
   duu = 0;

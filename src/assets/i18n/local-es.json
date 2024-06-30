@@ -1,211 +1,222 @@
 {
-    "title":"SERIOUS GAME",
-    "aut-module": {
-        "titulo": "Explora y descubre tus requerimientos no funcionales a través de una experiencia de juego única",
-        "iniciar-sesion": "Iniciar sesión",
-        "crear-cuenta": "Crear cuenta",
-        "input": {
-            "usuario": "Usuario",
-            "usuario-placeholder": "Ingresa tu nombre de usuario",
-            "password": "Contraseña",
-            "password-placeholder": "Ingresa tu contraseña",
-            "password-conf": "Confirma tu contraseña",
-            "password-conf-placeholder": "Repite tu contraseña",
-            "correo": "Correo Electrónico",
-            "correo-placeholder": "Ingresa tu correo electrónico",
-            "olvidaste-password": "¿Has olvidado tu contraseña?",
-            "login-exitoso": "¡Inicio de sesión exitoso!",
-            "crear-exitoso": "La cuenta se ha creado correctamente. Ahora simplemente inicia sesión",
-            "login-fallido": "Inicio de sesión fallido. Intenta de nuevo",
-            "crear-fallido": "La creación de la cuenta no fue exitosa. Por favor, inténtelo nuevamente más tarde",
-            "usuario-incorrecto": "Nombre de usuario incorrecto. Por favor, verifica e intenta de nuevo"
-        },
-        "migracion": {
-            "title": "Finaliza tu registro",
-            "nombre": "Nombre",
-            "nombre-hint": "Ingrese su nombre completo",
-            "apellido": "Apellido",
-            "apellido-hint": "Ingrese su apellido completo",
-            "rol": "Rol",
-            "fecha-nacimiento": "Fecha de Nacimiento",
-            "estudiante": "Estudiante",
-            "profesor": "Profesor"
-        }
+  "title": "SERIOUS GAME",
+  "aut-module": {
+    "titulo": "Explora y descubre tus requerimientos no funcionales a través de una experiencia de juego única",
+    "iniciar-sesion": "Iniciar sesión",
+    "crear-cuenta": "Crear cuenta",
+    "input": {
+      "usuario": "Usuario",
+      "usuario-placeholder": "Ingresa tu nombre de usuario",
+      "password": "Contraseña",
+      "password-placeholder": "Ingresa tu contraseña",
+      "password-conf": "Confirma tu contraseña",
+      "password-conf-placeholder": "Repite tu contraseña",
+      "correo": "Correo Electrónico",
+      "correo-placeholder": "Ingresa tu correo electrónico",
+      "olvidaste-password": "¿Has olvidado tu contraseña?",
+      "login-exitoso": "¡Inicio de sesión exitoso!",
+      "crear-exitoso": "La cuenta se ha creado correctamente. Ahora simplemente inicia sesión",
+      "login-fallido": "Inicio de sesión fallido. Intenta de nuevo",
+      "crear-fallido": "La creación de la cuenta no fue exitosa. Por favor, inténtelo nuevamente más tarde",
+      "usuario-incorrecto": "Nombre de usuario incorrecto. Por favor, verifica e intenta de nuevo"
     },
-    "user-hub-module": {
-        "home": {
-            "bienvenida": "Bienvenido(a):",
-            "ultima-conexion": "Última conexión:",
-            "menu": {
-                "inicio": "Inicio",
-                "perfil": "Perfil",
-                "crear-juego": "Crear juego",
-                "juegos-creados": "Juegos creados",
-                "reporte": "Reportes",
-                "salir": "Cerrar sesión"
-            }
-        },
-        "perfil": {
-            "title": "Actualización de Datos Personales",
-            "usuario-titulo":"Usuario",
-            "nombres-titulo": "Nombres",
-            "apellidos-titulo": "Apellidos",
-            "correo-titulo": "Correo Electrónico",
-            "rol-titulo": "Rol",
-            "edad-titulo": "Edad",
-            "fechaN-titulo": "Fecha de nacimiento",
-            "contrasena-titulo": "Nueva Contraseña",
-            "contrasena-hint": "Si no deseas actualizar la contraseña, simplemente deja vacío el campo",
-            "contrasena-actual-titulo": "Contraseña actual",
-            "contrasena-actual-hint": "Para confirmar la modificación de tu información, por favor proporciona tu contraseña actual",
-            "modal": {
-                "titulo": "Confirmación de edición de información de usuario",
-                "subtitulo": "¿Estás seguro de que deseas editar tu información de usuario?"
-            }
-        },
-        "juegos-creado": {
-            "title": "Visualiza los juegos que has creado",
-            "subtitle": "En esta sesión podrás cerrar el juego",
-            "error": "Empezando desde cero: Crea tu primer juego ahora mismo",
-            "no-datos":"En este momento, no hay juegos creados en tu cuenta. Para comenzar a crear uno nuevo, simplemente presiona el botón que se encuentra debajo de este mensaje. Este paso te llevará a la interfaz donde podrás iniciar el proceso de creación de tu juego de manera fácil y rápida.",
-            "no-datos-2":"¡Disfruta creando tu primer juego!",
-            "dato-juego-titulo": "Datos del juego"
-        },
-        "reporte": {
-            "titulo": "Generación de reportes"
-        },
-        "crear-juego": {
-            "titulo": "Creación de juego",
-            "fecha-titulo": "Fecha Finalización",
-            "fecha-hint": "Es la fecha en la que tu juego se completa. Por defecto, es de 7 días",
-            "tipo-titulo": "Tipo de juego",
-            "tipo-hint": "Este es el tipo de juego que debes elegir",
-            "modales": {
-                "titulo-ayudanos": "Ayúdanos a mejorar nuestra base de datos de requerimientos",
-                "subtitulo-ayudanos": "¿Te gustaría que tus requerimientos se guarden en nuestra base de datos para que otros docentes puedan utilizarlos en el futuro? Tu contribución nos ayudará a crear una biblioteca más completa y útil para todos. ¡Tu colaboración es muy valiosa!",
-                "titulo-agradecimiento": "Gracias por tu ayuda",
-                "subtitulo-agradecimiento": "Tus requerimientos se han almacenado correctamente. Ahora, si deseas crear más juegos, podrás encontrar tus requerimientos ya cargados en nuestra base de datos. Gracias por tu colaboración, estamos comprometidos en ofrecerte una mejor experiencia."
-            },
-            "componente-form": {
-                "cargar-req-titulo": "Cargar requerimientos",
-                "cargar-req-subtitulo": "Puedes cargar requerimientos creados por ti o por otros profesores",
-                "requerimiento-titulo": "Requerimiento",
-                "type-requerimiento-titulo": "Tipo de requerimiento",
-                "retroA": "Retro alimentación",
-                "puntos": "Puntos adicionales",
-                "modal-1": {
-                    "titulo": "Finalizar juego",
-                    "subtitle": "¿Seguro que deseas finalizar el juego? Una vez finalizado, no se podrá editar el juego creado."
-                },
-                "modal-2": {
-                    "titulo": "Requerimientos faltantes",
-                    "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
-                },
-                "modal-3": {
-                    "titulo": "Elige los requerimientos guardados",
-                    "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
-                },
-                "modal-4": {
-                    "titulo": "Edita tu requerimiento",
-                    "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
-                }
-            }
-        },
-        "serios-game": {
-            "titulo": "Por favor, ingresa el código del juego",
-            "puntaje": "Puntaje:",
-            "modales": {
-                "titulo-1": "Retroalimentación del Juego",
-                "titulo-2": "¡Fin del Juego!",
-                "subtitle-2": "El juego ha llegado a su fin. ¡Gracias por jugar!"
-            },
-            "ambiguos": "Ambiguos",
-            "no-ambiguos": "No Ambiguos",
-            "funcionales": "Funcionales",
-            "no-funcionales": "No Funcionales",
-            "req-no-funcionales": "Conjunto de requitos no funcionales",
-            "req-funcionales": "Conjunto de requitos funcionales",
-            "req-funcionales-no-funcionales": "Conjunto de requitos"
-        }
+    "migracion": {
+      "title": "Finaliza tu registro",
+      "nombre": "Nombre",
+      "nombre-hint": "Ingrese su nombre completo",
+      "apellido": "Apellido",
+      "apellido-hint": "Ingrese su apellido completo",
+      "rol": "Rol",
+      "fecha-nacimiento": "Fecha de Nacimiento",
+      "estudiante": "Estudiante",
+      "profesor": "Profesor"
     },
-    "404-page": {
-        "sorry": "¡No te preocupes, estamos aquí para ayudarte! Simplemente presiona el botón de abajo para volver a la página de inicio y continuar tu viaje sin contratiempos.",
-        "page-not-found": "¡Oops!<br>Te has desviado del camino digital"
-    },
-    "language-component": {
-        "spanish": "Español",
-        "english": "Ingles"
-    },
-    "general":{
-        "boton-continuar": "Continuar",
-        "boton-regresar": "Regresar",
-        "boton-aceptar": "Aceptar",
-        "boton-cancelar": "Cancelar",
-        "boton-salir": "Salir",
-        "boton-actualizar": "Actualizar",
-        "boton-seleccionar": "Seleccionar",
-        "boton-no": "No",
-        "boton-si": "Sí",
-        "boton-buscar": "Buscar",
-        "boton-eliminar-req": "Eliminar requerimiento",
-        "boton-guardar-req": "Guardar requerimiento",
-        "boton-agregar-req": "Agregar requerimiento",
-        "boton-editar-req": "Editar requerimiento",
-        "boton-seleccionar-req": "Seleccionar requerimiento",
-        "boton-crear-juego":"Crear juego",
-        "boton-cerrar-juego": "Cerrar juego",
-        "boton-generar": "Generar",
-        "boton-finalizar-juego": "Finalizar juego",
-        "estudiante": "Estudiante",
-        "profesor": "Profesor",
-        "opcional": "Opcional",
-        "inacitvo": "Inactivo",
-        "acitvo": "Activo"
-    },
-    "general-msg": {
-        "error-get-user": "El usuario no fue encontrado. Intentolo más tarde",
-        "error-put-user": "El usuario no se editó correctamente. Por favor, inténtalo de nuevo más tarde.",
-        "sucess-put-user": "El usuario se editó correctamente.",
-        "error-put-user-password": "La contraseña actual proporcionada es incorrecta.",
-        "error-pasword-repetido": "La contraseña actual es igual a la contraseña nueva ingresada, deben ser diferentes",
-        "error-crear-juego": "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde.",
-        "ok-crear-juego": "Los niveles del juego se creación de forma exitosa. El código del juego es xxx te servira para que tus alumnos encuentre tu juego.",
-        "error-cerrar-juego": "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde.",
-        "ok-cerrar-juego": "La creación del juego fue exitosa.",
-        "ok-guardar-juego": "Puntuación guardada con éxito",
-        "error-guardar-juego": "Ya has jugado este juego anteriormente",
-        "error-guardar-juego-2": "Error al guardar la puntuación. Inténtelo más tarde",
-        "codigo-incorrecto": "Código incorrecto",
-        "esta-incorrecto": "El juego esta cerrado"
-    },
-    "general-table": {
-        "no": "No.",
-        "id_juego": "Id juego",
-        "tipo_req": "Tipo Requerimiento",
-        "tipo_req-2": "Tipo Requerimiento",
-        "fecha_creacion": "Fecha Creación",
-        "fecha_finalizacion": "Fecha Finalización",
-        "retro-alimentacion": "Retroalimentación",
-        "puntos": "Puntos",
-        "req": "Requerimiento",
-        "estado": "Estado",
-        "estado-acitvo": "Activo",
-        "estado-inacitvo": "Inactivo",
-        "acciones": "Acciones",
-        "seleccionar": "Seleccionar",
-        "req-base": "Requerimiento desde base",
-        "error": "Debes tener minimo 5 requerimientos"
-    },
-    "general-tool": {
-        "revisar-juego": "Revisar juego"
-    },
-    "tipo-juego": {
-        "titulo": "Tipo:",
-        "juego-1": "Tipo 1",
-        "juego-2": "Tipo 2",
-        "juego-3": "Tipo 3",
-        "juego-1-title": "Detectar requisitos No funcionales ambiguos y No ambiguos",
-        "juego-2-title": "Detectar requisitos funcionales de los que no son funcionales",
-        "juego-3-title": "Detectar requisitos funcionales ambiguos y no ambiguos"
+    "validador": {
+      "caracteres": "La longitud mínimo es de 8 caracteres",
+      "general": "Tu contraseña debe tener al menos una letra mayúscula y un carácter especial",
+      "repetido": "Las contraseñas no coinciden"
     }
+  },
+  "user-hub-module": {
+    "home": {
+      "bienvenida": "Bienvenido(a):",
+      "ultima-conexion": "Última conexión:",
+      "menu": {
+        "inicio": "Inicio",
+        "perfil": "Perfil",
+        "crear-juego": "Crear juego",
+        "juegos-creados": "Juegos creados",
+        "reporte": "Reportes",
+        "salir": "Cerrar sesión"
+      }
+    },
+    "perfil": {
+      "title": "Actualización de Datos Personales",
+      "usuario-titulo": "Usuario",
+      "nombres-titulo": "Nombres",
+      "apellidos-titulo": "Apellidos",
+      "correo-titulo": "Correo Electrónico",
+      "rol-titulo": "Rol",
+      "edad-titulo": "Edad",
+      "fechaN-titulo": "Fecha de nacimiento",
+      "contrasena-titulo": "Nueva Contraseña",
+      "contrasena-hint": "Si no deseas actualizar la contraseña, simplemente deja vacío el campo",
+      "contrasena-actual-titulo": "Contraseña actual",
+      "contrasena-actual-hint": "Para confirmar la modificación de tu información, por favor proporciona tu contraseña actual",
+      "modal": {
+        "titulo": "Confirmación de edición de información de usuario",
+        "subtitulo": "¿Estás seguro de que deseas editar tu información de usuario?"
+      }
+    },
+    "juegos-creado": {
+      "title": "Visualiza los juegos que has creado",
+      "subtitle": "En esta sesión podrás cerrar el juego",
+      "error": "Empezando desde cero: Crea tu primer juego ahora mismo",
+      "no-datos": "En este momento, no hay juegos creados en tu cuenta. Para comenzar a crear uno nuevo, simplemente presiona el botón que se encuentra debajo de este mensaje. Este paso te llevará a la interfaz donde podrás iniciar el proceso de creación de tu juego de manera fácil y rápida.",
+      "no-datos-2": "¡Disfruta creando tu primer juego!",
+      "dato-juego-titulo": "Datos del juego"
+    },
+    "reporte": {
+      "titulo": "Generación de reportes"
+    },
+    "crear-juego": {
+      "titulo": "Creación de juego",
+      "fecha-titulo": "Fecha Finalización",
+      "fecha-hint": "Es la fecha en la que tu juego se completa. Por defecto, es de 7 días",
+      "tipo-titulo": "Tipo de juego",
+      "tipo-hint": "Este es el tipo de juego que debes elegir",
+      "modales": {
+        "titulo-ayudanos": "Ayúdanos a mejorar nuestra base de datos de requerimientos",
+        "subtitulo-ayudanos": "¿Te gustaría que tus requerimientos se guarden en nuestra base de datos para que otros docentes puedan utilizarlos en el futuro? Tu contribución nos ayudará a crear una biblioteca más completa y útil para todos. ¡Tu colaboración es muy valiosa!",
+        "titulo-agradecimiento": "Gracias por tu ayuda",
+        "subtitulo-agradecimiento": "Tus requerimientos se han almacenado correctamente. Ahora, si deseas crear más juegos, podrás encontrar tus requerimientos ya cargados en nuestra base de datos. Gracias por tu colaboración, estamos comprometidos en ofrecerte una mejor experiencia."
+      },
+      "componente-form": {
+        "cargar-req-titulo": "Cargar requerimientos",
+        "cargar-req-subtitulo": "Puedes cargar requerimientos creados por ti o por otros profesores",
+        "requerimiento-titulo": "Requerimiento",
+        "type-requerimiento-titulo": "Tipo de requerimiento",
+        "retroA": "Retro alimentación",
+        "puntos": "Puntos adicionales",
+        "modal-1": {
+          "titulo": "Finalizar juego",
+          "subtitle": "¿Seguro que deseas finalizar el juego? Una vez finalizado, no se podrá editar el juego creado."
+        },
+        "modal-2": {
+          "titulo": "Requerimientos faltantes",
+          "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
+        },
+        "modal-3": {
+          "titulo": "Elige los requerimientos guardados",
+          "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
+        },
+        "modal-4": {
+          "titulo": "Edita tu requerimiento",
+          "subtitle": "Solo se agregó un tipo de requisito y se deben guardar al menos dos tipos diferentes de requisitos."
+        }
+      }
+    },
+    "serios-game": {
+      "titulo": "Por favor, ingresa el código del juego",
+      "puntaje": "Puntaje:",
+      "modales": {
+        "titulo-1": "Retroalimentación del Juego",
+        "titulo-2": "¡Fin del Juego!",
+        "subtitle-2": "El juego ha llegado a su fin. ¡Gracias por jugar!"
+      },
+      "ambiguos": "Ambiguos",
+      "no-ambiguos": "No Ambiguos",
+      "funcionales": "Funcionales",
+      "no-funcionales": "No Funcionales",
+      "req-no-funcionales": "Conjunto de requitos no funcionales",
+      "req-funcionales": "Conjunto de requitos funcionales",
+      "req-funcionales-no-funcionales": "Conjunto de requitos"
+    }
+  },
+  "404-page": {
+    "sorry": "¡No te preocupes, estamos aquí para ayudarte! Simplemente presiona el botón de abajo para volver a la página de inicio y continuar tu viaje sin contratiempos.",
+    "page-not-found": "¡Oops!<br>Te has desviado del camino digital"
+  },
+  "language-component": {
+    "spanish": "Español",
+    "english": "Ingles"
+  },
+  "general": {
+    "boton-continuar": "Continuar",
+    "boton-regresar": "Regresar",
+    "boton-aceptar": "Aceptar",
+    "boton-cancelar": "Cancelar",
+    "boton-salir": "Salir",
+    "boton-actualizar": "Actualizar",
+    "boton-seleccionar": "Seleccionar",
+    "boton-no": "No",
+    "boton-si": "Sí",
+    "boton-buscar": "Buscar",
+    "boton-eliminar-req": "Eliminar requerimiento",
+    "boton-guardar-req": "Guardar requerimiento",
+    "boton-agregar-req": "Agregar requerimiento",
+    "boton-editar-req": "Editar requerimiento",
+    "boton-seleccionar-req": "Seleccionar requerimiento",
+    "boton-crear-juego": "Crear juego",
+    "boton-cerrar-juego": "Cerrar juego",
+    "boton-generar": "Generar",
+    "boton-finalizar-juego": "Finalizar juego",
+    "estudiante": "Estudiante",
+    "profesor": "Profesor",
+    "opcional": "Opcional",
+    "inacitvo": "Inactivo",
+    "acitvo": "Activo"
+  },
+  "general-msg": {
+    "error-get-user": "El usuario no fue encontrado. Intentolo más tarde",
+    "error-put-user": "El usuario no se editó correctamente. Por favor, inténtalo de nuevo más tarde.",
+    "sucess-put-user": "El usuario se editó correctamente.",
+    "error-put-user-password": "La contraseña actual proporcionada es incorrecta.",
+    "error-pasword-repetido": "La contraseña actual es igual a la contraseña nueva ingresada, deben ser diferentes",
+    "error-crear-juego": "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde.",
+    "ok-crear-juego": "Los niveles del juego se creación de forma exitosa. El código del juego es xxx te servira para que tus alumnos encuentre tu juego.",
+    "error-cerrar-juego": "La creación del juego no fue exitosa. Por favor, inténtelo nuevamente más tarde.",
+    "ok-cerrar-juego": "La creación del juego fue exitosa.",
+    "ok-guardar-juego": "Puntuación guardada con éxito",
+    "error-guardar-juego": "Ya has jugado este juego anteriormente",
+    "error-guardar-juego-2": "Error al guardar la puntuación. Inténtelo más tarde",
+    "codigo-incorrecto": "Código incorrecto",
+    "esta-incorrecto": "El juego esta cerrado"
+  },
+  "general-table": {
+    "no": "No.",
+    "id_juego": "Id juego",
+    "tipo_req": "Tipo Requerimiento",
+    "tipo_req-2": "Tipo Requerimiento",
+    "fecha_creacion": "Fecha Creación",
+    "fecha_finalizacion": "Fecha Finalización",
+    "retro-alimentacion": "Retroalimentación",
+    "puntos": "Puntos",
+    "req": "Requerimiento",
+    "estado": "Estado",
+    "estado-acitvo": "Activo",
+    "estado-inacitvo": "Inactivo",
+    "acciones": "Acciones",
+    "seleccionar": "Seleccionar",
+    "req-base": "Requerimiento desde base",
+    "error": "Debes tener minimo 5 requerimientos"
+  },
+  "general-tool": {
+    "revisar-juego": "Revisar juego"
+  },
+  "tipo-juego": {
+    "titulo": "Tipo:",
+    "juego-1": "Tipo 1",
+    "juego-2": "Tipo 2",
+    "juego-3": "Tipo 3",
+    "juego-1-title": "Detectar requisitos No funcionales ambiguos y No ambiguos",
+    "juego-2-title": "Detectar requisitos funcionales de los que no son funcionales",
+    "juego-3-title": "Detectar requisitos funcionales ambiguos y no ambiguos",
+    "juego-1-subtitle-ambiguo": "No funcional ambiguo",
+    "juego-1-subtitle-noAmbiguo": "No Funicional no ambiguo",
+    "juego-2-subtitle-ambiguo": "Requisitos funcionales",
+    "juego-2-subtitle-noAmbiguo": "Requisitos no funcionales",
+    "juego-3-subtitle-ambiguo": "Funcional ambiguo",
+    "juego-3-subtitle-noAmbiguo": "Funicional no ambiguo"
+  }
 }

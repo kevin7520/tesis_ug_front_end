@@ -37,6 +37,12 @@ export class LoginComponent implements OnInit {
     confirmarPassword: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
   });
 
+  validador = {
+    caracteres: false,
+    general: false,
+    repetido: false
+  }
+
   ngOnInit() {}
 
   login() {
@@ -96,6 +102,15 @@ export class LoginComponent implements OnInit {
         this.openSnackBar(this._translateService.instant('aut-module.input.crear-fallido'),'custom-snackbar_fallido');
       }
     });
+  }
+
+  onInputChange(): void {
+    if(this.crearCuentaFormGroup.value.password!.length >= 8) {
+      this.validador.caracteres = true;
+    }
+    else {
+      this.validador.caracteres = false;
+    }
   }
 
   openSnackBar(message: string, class_customer: string) {

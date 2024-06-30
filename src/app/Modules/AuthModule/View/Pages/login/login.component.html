@@ -1,14 +1,14 @@
 <div class="w-full h-full grid justify-content-center border-box">
-    <div class="w-6 h-full flex align-content-center flex-wrap">
+    <div [ngClass]="{'w-6': iniciarSesion, 'w-7': !iniciarSesion}" class="h-full flex align-content-center flex-wrap">
       <div class="w-full grid m-0 container-auth shadow-3">
-        <div class="w-6 bg-primary-700 border-round-md border-noround-right border-box">
+        <div [ngClass]="{'w-6': iniciarSesion, 'w-5': !iniciarSesion}" class="bg-primary-700 border-round-md border-noround-right border-box">
           <div class="w-full h-full p-4 flex justify-content-center align-content-center flex-wrap border-box">
             <p class="color-primary-50 tex-titulo-Serius-Game text-center">{{'title' | translate}}</p>
             <p class="color-white text-subtitulos-2-size text-justify	line-height-3 mt-4">{{'aut-module.titulo' | translate}}</p>
             <img src="assets/Img/Icons/iconos/cohete.png" width="140px" class="mt-4">
           </div>
         </div>
-        <div class="w-6 bg-white border-round-md border-noround-left border-box">
+        <div [ngClass]="{'w-6': iniciarSesion, 'w-7': !iniciarSesion}" class="bg-white border-round-md border-noround-left border-box">
           <div class="w-full p-4 border-box">
             <div class="w-full flex justify-content-end flex-wrap">
               <div class="w-max flex">
@@ -64,13 +64,13 @@
                   <div class="col-12 px-1 mt-1">
                     <mat-form-field class="w-full hide-hint" appearance="outline">
                       <mat-label>{{'aut-module.input.correo' | translate}}</mat-label>
-                      <input matInput placeholder="{{'aut-module.input.correo-placeholder' | translate}}" formControlName="correo">
+                      <input matInput type="email" placeholder="{{'aut-module.input.correo-placeholder' | translate}}" formControlName="correo">
                     </mat-form-field>
                   </div>
                   <div class="col-12 px-1 mt-1">
                     <mat-form-field class="w-full hide-hint" appearance="outline">
                       <mat-label>{{'aut-module.input.password' | translate}}</mat-label>
-                      <input [type]="ocultarPaaswordCrearCuenta ? 'password' : 'text'" matInput placeholder="{{'aut-module.input.password-placeholder' | translate}}" formControlName="password">
+                      <input (input)="onInputChange()" [type]="ocultarPaaswordCrearCuenta ? 'password' : 'text'" matInput placeholder="{{'aut-module.input.password-placeholder' | translate}}" formControlName="password">
                       <button type="button" mat-icon-button matSuffix (click)="ocultarPaaswordCrearCuenta = !ocultarPaaswordCrearCuenta" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="ocultarPaaswordCrearCuenta">
                         <mat-icon>{{ ocultarPaaswordCrearCuenta ? 'visibility_off' : 'visibility' }}</mat-icon>
                       </button>
@@ -84,6 +84,12 @@
                         <mat-icon>{{ ocultarPaaswordCrearCuenta ? 'visibility_off' : 'visibility' }}</mat-icon>
                       </button>
                     </mat-form-field>
+                  </div>
+
+                  <div class="col-12 px-1 mt-1">
+                    <p [ngClass]="{'text-teal-600': validador.caracteres, 'text-red-600': !validador.caracteres}" class="font-medium">* {{'aut-module.validador.caracteres' | translate}}</p>
+                    <p [ngClass]="{'text-teal-600': validador.general, 'text-red-600': !validador.general}" class="font-medium mt-1">* {{'aut-module.validador.general' | translate}}</p>
+                    <p [ngClass]="{'text-teal-600': validador.repetido, 'text-red-600': !validador.repetido}" class="font-medium mt-1">* {{'aut-module.validador.repetido' | translate}}</p>
                   </div>
                   <div class="w-full flex justify-content-center flex-wrap mt-2">
                     <app-ui-kaas-button class="w-full" 
