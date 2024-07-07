@@ -34,6 +34,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MY_DATE_FORMATS } from '../Utils/fechaFormateada';
+import { DurationPipe } from './Pipes/horas.pipe';
 
 // export const MY_DATE_FORMATS = {
 //   parse: {
@@ -84,7 +85,8 @@ import { MY_DATE_FORMATS } from '../Utils/fechaFormateada';
     CalendareComponent,
     RadioButtonComponent,
     UiKaasInputSelectComponent,
-    UiKaasSliderComponent
+    UiKaasSliderComponent,
+    DurationPipe
   ],
   exports: [
     Page404Component,
@@ -117,7 +119,8 @@ import { MY_DATE_FORMATS } from '../Utils/fechaFormateada';
     MatTooltipModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    DurationPipe
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},

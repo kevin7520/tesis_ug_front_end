@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Chart, ChartType } from 'chart.js/auto';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-reportes',
@@ -17,15 +18,38 @@ export class ReportesComponent implements OnInit {
 
   juegos: any[] = [];
   displayedColumns: string[] = ['seleccion', 'id_juego', 'tipo', 'fecha_creacion', 'fecha_finalizacion', 'estado'];
+  displayedColumns2: string[] =
+    [
+      'nombres',
+      'apellidos',
+      'puntaje',
+      'tiempoInicio',
+      'tiempoFin',
+      'tiempoJuego'
+    ];
+  
+   chartsData: any[] = [
+    {
+      labels: ['Red', 'Blue', 'Yellow'],
+      data: [300, 50, 100],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)'
+      ]
+     },
+   ];
+  
+  viewPdf: boolean = false;
 
   dataSource = new MatTableDataSource<any>(this.juegos);
   selection = new SelectionModel<any>(true, []);
 
+  datosJuegosSeleccionados: any[] = [];
   chart!: Chart;
   
   ngOnInit() {
     this.buscarJuegos();
-    this.obtenerDatosReportes();
   }
 
   buscarJuegos() {
@@ -35,8 +59,8 @@ export class ReportesComponent implements OnInit {
     }
     this._profesprService.obtenerJuegosProfesor(criteria).subscribe(Response => {
       if(Response.msg == 'OK') {
-        this.juegos = Response.result.map((data : any)=>{
-          switch(data.id_tipo_juego) {
+        this.juegos = Response.result.map((data: any) => {
+          switch (data.id_tipo_juego) {
             case "1":
               data.tipo_juego = 'tipo-juego.juego-1-title'
               break;
@@ -49,6 +73,7 @@ export class ReportesComponent implements OnInit {
           };
           return data
         });
+        this.juegos = this.juegos.filter((data : any) => data.estado == '0');
         this.dataSource = new MatTableDataSource<any>(this.juegos);
         this.selection = new SelectionModel<any>(true, []);
       }
@@ -78,58 +103,169 @@ export class ReportesComponent implements OnInit {
   }
 
   obtenerDatosReportes() {
-    const criteria = {
-      id_usuario: "2",
-      id_juego: "1020"
-    }
-    this._profesprService.obtenerDatosReportes(criteria).subscribe(data => {
-      debugger;
+    const criteria = this.selection.selected.map(data => {
+        return {
+            id_usuario: data.id_profesor,
+            id_juego: data.id_juego
+        }
+    })
+    this._profesprService.getTodosReportes(criteria).then(data => {
+      let juegosTemp = [...data];
+      juegosTemp = juegosTemp.filter(data => data.code == '200' && data.result.mensaje == 'OK');
+      this.datosJuegosSeleccionados = juegosTemp.map(data => {
+        const jsonTemp = JSON.parse(data.result.data);
+        return {
+          id_juego: jsonTemp[0].id_juego,
+          puntajes: jsonTemp.map((dataJson: any) => {
+            return {
+              nombres: dataJson.nombres,
+              apellidos: dataJson.apellidos,
+              puntaje: dataJson.puntaje,
+              hora_inicio: dataJson.hora_inicio,
+              hora_fin: dataJson.hora_fin,
+              tiempo: this.calculateTimeDifference(dataJson.hora_inicio, dataJson.hora_fin),
+            }
+          })
+        }
+      });
+      if (this.duu === 0) {
+    //     chartsData: any[] = [
+    // {
+    //   labels: ['Red', 'Blue', 'Yellow'],
+    //   data: [300, 50, 100],
+    //   backgroundColor: [
+    //     'rgb(255, 99, 132)',
+    //     'rgb(54, 162, 235)',
+    //     'rgb(255, 205, 86)'
+    //   ]
+    //  },
+    //     ];
+        this.chartsData = juegosTemp.map(data => {
+            return {
+              labels: ['Red', 'Blue', 'Yellow'],
+              data: [300, 50, 100],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ]
+            }
+        });
+        // this.chartsData.push(
+        //   {
+        //     labels: ['Red', 'Blue', 'Yellow'],
+        //     data: [300, 50, 100],
+        //     backgroundColor: [
+        //       'rgb(255, 99, 132)',
+        //       'rgb(54, 162, 235)',
+        //       'rgb(255, 205, 86)'
+        //     ]
+        //   }
+        // );
+        this.viewPdf = true;
+        setTimeout(() => {
+          this.generateCharts();
+        }, 0);
+      }
     })
   }
 
   duu = 0;
-  public openPDF(): void {
-    if(this.duu == 0) {
-      const data = {
-        labels: [
-          'Red',
-          'Blue',
-          'Yellow'
-        ],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [300, 50, 100],
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-          ],
-          hoverOffset: 4
-        }]
-      };
-  
-      // Creamos la gráfica
-      this.chart = new Chart("chart", {
-        type: 'pie' as ChartType, // tipo de la gráfica 
-        data // datos 
-      })
-    }
-    this.duu = 1
-
-    ///////////////////////
+ public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
 
-    html2canvas(DATA, { scale: 5, useCORS: true }).then((canvas) => {
-      let fileWidth = 208;
+    const marginLeft = 15;
+    const marginTop = 0;
+    const marginRight = 15;
+    const marginBottom = 0;
+
+    html2canvas(DATA, { scale: 2, useCORS: true }).then((canvas) => {
+      let pageWidth = 210; // A4 width in mm
+      let pageHeight = 297; // A4 height in mm
+      let fileWidth = pageWidth - marginLeft - marginRight;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
 
       const FILEURI = canvas.toDataURL('image/png');
       let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      let position = marginTop; // Starting Y position for the image
 
-      PDF.save('angular-demo.pdf');
+      if (fileHeight < pageHeight - marginTop - marginBottom) {
+        PDF.addImage(FILEURI, 'PNG', marginLeft, position, fileWidth, fileHeight);
+      } else {
+        let heightLeft = fileHeight;
+        let pageNumber = 0;
+
+        while (heightLeft > 0) {
+          if (pageNumber > 0) {
+            PDF.addPage();
+          }
+          const topPosition = pageNumber * (pageHeight - marginTop - marginBottom) + marginTop;
+          PDF.addImage(FILEURI, 'PNG', marginLeft, -topPosition, fileWidth, fileHeight);
+          heightLeft -= (pageHeight - marginTop - marginBottom);
+          pageNumber++;
+        }
+      }
+
+      PDF.save('Reportes ' + this.formatDate(new Date()) + '.pdf');
     });
   }
+
+  formatDate(date: Date): string {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+  }
+
+  calculateTimeDifference(startTime: string, endTime: string): number {
+    const start = new Date(`1970-01-01T${startTime}Z`);
+    const end = new Date(`1970-01-01T${endTime}Z`);
+    const differenceInMilliseconds = end.getTime() - start.getTime();
+    const differenceInSeconds = differenceInMilliseconds / 1000;
+    return differenceInSeconds;
+  }
+
+  generateCharts(): void {
+    if (this.duu === 0) {
+      const chartPromises = this.chartsData.map((chartData, index) => {
+        return new Promise<void>((resolve) => {
+          const data = {
+            labels: chartData.labels,
+            datasets: [{
+              label: `Dataset ${index + 1}`,
+              data: chartData.data,
+              backgroundColor: chartData.backgroundColor,
+              hoverOffset: 4
+            }]
+          };
+          this.createChart(`chart${index}`, data, resolve);
+        });
+      });
+
+      Promise.all(chartPromises).then(() => {
+        console.log('Todos los gráficos han sido generados y están en el HTML');
+        this.openPDF();
+      });
+
+      this.duu = 1;
+    }
+  }
+
+  createChart(chartId: string, data: any, resolve: () => void): void {
+    const chart = new Chart(chartId, {
+      type: 'pie' as ChartType,
+      data,
+      options: {
+        animation: {
+          onComplete: resolve // Llama a resolve cuando la animación del gráfico haya completado
+        }
+      }
+    });
+  }
+
 
 }

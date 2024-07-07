@@ -124,6 +124,13 @@ export class HomeComponent implements OnInit {
           id: 1
         },
         {
+          titulo: "user-hub-module.home.menu.juegos-jugados",
+          icono: "bi bi-joystick",
+          ruta: "/home/juegos-jugados",
+          activo: false,
+          id: 2
+        },
+        {
           titulo: "user-hub-module.home.menu.perfil",
           icono: "bi bi-person-fill-gear",
           ruta: "/home/perfil",

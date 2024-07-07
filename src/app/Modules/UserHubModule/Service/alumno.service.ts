@@ -27,4 +27,9 @@ export class AlumnoService {
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
 
+  getJuegosJugados(criteria : any) : Observable<any> {
+    criteria.action = "getJuegosJugados";
+    return this.http.post<any>(this.urlEndPoint,criteria);
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,13 +8,17 @@ import { Router } from '@angular/router';
 })
 export class JuegosVaciosComponent implements OnInit {
 
+  @Input() errprEstudiante: boolean = false;
   constructor(private _router: Router) { }
 
   ngOnInit() {
   }
 
   crearJuego() {
-    this._router.navigateByUrl('/home/crear-juego');
+    if(this.errprEstudiante == false)
+      this._router.navigateByUrl('/home/crear-juego');
+    else
+      this._router.navigateByUrl('/home/serious-game');
   }
 
 }

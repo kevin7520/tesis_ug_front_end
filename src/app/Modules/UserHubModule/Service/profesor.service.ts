@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +42,11 @@ export class ProfesorService {
   obtenerDatosReportes(criteria : any) : Observable<any> {
     criteria.action = "getDatosReporte";
     return this.http.post<any>(this.urlEndPoint,criteria);
+  }
+
+  getTodosReportes(criterios: any[]): Promise<any> {
+    const observables = criterios.map(criterion => this.obtenerDatosReportes(criterion));
+    return forkJoin(observables).toPromise();
   }
 
 

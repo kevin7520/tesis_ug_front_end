@@ -47,7 +47,8 @@
         "crear-juego": "Create Game",
         "juegos-creados": "Games Created",
         "reporte": "Reports",
-        "salir": "Log out"
+        "salir": "Log out",
+        "juegos-jugados": "Games Played"
       }
     },
     "perfil": {
@@ -75,6 +76,13 @@
       "no-datos": "At the moment, there are no games created in your account. To start creating a new one, simply press the button below this message. This step will take you to the interface where you can begin the game creation process easily and quickly.",
       "no-datos-2": "Enjoy creating your first game!",
       "dato-juego-titulo": "Game data"
+    },
+    "juegos-jugados": {
+      "title": "View the games you have played",
+      "error": "Starting from scratch: Play for the first time",
+      "no-datos": "At the moment, there are no games played on your account. To start playing, simply press the button below this message. This step will take you to the interface where you can start the process easily and quickly.",
+      "no-datos-2": "Enjoy playing your first game!",
+      "dato-juego-titulo": "Game Data"
     },
     "reporte": {
       "titulo": "Report generation"
@@ -158,6 +166,7 @@
     "boton-editar-req": "Requirement from scratch",
     "boton-seleccionar-req": "Select requirement",
     "boton-crear-juego": "Create Game",
+    "boton-jugar-juego": "Play Game",
     "boton-cerrar-juego": "Exit game",
     "boton-generar": "Generate",
     "boton-finalizar-juego": "Finish game",

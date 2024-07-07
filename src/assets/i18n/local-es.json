@@ -47,7 +47,8 @@
         "crear-juego": "Crear juego",
         "juegos-creados": "Juegos creados",
         "reporte": "Reportes",
-        "salir": "Cerrar sesión"
+        "salir": "Cerrar sesión",
+        "juegos-jugados": "Juegos jugados"
       }
     },
     "perfil": {
@@ -74,6 +75,13 @@
       "error": "Empezando desde cero: Crea tu primer juego ahora mismo",
       "no-datos": "En este momento, no hay juegos creados en tu cuenta. Para comenzar a crear uno nuevo, simplemente presiona el botón que se encuentra debajo de este mensaje. Este paso te llevará a la interfaz donde podrás iniciar el proceso de creación de tu juego de manera fácil y rápida.",
       "no-datos-2": "¡Disfruta creando tu primer juego!",
+      "dato-juego-titulo": "Datos del juego"
+    },
+    "juegos-jugados": {
+      "title": "Visualiza los juegos que has jugado",
+      "error": "Empezando desde cero: Juega por primera vez",
+      "no-datos": "En este momento, no hay juegos jugados en tu cuenta. Para comenzar a jugar, simplemente presiona el botón que se encuentra debajo de este mensaje. Este paso te llevará a la interfaz donde podrás iniciar el proceso de manera fácil y rápida.",
+      "no-datos-2": "¡Disfruta jugando tu primer juego!",
       "dato-juego-titulo": "Datos del juego"
     },
     "reporte": {
@@ -158,6 +166,7 @@
     "boton-editar-req": "Editar requerimiento",
     "boton-seleccionar-req": "Seleccionar requerimiento",
     "boton-crear-juego": "Crear juego",
+    "boton-jugar-juego": "Jugar juego",
     "boton-cerrar-juego": "Cerrar juego",
     "boton-generar": "Generar",
     "boton-finalizar-juego": "Finalizar juego",
@@ -199,7 +208,13 @@
     "acciones": "Acciones",
     "seleccionar": "Seleccionar",
     "req-base": "Requerimiento desde base",
-    "error": "Debes tener minimo 5 requerimientos"
+    "error": "Debes tener minimo 5 requerimientos",
+    "nombres": "Nombres",
+    "tiempo-inicio": "Hora inicio",
+    "tiempo-fin": "Hora fin",
+    "tiempo": "Tiempo",
+    "aciertos": "Número aciertos",
+    "errores": "Número desaciertos"
   },
   "general-tool": {
     "revisar-juego": "Revisar juego"
