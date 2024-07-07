@@ -25,7 +25,9 @@ export class ReportesComponent implements OnInit {
       'puntaje',
       'tiempoInicio',
       'tiempoFin',
-      'tiempoJuego'
+      'tiempoJuego',
+      'aciertos',
+      'errores'
     ];
   
    chartsData: any[] = [
@@ -114,6 +116,7 @@ export class ReportesComponent implements OnInit {
       juegosTemp = juegosTemp.filter(data => data.code == '200' && data.result.mensaje == 'OK');
       this.datosJuegosSeleccionados = juegosTemp.map(data => {
         const jsonTemp = JSON.parse(data.result.data);
+        debugger;
         return {
           id_juego: jsonTemp[0].id_juego,
           puntajes: jsonTemp.map((dataJson: any) => {
@@ -123,6 +126,8 @@ export class ReportesComponent implements OnInit {
               puntaje: dataJson.puntaje,
               hora_inicio: dataJson.hora_inicio,
               hora_fin: dataJson.hora_fin,
+              aciertos: dataJson.aciertos,
+              errores: dataJson.errores,
               tiempo: this.calculateTimeDifference(dataJson.hora_inicio, dataJson.hora_fin),
             }
           })
@@ -140,17 +145,17 @@ export class ReportesComponent implements OnInit {
     //   ]
     //  },
     //     ];
-        this.chartsData = juegosTemp.map(data => {
-            return {
-              labels: ['Red', 'Blue', 'Yellow'],
-              data: [300, 50, 100],
-              backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-              ]
-            }
-        });
+        // this.chartsData = juegosTemp.map(data => {
+        //     return {
+        //       labels: ['Red', 'Blue', 'Yellow'],
+        //       data: [300, 50, 100],
+        //       backgroundColor: [
+        //         'rgb(255, 99, 132)',
+        //         'rgb(54, 162, 235)',
+        //         'rgb(255, 205, 86)'
+        //       ]
+        //     }
+        // });
         // this.chartsData.push(
         //   {
         //     labels: ['Red', 'Blue', 'Yellow'],
@@ -164,7 +169,7 @@ export class ReportesComponent implements OnInit {
         // );
         this.viewPdf = true;
         setTimeout(() => {
-          this.generateCharts();
+          this.openPDF();
         }, 0);
       }
     })
@@ -175,9 +180,9 @@ export class ReportesComponent implements OnInit {
     let DATA: any = document.getElementById('htmlData');
 
     const marginLeft = 15;
-    const marginTop = 0;
+    const marginTop = 10;
     const marginRight = 15;
-    const marginBottom = 0;
+    const marginBottom = 10;
 
     html2canvas(DATA, { scale: 2, useCORS: true }).then((canvas) => {
       let pageWidth = 210; // A4 width in mm
@@ -207,6 +212,8 @@ export class ReportesComponent implements OnInit {
       }
 
       PDF.save('Reportes ' + this.formatDate(new Date()) + '.pdf');
+    }).then( () => {
+      this.viewPdf = false
     });
   }
 

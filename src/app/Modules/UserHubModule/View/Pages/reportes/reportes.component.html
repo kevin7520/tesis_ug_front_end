@@ -72,7 +72,7 @@
    <div class="w-full mt-8" id="htmlData">
     <div class="mt-4">
       <ng-container  *ngFor="let data of datosJuegosSeleccionados; let indice = index">
-        <p class="text-primary text-xl mb-4" [ngClass]="{'mt-4': indice != 0}">{{'general-table.id_juego' | translate}}: {{data.id_juego}}</p>
+        <p class="text-primary text-xl mb-4 mt-4">{{'general-table.id_juego' | translate}}: {{data.id_juego}}</p>
         <div class="border-1 border-solid border-300	border-round-lg">
           <table mat-table [dataSource]="data.puntajes">
           
@@ -84,6 +84,16 @@
             <ng-container matColumnDef="apellidos">
               <th mat-header-cell *matHeaderCellDef> {{'general-table.nombres' | translate}} </th>
               <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="aciertos">
+              <th mat-header-cell *matHeaderCellDef> {{'general-table.aciertos' | translate}} </th>
+              <td mat-cell *matCellDef="let element" class="text-green-500"> {{element.aciertos}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="errores">
+              <th mat-header-cell *matHeaderCellDef> {{'general-table.errores' | translate}} </th>
+              <td mat-cell *matCellDef="let element" class="text-red-500"> {{element.errores}} </td>
             </ng-container>
           
             <ng-container matColumnDef="puntaje">
@@ -109,10 +119,6 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
           </table>
-        </div>
-        <div class="col-6">
-          <p>Grafico de </p>
-          <canvas id="chart{{indice}}"></canvas>
         </div>
       </ng-container>
    </div> 
