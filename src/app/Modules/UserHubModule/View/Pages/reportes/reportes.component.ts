@@ -116,7 +116,6 @@ export class ReportesComponent implements OnInit {
       juegosTemp = juegosTemp.filter(data => data.code == '200' && data.result.mensaje == 'OK');
       this.datosJuegosSeleccionados = juegosTemp.map(data => {
         const jsonTemp = JSON.parse(data.result.data);
-        debugger;
         return {
           id_juego: jsonTemp[0].id_juego,
           puntajes: jsonTemp.map((dataJson: any) => {

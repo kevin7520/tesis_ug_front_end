@@ -1,5 +1,6 @@
 <div class="my-component-button w-full" [ngClass]="{'ui-kaas-opacity-50': disabled}">
   <button [matTooltip]="tooltip" 
+          [type] = "type"
           (click)="ejecutarAccion()" 
           [class]="button_size_class" 
           [ngClass]="getColorClass()" 

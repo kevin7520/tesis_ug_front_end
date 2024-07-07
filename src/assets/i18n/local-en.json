@@ -190,7 +190,8 @@
     "error-guardar-juego": "You have already played this game before",
     "error-guardar-juego-2": "Error saving the score. Please try again later",
     "codigo-incorrecto": "Incorrect code",
-    "esta-incorrecto": "The game is closed"
+    "esta-incorrecto": "The game is closed",
+    "estado_jugado": "The game has already been played"
   },
   "general-table": {
     "no": "No.",

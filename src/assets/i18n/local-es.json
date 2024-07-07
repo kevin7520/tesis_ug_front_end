@@ -190,7 +190,8 @@
     "error-guardar-juego": "Ya has jugado este juego anteriormente",
     "error-guardar-juego-2": "Error al guardar la puntuación. Inténtelo más tarde",
     "codigo-incorrecto": "Código incorrecto",
-    "esta-incorrecto": "El juego esta cerrado"
+    "esta-incorrecto": "El juego esta cerrado",
+    "estado_jugado": "El juego ya fue jugado"
   },
   "general-table": {
     "no": "No.",

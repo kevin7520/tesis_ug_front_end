@@ -13,7 +13,9 @@ import { Requerimiento } from '../../Model/requerimientos.model';
 export class SeriosGameComponent implements OnInit{
 
   subs = new Subscription(); 
-  puntos : number = 0;
+  puntos: number = 0;
+  aciertos: number = 0;
+  errores: number = 0;
   REQUERIMIENTOS_DRAGULA = 'ITEMS_JUEGO';
   // public many = ['The', 'possibilities', 'are', 'endless!'];
   // public many2 = ['Explore', 'them'];
@@ -52,26 +54,36 @@ export class SeriosGameComponent implements OnInit{
             if(itemId == 'requerimientos_ambiguos'){
               item.requerimientoCompleto = 'si';
               this.puntos = (item.requrimientoFallido) ? puntosActual : puntosActual + item.puntos;
+              if (!item.requrimientoFallido) {
+                  this.aciertos = this.aciertos +1;
+              }
             }
             else {
               item.requerimientoCompleto = 'error';
               item.requrimientoFallido = true;
               this.puntos = this.puntos - 100;
               this.retroalimentacion = item.retroAlimentacion;
-              this.mostrarRetoAlimentacion = true;
+              if (this.retroalimentacion != "")
+                this.mostrarRetoAlimentacion = true;
+              this.errores = this.errores +1;
             }
           }
           else {
             if(itemId == 'requerimientos_no_ambiguos'){
               item.requerimientoCompleto = 'si';
               this.puntos = (item.requrimientoFallido) ? puntosActual : puntosActual + item.puntos;
+               if (!item.requrimientoFallido) {
+                  this.aciertos = this.aciertos +1;
+              }
             }
             else {
               item.requerimientoCompleto = 'error';
               item.requrimientoFallido = true;
               this.puntos = this.puntos - 100;
               this.retroalimentacion = item.retroAlimentacion;
-              this.mostrarRetoAlimentacion = true;
+              if (this.retroalimentacion != "")
+                this.mostrarRetoAlimentacion = true;
+              this.errores = this.errores +1;
             }
           }
         }
@@ -92,12 +104,13 @@ export class SeriosGameComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    //this.buscarJuegosPublicos();
   }
 
   buscarJuego() {
+    const dataLocal = JSON.parse(localStorage.getItem('persona')!)
     const criteria = {
-      id: this.valorCodigo
+      id: this.valorCodigo,
+      idusuario: dataLocal.id
     }
     this._alumnoService.recuperarJuego(criteria).subscribe((dataResponse) => {
       if(dataResponse.msg == 'OK') {
@@ -148,7 +161,10 @@ export class SeriosGameComponent implements OnInit{
         }
       }
       else {
-        this.openSnackBar(this._translateService.instant('general-msg.codigo-incorrecto'),'custom-snackbar_fallido');
+        if(dataResponse.msg == 'not_game')
+          this.openSnackBar(this._translateService.instant('general-msg.codigo-incorrecto'), 'custom-snackbar_fallido');
+        else
+          this.openSnackBar(this._translateService.instant('general-msg.estado_jugado'), 'custom-snackbar_fallido');
       }
       this.valorCodigo = "";
     })
@@ -181,36 +197,6 @@ export class SeriosGameComponent implements OnInit{
     this._snackBar.open(message,'',config);
   }
 
-  // buscarJuegosPublicos() {
-  //   this._alumnoService.recuperJuegosPublicos().subscribe(Response => {
-  //     if(Response.msg == 'OK') {
-  //       this.juegosPublicos = Response.result;
-  //     }
-  //     else{
-  //       this.openSnackBar(this._translateService.instant('Juego no encontrado'),'custom-snackbar_fallido');
-  //     }
-  //   })
-  // }
-
-  // elegirJuego(id : number) {
-  //   this.id_juegoTemp = id;
-  //   const juego = this.juegosPublicos.find(data => data.id_juego == id);
-  //   const jsonTemp = JSON.parse(juego.json);
-  //   this.requisitosNoFuncionales = jsonTemp[0].requerimientos.map((data:any)=> {
-  //     return {
-  //       texto: data.requerimiento,
-  //       retroAlimentacion: data.retroalimentacion,
-  //       ambiguo: (data.opcionRequerimiento == 'NFA') ? true : false,
-  //       requrimientoFallido: data.requerimientoFallido,
-  //       requerimientoCompleto: "no",
-  //       id: data.id
-
-  //     }
-  //   });
-  //   this.pedirCodigo = false;
-
-  // }
-
   enviarPuntajeJuego() {
     const dataLocal = JSON.parse(localStorage.getItem('persona')!);
     const criteria = {
@@ -218,6 +204,8 @@ export class SeriosGameComponent implements OnInit{
       id_persona: dataLocal.id,
       puntaje: this.puntos,
       hora_inicio: this.horaActual,
+      aciertos: this.aciertos,
+      errores: this.errores,
       hora_fin: new Date().toTimeString().split(' ')[0]
     }
     this._alumnoService.guardarPuntaje(criteria).subscribe(dataResponse=>{
@@ -243,8 +231,10 @@ export class SeriosGameComponent implements OnInit{
     this.requisitosNoFuncionales  = [];
     this.valorCodigo = "";
     this.pedirCodigo = true;
-    this.puntos = 0,
+    this.puntos = 0;
     this.id_juegoTemp = 0;
+    this.aciertos = 0;
+    this.errores = 0;
   }
 
 }

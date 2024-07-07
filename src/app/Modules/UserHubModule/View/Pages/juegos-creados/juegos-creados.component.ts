@@ -67,6 +67,7 @@ export class JuegosCreadosComponent implements OnInit {
       fecha_creacion: new Date(juego.fecha_creacion).toISOString().split('T')[0],
       fecha_finalizacion: new Date(juego.fecha_finalizacion).toISOString().split('T')[0],
       estado:  this._translateService.instant((juego.estado == 1) ? 'general.acitvo' : 'general.inacitvo'),
+      estado2:  (juego.estado == 1) ? 'general.acitvo' : 'general.inacitvo',
       requerimientos: [...juegoJson]
     }
 

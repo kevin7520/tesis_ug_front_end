@@ -32,6 +32,7 @@ export class UiKaasButtonComponent implements OnInit {
   @Input() buttonText : boolean = false;
   @Input() disabled : boolean = false;
   @Input() butonFull : boolean = false;
+  @Input() type : string = 'button';
 
   custom_background_color_class : string = "";
   custom_text_color_class : string = "";

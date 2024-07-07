@@ -126,7 +126,7 @@
                                 [background_color]="'bg-red-600'"
                                 (eventClick)="regresarJuego()">
             </app-ui-kaas-button>
-            <app-ui-kaas-button *ngIf="this.juegoSeleccionado.estado == 'A'"
+            <app-ui-kaas-button *ngIf="this.juegoSeleccionado.estado2 == 'general.acitvo'"
                                 [label]="'general.boton-cerrar-juego' | translate" 
                                 [butonFull]="false" 
                                 buttonSize="small"
