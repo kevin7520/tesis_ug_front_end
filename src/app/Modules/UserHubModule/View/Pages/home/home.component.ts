@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   ocultarPaaswordCrearCuenta : boolean = true;
   ocultarPaaswordLogin : boolean = true;
   viewMenu : boolean = true;
+  viewMenu2 : boolean = false;
 
   usuarioRegistrado = {
     id: 0,
@@ -151,15 +152,8 @@ export class HomeComponent implements OnInit {
     if(ruta == '/auth') {
       localStorage.clear();
     }
-    // else {
-    //   this.menu_lista = this.menu_lista.map((menu)=>{
-    //     menu.activo = menu.id == id
-    //     return menu
-    //   })
-    // }
-
     this._router.navigateByUrl(ruta);
-
+    this.viewMenu2 = false;
   }
 
   openSnackBar(message: string, class_customer: string) {

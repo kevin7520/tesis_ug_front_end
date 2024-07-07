@@ -1,8 +1,8 @@
 <div style="max-width: 99%;" class="w-full mx-1" [ngClass]="{'h-full': juegos.length <= 0}">
      <ng-container *ngIf="juegos.length > 0;else no_data">
       <p class="mt-4 text-center color-primary tex-titulo-Serius-Game">{{'user-hub-module.juegos-creado.title' | translate}}</p>
-      <div class="w-full grid m-0 mt-4 mat-elevation-z4 border-round-xl p-4">
-        <section class="container-table w-full" tabindex="0" *ngIf="!view_req">
+      <div class="w-full grid m-0 mt-4 mb-4 mat-elevation-z4 border-round-xl p-4">
+        <section class="w-full" tabindex="0" *ngIf="!view_req" style="overflow: auto;">
           <table mat-table [dataSource]="juegos">
             <ng-container matColumnDef="position">
               <th mat-header-cell *matHeaderCellDef> {{'general-table.no' | translate}} </th>
@@ -50,37 +50,37 @@
             <p class="color-primary text-subtitulos-size">{{'user-hub-module.juegos-creado.dato-juego-titulo' | translate}}</p>
             <p class="mt-3  text-subtitulos-2-size">{{'user-hub-module.juegos-creado.subtitle' | translate}}</p>
           </div>
-          <div class="col-4">
+          <div class="col-12 md:col-6 lg:col-4">
             <app-ui-kaas-input 
                               [label]="'general-table.id_juego'" 
                               [(value)]="juegoSeleccionado.id_juego"
                               [readOnly]="true"></app-ui-kaas-input>
           </div>
-          <div class="col-4">
+          <div class="col-12 md:col-6 lg:col-4">
             <app-ui-kaas-input 
                               [label]="'general-table.tipo_req'" 
                               [(value)]="juegoSeleccionado.tipo_req"
                               [readOnly]="true"></app-ui-kaas-input>
           </div>
-          <div class="col-4">
+          <div class="col-12 md:col-6 lg:col-4">
             <app-ui-kaas-input 
                               [label]="'general-table.fecha_creacion'" 
                               [(value)]="juegoSeleccionado.fecha_creacion"
                               [readOnly]="true"></app-ui-kaas-input>
           </div>
-          <div class="col-4">
+          <div class="col-12 md:col-6 lg:col-4">
             <app-ui-kaas-input 
                               [label]="'general-table.fecha_finalizacion'" 
                               [(value)]="juegoSeleccionado.fecha_finalizacion"
                               [readOnly]="true"></app-ui-kaas-input>
           </div>
-          <div class="col-4">
+          <div class="col-12 md:col-6 lg:col-4">
             <app-ui-kaas-input 
                               [label]="'general-table.estado'" 
                               [(value)]="juegoSeleccionado.estado"
                               [readOnly]="true"></app-ui-kaas-input>
           </div>
-          <section class="w-full mt-4" tabindex="0">
+          <section class="w-full mt-4" style="overflow: auto;" tabindex="0">
             <table mat-table [dataSource]="juegoSeleccionado.requerimientos">
          
               <!--- Note that these columns can be defined in any order.
