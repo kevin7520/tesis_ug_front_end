@@ -2,9 +2,9 @@
   <ng-container *ngIf="pedirCodigo;else juegoInicio">
     <div class="w-full h-full mt-5 flex flex-wrap justify-content-center">
       <p class="w-full text-center">{{'user-hub-module.serios-game.titulo' | translate}}</p>
-      <div class="w-max flex flex-wrap align-items-center gap-3 mt-4">
-        <app-ui-kaas-input [(value)]="valorCodigo"></app-ui-kaas-input>
-        <div>
+      <div class="w-12 sm:w-max flex flex-wrap align-items-center gap-3 mt-4">
+        <app-ui-kaas-input class="w-full sm:w-max" [(value)]="valorCodigo"></app-ui-kaas-input>
+        <div class="w-12 sm:w-max">
           <app-ui-kaas-button
                             [label]="'general.boton-buscar' | translate" 
                             [butonFull]="true" 

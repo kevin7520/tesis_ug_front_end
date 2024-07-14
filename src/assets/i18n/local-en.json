@@ -210,7 +210,13 @@
     "acciones": "Actions",
     "seleccionar": "Select",
     "req-base": "Requirement from base",
-    "error": "You must have at least 5 requirements"
+    "error": "You must have at least 5 requirements",
+    "nombres": "Names",
+    "tiempo-inicio": "Start time",
+    "tiempo-fin": "End time",
+    "tiempo": "Time",
+    "aciertos": "Hits",
+    "errores": "Misses"
   },
   "general-tool": {
     "revisar-juego": "Review Game"

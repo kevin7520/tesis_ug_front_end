@@ -215,8 +215,8 @@
     "tiempo-inicio": "Hora inicio",
     "tiempo-fin": "Hora fin",
     "tiempo": "Tiempo",
-    "aciertos": "Número aciertos",
-    "errores": "Número desaciertos"
+    "aciertos": "Aciertos",
+    "errores": "Desaciertos"
   },
   "general-tool": {
     "revisar-juego": "Revisar juego"

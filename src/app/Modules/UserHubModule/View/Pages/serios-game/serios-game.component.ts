@@ -217,7 +217,7 @@ export class SeriosGameComponent implements OnInit{
           this.openSnackBar(this._translateService.instant('general-msg.error-guardar-juego-2'),'custom-snackbar_fallido');
         }
         if(dataResponse.result == "exito_insert") {
-          this.openSnackBar(this._translateService.instant('general-msg.ok-guardar-juego-2'),'custom-snackbar_exitoso');
+          this.openSnackBar(this._translateService.instant('general-msg.ok-guardar-juego'),'custom-snackbar_exitoso');
         }
         this.reiciarComponente();
         this.mostrarFinilazion = false;
