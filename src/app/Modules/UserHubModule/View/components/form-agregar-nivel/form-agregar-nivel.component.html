@@ -7,7 +7,7 @@
    <div class="col-12 my-1">
     <div class="separate-line"></div>
    </div>
-   <div class="col-6" *ngIf="expandible">
+   <div class="colo-12" *ngIf="expandible">
     <app-radio-button *ngIf="agregarRequerimiento || nivel.requerimientos.length == 0"
                       [label]="'user-hub-module.crear-juego.componente-form.cargar-req-titulo' | translate" 
                       [hint]="'user-hub-module.crear-juego.componente-form.cargar-req-subtitulo' | translate"
@@ -20,7 +20,7 @@
   </div>
   <ng-container *ngIf="expandible">
     <ng-container *ngIf="agregarRequerimiento || nivel.requerimientos.length == 0">
-      <div class="col-6" *ngIf="requrimientoCargado == 'si'">
+      <div class="col-12 md:col-6" *ngIf="requrimientoCargado == 'si'">
         <app-ui-kaas-input 
             [label]="'user-hub-module.crear-juego.componente-form.requerimiento-titulo' | translate" 
             [(value)]="requrimientoData.requerimiento" 
@@ -28,7 +28,7 @@
             (iconClick)="abrirModalRequerimientosCargados()"
             [readOnly]="true"></app-ui-kaas-input>
       </div>
-      <div class="col-6">
+      <div class="col-12 md:col-6">
         <app-ui-kaas-input-select 
                                   [label]="'user-hub-module.crear-juego.componente-form.type-requerimiento-titulo' | translate" 
                                   [(value)]="requrimientoData.opcionRequerimiento" 
@@ -38,13 +38,13 @@
     
         </app-ui-kaas-input-select>
       </div>
-      <div class="col-6" *ngIf="requrimientoCargado == 'no'">
+      <div class="col-12 md:col-6" *ngIf="requrimientoCargado == 'no'">
         <app-ui-kaas-input [label]="'user-hub-module.crear-juego.componente-form.requerimiento-titulo' | translate" [(value)]="requrimientoData.requerimiento"></app-ui-kaas-input>
       </div>
-      <div class="col-6">
+      <div class="col-12 md:col-6">
         <app-ui-kaas-input [readOnly]="requrimientoCargado == 'si'" [label]="'user-hub-module.crear-juego.componente-form.retroA' | translate"  [placeholder]="'general.opcional' | translate" [(value)]="requrimientoData.retroalimentacion"></app-ui-kaas-input>
       </div>
-      <div class="col-6">
+      <div class="col-12 md:col-6">
         <app-ui-kaas-slider [label]="'user-hub-module.crear-juego.componente-form.puntos' | translate" [(value)]="requrimientoData.puntosAdicionales"></app-ui-kaas-slider>
       </div>
       <div class="col-12 flex flex-grap justify-content-end">

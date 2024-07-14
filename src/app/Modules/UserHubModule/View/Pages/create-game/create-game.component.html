@@ -3,12 +3,12 @@
     <form action="">
       <p class="mt-4 text-center color-primary tex-titulo-Serius-Game">{{'user-hub-module.crear-juego.titulo' | translate}}</p>
       <div class="w-full grid mt-4 gap-3">
-        <div class="w-max col-fixed">
+        <div class="w-12 md:w-max col-fixed">
           <app-datepicker [label]="'user-hub-module.crear-juego.fecha-titulo'" 
                           [hint]="'user-hub-module.crear-juego.fecha-hint'" 
                           [(value)]="datosJuego.fechaFinalizacion"></app-datepicker>
         </div>
-        <div class="w-max col-fixed">
+        <div class="w-12 md:w-max col-fixed">
           <app-ui-kaas-input-select 
                                  [label]="'user-hub-module.crear-juego.tipo-titulo'" 
                                  [hint]="'user-hub-module.crear-juego.tipo-hint'" 

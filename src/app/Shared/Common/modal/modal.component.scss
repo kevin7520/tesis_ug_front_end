@@ -15,6 +15,23 @@
     pointer-events: auto;
 }
 
+@media (max-width: 1000px) {
+    .modal {
+        width: 65%!important;
+    }
+}
+
+@media (max-width: 800px) {
+    .modal {
+        width: 85% !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal {
+        width: 90% !important;
+    }
+}
 /* Estilos para el fondo oscuro detrás del modal */
 .modal-overlay {
     position: fixed;

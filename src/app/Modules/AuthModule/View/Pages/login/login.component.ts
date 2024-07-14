@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   crearCuentaFormGroup = new FormGroup({
     usuario: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
-    correo: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
+    correo: new FormControl('', { validators: [Validators.required, Validators.email], updateOn: 'blur' }),
     password: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
     confirmarPassword: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
   });
@@ -84,34 +84,72 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  mensaje = "";
+
   crearCuenta() {
-    const criteria = {
-      usuario: String(this.crearCuentaFormGroup.value.usuario),
-      password: String(this.crearCuentaFormGroup.value.password),
-      correo: String(this.crearCuentaFormGroup.value.correo),
-    }
-
-    this._serviceAuth.crearCuenta(criteria).subscribe((data)=>{
-      if(data.msg == 'OK') {
-        this.openSnackBar(this._translateService.instant('aut-module.input.crear-exitoso'),'custom-snackbar_exitoso');
-        this.crearCuentaFormGroup.reset();
-        this.loginFormGroup.reset();
-        this.iniciarSesion = true;
-      }
-      else {
-        this.openSnackBar(this._translateService.instant('aut-module.input.crear-fallido'),'custom-snackbar_fallido');
-      }
-    });
-  }
-
-  onInputChange(): void {
-    if(this.crearCuentaFormGroup.value.password!.length >= 8) {
-      this.validador.caracteres = true;
+    const passwordTmp = this.crearCuentaFormGroup.value.password!;
+    const passwordTmp2 = this.crearCuentaFormGroup.value.confirmarPassword!;
+    if(passwordTmp.length <= 8) {
+      //this.validador.caracteres = true;
+      this.mensaje = "aut-module.validador.caracteres";
     }
     else {
-      this.validador.caracteres = false;
+      const regex = /^(?=.*[A-Z])(?=.*[\W_]).+$/;
+      if (!regex.test(passwordTmp)) {
+        this.mensaje = "aut-module.validador.general";
+      } 
+      else {
+        if (passwordTmp == passwordTmp2) {
+          this.mensaje = "";
+          const criteria = {
+            usuario: String(this.crearCuentaFormGroup.value.usuario),
+            password: String(this.crearCuentaFormGroup.value.password),
+            correo: String(this.crearCuentaFormGroup.value.correo),
+          }
+
+          this._serviceAuth.crearCuenta(criteria).subscribe((data)=>{
+            if(data.msg == 'OK') {
+              this.openSnackBar(this._translateService.instant('aut-module.input.crear-exitoso'),'custom-snackbar_exitoso');
+              this.crearCuentaFormGroup.reset();
+              this.loginFormGroup.reset();
+              this.iniciarSesion = true;
+            }
+            else {
+              if (data.msg == 'user_ocupado') {
+                this.openSnackBar(this._translateService.instant('general-msg.usuario-ocupado'),'custom-snackbar_fallido');
+              }
+              else
+                this.openSnackBar(this._translateService.instant('aut-module.input.crear-fallido'),'custom-snackbar_fallido');
+            }
+          });
+        }
+        else {
+          this.mensaje = "aut-module.validador.repetido";
+        }
+      }
     }
+    
   }
+
+  // onInputChange(): void {
+  //   debugger;
+  //   const passwordTmp = this.crearCuentaFormGroup.value.password!;
+  //   const passwordTmp2 = this.crearCuentaFormGroup.value.confirmarPassword!;
+  //   if(passwordTmp.length <= 8) {
+  //     //this.validador.caracteres = true;
+  //     this.mensaje = "aut-module.validador.caracteres";
+  //   }
+  //   else {
+  //     const regex = /^(?=.*[A-Z])(?=.*[\W_]).+$/;
+  //     if (!regex.test(passwordTmp)) {
+  //       this.mensaje = "aut-module.validador.general";
+  //     } 
+  //     else {
+  //         this.mensaje = "";
+  //     }
+  //     //this.validador.caracteres = false;
+  //   }
+  // }
 
   openSnackBar(message: string, class_customer: string) {
     const config = new MatSnackBarConfig();

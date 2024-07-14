@@ -22,11 +22,11 @@
          <span [ngClass]="{'text-teal-700': this.puntos >= 0, 'text-red-600': this.puntos < 0}">{{this.puntos}}</span>
         </p>
       </div>
-      <div class="w-max col-fixed">
+      <div class="w-full lg:w-max text-rigth col-fixed">
        <p class="text-purple-600 font-medium text-subtitulos-2-size">{{'tipo-juego.titulo' | translate}} {{tipoJuego | translate}}</p>
       </div>
      </div>
-     <div class="wrapper grid m-0 mt-4">
+     <div class="wrapper m-0 mt-4 hidden md:flex">
        <div class="col-4">
          <p class="text-center text-subtitulos-2-size mb-4">{{ambiguosAndFuncionales | translate}}</p>
          <div id="requerimientos_ambiguos" class="w-full h-full bg-primary-200 shadow-5 estilo-cuadro-requisitos flex flex-column m-0 p-2" [dragula]="REQUERIMIENTOS_DRAGULA"  [(dragulaModel)]="requesitosAmbiguos">
@@ -61,6 +61,59 @@
        <div class="col-4">
          <p class="text-center text-subtitulos-2-size mb-4">{{noAmbiguosAndNoFuncionales | translate}}</p>
          <div id="requerimientos_no_ambiguos" class="w-full h-full bg-primary-200 shadow-5 estilo-cuadro-requisitos flex flex-column m-0 p-2" [dragula]="REQUERIMIENTOS_DRAGULA" [(dragulaModel)]="requesitosNoAmbiguos">
+           <div class="col-12" *ngFor="let requisito of requesitosNoAmbiguos">
+             <div class="estilo-container-requisitos w-full p-3" [ngClass]="{'bg-green-500': requisito.requerimientoCompleto == 'si', 'bg-red-500': requisito.requerimientoCompleto == 'error'}">
+               <p>
+                 <ng-container *ngIf="requisito.requerimientoCompleto == 'si';else requisitoNoAmbiugoincorrecto">
+                   <span class="bi bi-check2-circle"></span>
+                 </ng-container>
+                 <ng-template #requisitoNoAmbiugoincorrecto>
+                   <span class="handle bi bi-arrows-move cursor-move"></span>
+                 </ng-template>
+                 &nbsp;{{requisito.texto}}
+               </p>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="wrapper grid m-0 mt-4 md:hidden">
+        <div class="col-12">
+          <p class="text-center text-subtitulos-2-size mb-4">{{requerimientoFinal | translate}}</p>
+          <div style="min-height: 80px;" id="requerimientos_no_funcionales"
+            class="w-full bg-primary-200 shadow-5 estilo-cuadro-requisitos flex flex-column m-0 p-2"
+            [dragula]="REQUERIMIENTOS_DRAGULA" [(dragulaModel)]="requisitosNoFuncionales">
+            <div class="col-12" *ngFor="let requisito of requisitosNoFuncionales" [id]="requisito.id">
+              <div class="estilo-container-requisitos w-full p-3">
+                <p>
+                  <span class="handle bi bi-arrows-move cursor-move"></span>
+                  &nbsp;{{requisito.texto}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+       <div class="col-6">
+         <p class="text-center text-subtitulos-2-size mb-4">{{ambiguosAndFuncionales | translate}}</p>
+         <div style="min-height: 80px;" id="requerimientos_ambiguos" class="w-full bg-primary-200 shadow-5 estilo-cuadro-requisitos flex flex-column m-0 p-2" [dragula]="REQUERIMIENTOS_DRAGULA"  [(dragulaModel)]="requesitosAmbiguos">
+           <div class="col-12" *ngFor="let requisito of requesitosAmbiguos">
+             <div class="w-full estilo-container-requisitos p-3" [ngClass]="{'bg-green-500': requisito.requerimientoCompleto == 'si', 'bg-red-500': requisito.requerimientoCompleto == 'error'}">
+               <p>
+                 <ng-container *ngIf="requisito.requerimientoCompleto == 'si';else requisitoAmbiugoincorrecto">
+                   <span class="bi bi-check2-circle"></span>
+                 </ng-container>
+                 <ng-template #requisitoAmbiugoincorrecto>
+                   <span class="handle bi bi-arrows-move cursor-move"></span>
+                 </ng-template>
+                 &nbsp;{{requisito.texto}}
+               </p>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-6">
+         <p class="text-center text-subtitulos-2-size mb-4">{{noAmbiguosAndNoFuncionales | translate}}</p>
+         <div style="min-height: 80px;" id="requerimientos_no_ambiguos" class="w-full bg-primary-200 shadow-5 estilo-cuadro-requisitos flex flex-column m-0 p-2" [dragula]="REQUERIMIENTOS_DRAGULA" [(dragulaModel)]="requesitosNoAmbiguos">
            <div class="col-12" *ngFor="let requisito of requesitosNoAmbiguos">
              <div class="estilo-container-requisitos w-full p-3" [ngClass]="{'bg-green-500': requisito.requerimientoCompleto == 'si', 'bg-red-500': requisito.requerimientoCompleto == 'error'}">
                <p>
