@@ -227,7 +227,7 @@
     "juego-2": "Tipo 2",
     "juego-3": "Tipo 3",
     "juego-1-title": "Detectar requisitos No funcionales ambiguos y No ambiguos",
-    "juego-2-title": "Detectar requisitos funcionales de los que no son funcionales",
+    "juego-2-title": "Detectar requisitos funcionales y no funcionales",
     "juego-3-title": "Detectar requisitos funcionales ambiguos y no ambiguos",
     "juego-1-subtitle-ambiguo": "No funcional ambiguo",
     "juego-1-subtitle-noAmbiguo": "No Funicional no ambiguo",
@@ -235,5 +235,59 @@
     "juego-2-subtitle-noAmbiguo": "Requisitos no funcionales",
     "juego-3-subtitle-ambiguo": "Funcional ambiguo",
     "juego-3-subtitle-noAmbiguo": "Funicional no ambiguo"
+  },
+  "instrucciones-juegos": {
+    "titulo": "Instrucciones del Juego",
+    "tipo-1": {
+      "contenido": "En este juego, tu objetivo es mejorar tu capacidad para identificar y clasificar requisitos no funcionales ambiguos y no ambiguos. Aquí tienes las instrucciones para comenzar:",
+      "paso-1": "1. Pantalla Principal: Verás tres tableros en la pantalla:",
+      "paso-1-1": "Ambiguo",
+      "paso-1-2": "Requisitos",
+      "paso-1-3": "No ambiguo",
+      "paso-2": "2. Cartas de Requisitos: En el tablero central llamado 'Requisitos', aparecerán diferentes cartas con descripciones de requisitos no funcionales.",
+      "paso-3": "3. Clasificación: Arrastra y suelta cada carta de requisito en el tablero correspondiente:",
+      "paso-3-1": "Ambiguo: Si consideras que el requisito es ambiguo.",
+      "paso-3-2": "No ambiguo: Si consideras que el requisito no es ambiguo.",
+      "paso-4": "4. Puntuación:",
+      "paso-4-1": "Si colocas una carta correctamente, ganarás puntos.",
+      "paso-4-2": "Si colocas una carta incorrectamente, perderás puntos, pero tendrás la oportunidad de corregirla sin ganar puntos adicionales.",
+      "paso-5": "5. Retroalimentación: Cada vez que cometas un error, recibirás una explicación sobre por qué la carta está mal ubicada. Utiliza esta retroalimentación para aprender y mejorar.",
+      "paso-6": "6. Final del Juego: El juego termina cuando hayas clasificado correctamente todas las cartas de requisitos. ¡Intenta obtener la mejor puntuación posible!",
+      "paso-7": "¡Buena suerte y diviértete mientras mejoras tus habilidades en la detección de requisitos no funcionales ambiguos!"
+    },
+    "tipo-2": {
+      "contenido": "En este juego, tu objetivo es mejorar tu capacidad para identificar y clasificar requisitos funcionales y no funcionales. Aquí tienes las instrucciones para comenzar:",
+      "paso-1": "1. Pantalla Principal: Verás tres tableros en la pantalla:",
+      "paso-1-1": "Funcionales",
+      "paso-1-2": "Requisitos",
+      "paso-1-3": "No funcionales",
+      "paso-2": "2. Cartas de Requisitos: En el tablero central llamado 'Requisitos', aparecerán diferentes cartas con descripciones de requisitos.",
+      "paso-3": "3. Clasificación: Arrastra y suelta cada carta de requisito en el tablero correspondiente:",
+      "paso-3-1": "Funcionales: Si consideras que el requisito es funcional.",
+      "paso-3-2": "No funcionales: Si consideras que el requisito no es funcional.",
+      "paso-4": "4. Puntuación:",
+      "paso-4-1": "Si colocas una carta correctamente, ganarás puntos.",
+      "paso-4-2": "Si colocas una carta incorrectamente, perderás puntos, pero tendrás la oportunidad de corregirla sin ganar puntos adicionales.",
+      "paso-5": "5. Retroalimentación: Cada vez que cometas un error, recibirás una explicación sobre por qué la carta está mal ubicada. Utiliza esta retroalimentación para aprender y mejorar.",
+      "paso-6": "6. Final del Juego: El juego termina cuando hayas clasificado correctamente todas las cartas de requisitos. ¡Intenta obtener la mejor puntuación posible!",
+      "paso-7": "¡Buena suerte y diviértete mientras mejoras tus habilidades en la detección de requisitos funcionales y no funcionales!"
+    },
+    "tipo-3": {
+      "contenido": "En este juego, tu objetivo es mejorar tu capacidad para identificar y clasificar requisitos funcionales ambiguos y no ambiguos. Aquí tienes las instrucciones para comenzar:",
+      "paso-1": "1. Pantalla Principal: Verás tres tableros en la pantalla:",
+      "paso-1-1": "Ambiguo",
+      "paso-1-2": "Requisitos",
+      "paso-1-3": "No ambiguo",
+      "paso-2": "2. Cartas de Requisitos: En el tablero central llamado 'Requisitos', aparecerán diferentes cartas con descripciones de requisitos funcionales.",
+      "paso-3": "3. Clasificación: Arrastra y suelta cada carta de requisito en el tablero correspondiente:",
+      "paso-3-1": "Ambiguo: Si consideras que el requisito es ambiguo.",
+      "paso-3-2": "No ambiguo: Si consideras que el requisito no es ambiguo.",
+      "paso-4": "4. Puntuación:",
+      "paso-4-1": "Si colocas una carta correctamente, ganarás puntos.",
+      "paso-4-2": "Si colocas una carta incorrectamente, perderás puntos, pero tendrás la oportunidad de corregirla sin ganar puntos adicionales.",
+      "paso-5": "5. Retroalimentación: Cada vez que cometas un error, recibirás una explicación sobre por qué la carta está mal ubicada. Utiliza esta retroalimentación para aprender y mejorar.",
+      "paso-6": "6. Final del Juego: El juego termina cuando hayas clasificado correctamente todas las cartas de requisitos. ¡Intenta obtener la mejor puntuación posible!",
+      "paso-7": "¡Buena suerte y diviértete mientras mejoras tus habilidades en la detección de requisitos funcionales y no funcionales!"
+    }
   }
 }

@@ -21,7 +21,8 @@ export class SeriosGameComponent implements OnInit{
   // public many2 = ['Explore', 'them'];
   pedirCodigo : boolean = true;
   mostrarRetoAlimentacion : boolean = false;
-  mostrarFinilazion : boolean = false;
+  mostrarFinilazion: boolean = false;
+  mostrarInicioModal: boolean = false;
   retroalimentacion : string = "";
   event: Event | undefined;
   valorCodigo : string = "";
@@ -30,6 +31,7 @@ export class SeriosGameComponent implements OnInit{
   ambiguosAndFuncionales: string = "";
   noAmbiguosAndNoFuncionales: string = "";
   requerimientoFinal: string = "";
+  tipoJuegoID: number = 0;
 
   id_juegoTemp : number = 0;
   //juegosPublicos: any[] = [];
@@ -116,6 +118,7 @@ export class SeriosGameComponent implements OnInit{
       if(dataResponse.msg == 'OK') {
         if(dataResponse.result.estado == 1) {
           let tipoJuegoInicial = "";
+          this.tipoJuegoID = dataResponse.result.id_tipo_juego;
           switch(dataResponse.result.id_tipo_juego) {
             case '1':
                 this.tipoJuego = 'tipo-juego.juego-1-title';
@@ -155,6 +158,7 @@ export class SeriosGameComponent implements OnInit{
           this.requisitosNoFuncionales = this.algoritmoShuffleArray(this.requisitosNoFuncionales);
           this.pedirCodigo = false;
           this.id_juegoTemp = Number(this.valorCodigo);
+          this.mostrarInicioModal = true;
         }
         else {
           this.openSnackBar(this._translateService.instant('general-msg.esta-incorrecto'),'custom-snackbar_fallido');

@@ -227,7 +227,7 @@
     "juego-2": "Type 2",
     "juego-3": "Type 3",
     "juego-1-title": "Detect ambiguous and unambiguous non-functional requirements",
-    "juego-2-title": "Detect functional requirements from non-functional ones",
+    "juego-2-title": "Detect functional and non-functional requirements",
     "juego-3-title": "Detect ambiguous and unambiguous functional requirements",
     "juego-1-subtitle-ambiguo": "Non-functional ambiguous",
     "juego-1-subtitle-noAmbiguo": "Non-functional non-ambiguous",
@@ -235,5 +235,59 @@
     "juego-2-subtitle-noAmbiguo": "Non-functional requirements",
     "juego-3-subtitle-ambiguo": "Functional ambiguous",
     "juego-3-subtitle-noAmbiguo": "Functional non-ambiguous"
+  },
+  "instrucciones-juegos": {
+    "titulo": "Game Instructions",
+    "tipo-1": {
+      "contenido": "In this game, your goal is to improve your ability to identify and classify ambiguous and unambiguous non-functional requirements. Here are the instructions to get started:",
+      "paso-1": "1. Main Screen: You will see three boards on the screen:",
+      "paso-1-1": "Ambiguous",
+      "paso-1-2": "Requirements",
+      "paso-1-3": "Unambiguous",
+      "paso-2": "2. Requirement Cards: On the central board called 'Requirements', different cards with descriptions of non-functional requirements will appear.",
+      "paso-3": "3. Classification: Drag and drop each requirement card onto the corresponding board:",
+      "paso-3-1": "Ambiguous: If you consider the requirement to be ambiguous.",
+      "paso-3-2": "Unambiguous: If you consider the requirement to be unambiguous.",
+      "paso-4": "4. Scoring:",
+      "paso-4-1": "If you place a card correctly, you will earn points.",
+      "paso-4-2": "If you place a card incorrectly, you will lose points, but you will have the opportunity to correct it without earning additional points.",
+      "paso-5": "5. Feedback: Each time you make a mistake, you will receive an explanation of why the card is misplaced. Use this feedback to learn and improve.",
+      "paso-6": "6. End of the Game: The game ends when you have correctly classified all the requirement cards. Try to achieve the highest possible score!",
+      "paso-7": "Good luck and have fun while improving your skills in detecting ambiguous and unambiguous non-functional requirements!"
+    },
+    "tipo-2": {
+      "contenido": "In this game, your goal is to improve your ability to identify and classify functional and non-functional requirements. Here are the instructions to get started:",
+      "paso-1": "1. Main Screen: You will see three boards on the screen:",
+      "paso-1-1": "Functional",
+      "paso-1-2": "Requirements",
+      "paso-1-3": "Non-functional",
+      "paso-2": "2. Requirement Cards: On the central board called 'Requirements', different cards with descriptions of requirements will appear.",
+      "paso-3": "3. Classification: Drag and drop each requirement card onto the corresponding board:",
+      "paso-3-1": "Functional: If you consider the requirement to be functional.",
+      "paso-3-2": "Non-functional: If you consider the requirement to be non-functional.",
+      "paso-4": "4. Scoring:",
+      "paso-4-1": "If you place a card correctly, you will earn points.",
+      "paso-4-2": "If you place a card incorrectly, you will lose points, but you will have the opportunity to correct it without earning additional points.",
+      "paso-5": "5. Feedback: Each time you make a mistake, you will receive an explanation of why the card is misplaced. Use this feedback to learn and improve.",
+      "paso-6": "6. End of the Game: The game ends when you have correctly classified all the requirement cards. Try to achieve the highest possible score!",
+      "paso-7": "Good luck and have fun while improving your skills in detecting functional and non-functional requirements!"
+    },
+    "tipo-3": {
+      "contenido": "In this game, your goal is to improve your ability to identify and classify ambiguous and unambiguous functional requirements. Here are the instructions to get started:",
+      "paso-1": "1. Main Screen: You will see three boards on the screen:",
+      "paso-1-1": "Ambiguous",
+      "paso-1-2": "Requirements",
+      "paso-1-3": "Unambiguous",
+      "paso-2": "2. Requirement Cards: On the central board called 'Requirements', different cards with descriptions of functional requirements will appear.",
+      "paso-3": "3. Classification: Drag and drop each requirement card onto the corresponding board:",
+      "paso-3-1": "Ambiguous: If you consider the requirement to be ambiguous.",
+      "paso-3-2": "Unambiguous: If you consider the requirement to be unambiguous.",
+      "paso-4": "4. Scoring:",
+      "paso-4-1": "If you place a card correctly, you will earn points.",
+      "paso-4-2": "If you place a card incorrectly, you will lose points, but you will have the opportunity to correct it without earning additional points.",
+      "paso-5": "5. Feedback: Each time you make a mistake, you will receive an explanation of why the card is misplaced. Use this feedback to learn and improve.",
+      "paso-6": "6. End of the Game: The game ends when you have correctly classified all the requirement cards. Try to achieve the highest possible score!",
+      "paso-7": "Good luck and have fun while improving your skills in detecting ambiguous and unambiguous functional requirements!"
+    }
   }
 }
