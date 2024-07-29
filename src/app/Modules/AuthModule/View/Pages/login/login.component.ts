@@ -131,6 +131,9 @@ export class LoginComponent implements OnInit {
     
   }
 
+  dirigirRecuperarCuenta() {
+    this._roter.navigateByUrl("/auth/recuperar-cuenta")
+  }
   // onInputChange(): void {
   //   debugger;
   //   const passwordTmp = this.crearCuentaFormGroup.value.password!;

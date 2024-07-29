@@ -23,4 +23,14 @@ export class AuthService {
     criteria.action = "migracion";
     return this.http.post<any>(this.urlEndPoint,criteria);
   }
+
+  cambiarPassword(criteria : any) : Observable<any> {
+    criteria.action = "cambiarPassword";
+    return this.http.post<any>(this.urlEndPoint,criteria);
+  }
+
+  recuperarCuenta(criteria : any) : Observable<any> {
+    criteria.action = "recuperarPassword";
+    return this.http.post<any>(this.urlEndPoint,criteria);
+  }
 }

@@ -35,6 +35,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MY_DATE_FORMATS } from '../Utils/fechaFormateada';
 import { DurationPipe } from './Pipes/horas.pipe';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { UiChargeComponent } from './Common/ui-charge/ui-charge.component';
 
 // export const MY_DATE_FORMATS = {
 //   parse: {
@@ -69,6 +71,7 @@ import { DurationPipe } from './Pipes/horas.pipe';
     MatTooltipModule,
     MatPaginatorModule,
     MatCheckboxModule,
+    MatProgressSpinnerModule,
     MatSortModule,
     CdkDrag,
     CdkDragHandle,
@@ -86,7 +89,8 @@ import { DurationPipe } from './Pipes/horas.pipe';
     RadioButtonComponent,
     UiKaasInputSelectComponent,
     UiKaasSliderComponent,
-    DurationPipe
+    DurationPipe,
+    UiChargeComponent
   ],
   exports: [
     Page404Component,
@@ -120,7 +124,9 @@ import { DurationPipe } from './Pipes/horas.pipe';
     MatCheckboxModule,
     MatPaginatorModule,
     MatSortModule,
-    DurationPipe
+    DurationPipe,
+    UiChargeComponent,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},

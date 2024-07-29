@@ -31,6 +31,23 @@
       "estudiante": "Estudiante",
       "profesor": "Profesor"
     },
+    "recuperar-cuenta": {
+      "title": "Recupera tu contraseña",
+      "correo": "Correo Electrónico",
+      "correo-placeholder": "Ingresa tu correo electrónico",
+      "password": "Contraseña",
+      "password-placeholder": "Ingresa tu contraseña",
+      "passwordTemp": "Contraseña temporal",
+      "passwordTemp-placeholder": "Ingresa tu contraseña temporal enviada a tu correo eléctronico",
+      "password-conf": "Confirma tu contraseña",
+      "password-conf-placeholder": "Repite tu contraseña",
+      "ok": "Contraseña temporal enviada con éxito",
+      "error": "Ocurrió un error al enviar el correo electrónico. Inténtalo más tarde",
+      "ok2": "Se actualizo la contraseña correctamente. Ahora solo inicia sesión",
+      "error2": "La contraseña temporal es incorrecta",
+      "error3": "Ocurio un error intentalo más tarde",
+      "error4": "El correo ingresado es invalido"
+    },
     "validador": {
       "caracteres": "La longitud mínimo es de 8 caracteres",
       "general": "Tu contraseña debe tener al menos una letra mayúscula y un carácter especial",

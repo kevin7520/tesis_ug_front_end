@@ -20,7 +20,7 @@
       "crear-fallido": "X La creación de la cuenta no fue exitosa. Por favor, inténtelo nuevamente más tarde",
       "usuario-incorrecto": "Incorrect username. Please check and try again"
     },
-    "migration": {
+    "migracion": {
       "title": "Complete your registration",
       "nombre": "First Name",
       "nombre-hint": "Enter your full name",
@@ -30,6 +30,23 @@
       "fecha-nacimiento": "Date of Birth",
       "estudiante": "Student",
       "profesor": "Professor"
+    },
+    "recuperar-cuenta": {
+      "title": "Recover Your Password",
+      "correo": "Email",
+      "correo-placeholder": "Enter your email",
+      "password": "Password",
+      "password-placeholder": "Enter your password",
+      "passwordTemp": "Temporary Password",
+      "passwordTemp-placeholder": "Enter your temporary password sent to your email",
+      "password-conf": "Confirm Your Password",
+      "password-conf-placeholder": "Repeat your password",
+      "ok": "Temporary password sent successfully",
+      "error": "An error occurred while sending the email. Please try again later",
+      "ok2": "Password updated successfully. Now just log in",
+      "error2": "The temporary password is incorrect",
+      "error3": "An error occurred, please try again later",
+      "error4": "The entered email is invalid"
     },
     "validador": {
       "caracteres": "The minimum length is 8 characters",
