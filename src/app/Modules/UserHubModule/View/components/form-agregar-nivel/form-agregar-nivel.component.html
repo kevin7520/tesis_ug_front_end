@@ -29,14 +29,23 @@
             [readOnly]="true"></app-ui-kaas-input>
       </div>
       <div class="col-12 md:col-6">
-        <app-ui-kaas-input-select 
+        <ng-container *ngIf="requrimientoCargado == 'si';else templateName">
+          <app-ui-kaas-input 
+                                  [label]="'user-hub-module.crear-juego.componente-form.type-requerimiento-titulo' | translate" 
+                                  [(value)]="reqTemp" 
+                                  [readOnly]="true">
+            </app-ui-kaas-input>
+        </ng-container>
+        <ng-template #templateName>
+            <app-ui-kaas-input-select 
                                   [label]="'user-hub-module.crear-juego.componente-form.type-requerimiento-titulo' | translate" 
                                   [(value)]="requrimientoData.opcionRequerimiento" 
                                   [options]="options_Requerimientos" 
-                                  [readOnly]="requrimientoCargado == 'si'"
+                                  [readOnly]="false"
                                   [id_menu]="indice+'requerimiento_tipo'">
-    
-        </app-ui-kaas-input-select>
+            </app-ui-kaas-input-select>
+        </ng-template>
+        
       </div>
       <div class="col-12 md:col-6" *ngIf="requrimientoCargado == 'no'">
         <app-ui-kaas-input [label]="'user-hub-module.crear-juego.componente-form.requerimiento-titulo' | translate" [(value)]="requrimientoData.requerimiento"></app-ui-kaas-input>

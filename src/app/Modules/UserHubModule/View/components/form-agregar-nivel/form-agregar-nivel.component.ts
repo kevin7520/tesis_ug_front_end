@@ -3,6 +3,7 @@ import { Nivel, Requerimiento } from '../../Model/requerimientos.model';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form-agregar-nivel',
@@ -39,7 +40,7 @@ export class FormAgregarNivelComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
 
 
-  constructor() {
+  constructor(private _translateService: TranslateService) {
     this.dataSource = new MatTableDataSource();
    }
 
@@ -81,6 +82,7 @@ export class FormAgregarNivelComponent implements OnInit {
       this.valorAntiguoOpcion = "no";
       this.requrimientoData.requerimiento = "";
       this.requrimientoData.retroalimentacion = "";
+      this.reqTemp = "";
       this.requrimientoData.requerimientoBase = "No";
     }
   }
@@ -224,6 +226,7 @@ export class FormAgregarNivelComponent implements OnInit {
         this.requrimientoData.opcionRequerimiento = "";
         this.requrimientoData.requerimiento = "";
         this.requrimientoData.retroalimentacion = "";
+        this.reqTemp = "";
         this.requrimientoData.requerimientoBase = "Sí"
       }
       else {
@@ -234,10 +237,12 @@ export class FormAgregarNivelComponent implements OnInit {
     }
   }
 
+  reqTemp = "";
   seleccionarRequerimientoCargado(index: number) {
     this.requrimientoData.requerimiento = this.requerimientosCargados[index].requerimiento;
     this.requrimientoData.retroalimentacion = this.requerimientosCargados[index].retroalimentacion;
     this.requrimientoData.opcionRequerimiento = this.requerimientosCargados[index].opcionRequerimiento;
+    this.reqTemp = this._translateService.instant(this.options_Requerimientos.find(item => item.code == this.requrimientoData.opcionRequerimiento).name);
     this.salirEscogerRequerimiento();
   }
 
@@ -275,6 +280,10 @@ export class FormAgregarNivelComponent implements OnInit {
     this.nivel.requerimientos[index].opcionRequerimiento = this.requrimientoData.opcionRequerimiento;
     this.nivel.requerimientos[index].puntosAdicionales = this.requrimientoData.puntosAdicionales;
     this.cerrarModalActualiza();
+  }
+
+  cambiarText(value: string) : string {
+    return this._translateService.instant(value);
   }
 
 

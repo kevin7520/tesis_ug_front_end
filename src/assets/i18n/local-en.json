@@ -15,9 +15,9 @@
       "correo-placeholder": "Enter your email address",
       "olvidaste-password": "Forgot your password?",
       "login-exitoso": "Successful login!",
-      "crear-exitoso": "X La cuenta se ha creado correctamente. Ahora simplemente inicia sesión",
+      "crear-exitoso": "The account has been created successfully. Now, just log in.",
       "login-fallido": "Login failed. Try again",
-      "crear-fallido": "X La creación de la cuenta no fue exitosa. Por favor, inténtelo nuevamente más tarde",
+      "crear-fallido": "The account creation was not successful. Please try again later.",
       "usuario-incorrecto": "Incorrect username. Please check and try again"
     },
     "migracion": {
