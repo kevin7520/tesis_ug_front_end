@@ -4,8 +4,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { Chart, ChartType } from 'chart.js/auto';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-reportes',
@@ -48,7 +46,6 @@ export class ReportesComponent implements OnInit {
   selection = new SelectionModel<any>(true, []);
 
   datosJuegosSeleccionados: any[] = [];
-  chart!: Chart;
   
   ngOnInit() {
     this.buscarJuegos();
@@ -234,44 +231,5 @@ export class ReportesComponent implements OnInit {
     const differenceInSeconds = differenceInMilliseconds / 1000;
     return differenceInSeconds;
   }
-
-  generateCharts(): void {
-    if (this.duu === 0) {
-      const chartPromises = this.chartsData.map((chartData, index) => {
-        return new Promise<void>((resolve) => {
-          const data = {
-            labels: chartData.labels,
-            datasets: [{
-              label: `Dataset ${index + 1}`,
-              data: chartData.data,
-              backgroundColor: chartData.backgroundColor,
-              hoverOffset: 4
-            }]
-          };
-          this.createChart(`chart${index}`, data, resolve);
-        });
-      });
-
-      Promise.all(chartPromises).then(() => {
-        console.log('Todos los gráficos han sido generados y están en el HTML');
-        this.openPDF();
-      });
-
-      this.duu = 1;
-    }
-  }
-
-  createChart(chartId: string, data: any, resolve: () => void): void {
-    const chart = new Chart(chartId, {
-      type: 'pie' as ChartType,
-      data,
-      options: {
-        animation: {
-          onComplete: resolve // Llama a resolve cuando la animación del gráfico haya completado
-        }
-      }
-    });
-  }
-
 
 }
