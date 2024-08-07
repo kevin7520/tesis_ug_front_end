@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  private urlEndPoint: string = environment.apiUrl+'/auth';
+  //private urlEndPoint: string = environment.apiUrl+'/auth';
+  private urlEndPoint: string = 'http://franklinparrales.es/Grupo3_Backend/auth';
   
   login(criteria : any) : Observable<any> {
     criteria.action = "login";
