@@ -7,7 +7,9 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class HttpCoreInterceptor implements HttpInterceptor {
   constructor() {}
   intercept(
@@ -20,7 +22,6 @@ export class HttpCoreInterceptor implements HttpInterceptor {
         'Access-Control-Allow-Origin': '* ',
       },
     });
-    console.log('FUNCIONO');
     return next.handle(request);
   }
 }

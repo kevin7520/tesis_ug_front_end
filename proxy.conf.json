@@ -1,10 +1,10 @@
 {
   "/api": {
-    "target": "http://franklinparrales.es",
+    "target": "http://franklinparrales.es/",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
-      "^/api": ""
+      "^/api": "Grupo3_Backend"
     }
   }
 }
