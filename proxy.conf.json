@@ -2,6 +2,9 @@
   "/api": {
     "target": "http://franklinparrales.es",
     "secure": false,
-    "changeOrigin": true
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
   }
 }
