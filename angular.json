@@ -68,16 +68,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "proxyConfig": "proxy.conf.js"
-          },
           "configurations": {
             "production": {
               "browserTarget": "tesis_front_end:build:production"
             },
             "development": {
-              "browserTarget": "tesis_front_end:build:development",
-              "proxyConfig": "proxy.conf.json"
+              "browserTarget": "tesis_front_end:build:development"
             }
           },
           "defaultConfiguration": "development"
