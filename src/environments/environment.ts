@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/tesis_ug_back_end'
+  apiUrl: 'https://franklinparrales.es/Grupo3_Backend',
 };
