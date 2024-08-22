@@ -247,11 +247,11 @@
     "juego-2-title": "Detectar requisitos funcionales y no funcionales",
     "juego-3-title": "Detectar requisitos funcionales ambiguos y no ambiguos",
     "juego-1-subtitle-ambiguo": "No funcional ambiguo",
-    "juego-1-subtitle-noAmbiguo": "No Funicional no ambiguo",
+    "juego-1-subtitle-noAmbiguo": "No Funcional no ambiguo",
     "juego-2-subtitle-ambiguo": "Requisitos funcionales",
     "juego-2-subtitle-noAmbiguo": "Requisitos no funcionales",
     "juego-3-subtitle-ambiguo": "Funcional ambiguo",
-    "juego-3-subtitle-noAmbiguo": "Funicional no ambiguo"
+    "juego-3-subtitle-noAmbiguo": "Funcional no ambiguo"
   },
   "instrucciones-juegos": {
     "titulo": "Instrucciones del Juego",
