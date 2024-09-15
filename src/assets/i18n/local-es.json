@@ -229,6 +229,7 @@
     "req-base": "Requerimiento desde base",
     "error": "Debes tener minimo 5 requerimientos",
     "nombres": "Nombres",
+    "apellidos": "Apellidos",
     "tiempo-inicio": "Hora inicio",
     "tiempo-fin": "Hora fin",
     "tiempo": "Tiempo",
