@@ -1,5 +1,5 @@
 {
-  "title": "SERIOUS GAME",
+  "title": "DRAGON SERIOUS GAME",
   "aut-module": {
     "titulo": "Explore and discover your non-functional requirements through a unique gaming experience",
     "iniciar-sesion": "Sign In",
@@ -229,6 +229,7 @@
     "req-base": "Requirement from base",
     "error": "You must have at least 5 requirements",
     "nombres": "Names",
+    "apellidos": "Last Name",
     "tiempo-inicio": "Start time",
     "tiempo-fin": "End time",
     "tiempo": "Time",
